@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="真正的热爱计算机技术，才能走得更远">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git操作">
+<meta property="og:url" content="http://example.com/2023/08/06/Git%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="星辰可染呀">
+<meta property="og:description" content="真正的热爱计算机技术，才能走得更远">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="e:\blog_github\blog\source_posts\img-git\image-20220526172640586.png">
+<meta property="og:image" content="e:\blog_github\blog\source_posts\img-git\idea%E9%85%8D%E7%BD%AEgit.png">
+<meta property="og:image" content="e:\blog_github\blog\source_posts\img-git\idea%E4%B8%ADgit%E7%9A%84%E6%8F%90%E7%A4%BA.png">
+<meta property="article:published_time" content="2023-08-06T15:12:43.000Z">
+<meta property="article:modified_time" content="2023-08-06T15:14:15.535Z">
+<meta property="article:author" content="染星辰">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="e:\blog_github\blog\source_posts\img-git\image-20220526172640586.png">
+
+
+<link rel="canonical" href="http://example.com/2023/08/06/Git%E6%93%8D%E4%BD%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/06/Git%E6%93%8D%E4%BD%9C/","path":"2023/08/06/Git操作/","title":"Git操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Git操作 | 星辰可染呀</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">星辰可染呀</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">恰似人间惊鸿客，墨染星辰云水间</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#clone%E5%92%8Ccommit"><span class="nav-text">clone和commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push%E5%92%8Cpull"><span class="nav-text">push和pull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%B8%80%E8%88%AC%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-text">工作中一般如何使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim%E4%BD%BF%E7%94%A8"><span class="nav-text">vim使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%B2%E7%AA%81%E5%A4%84%E7%90%86"><span class="nav-text">冲突处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E6%82%94%E8%8D%AF"><span class="nav-text">后悔药</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-text">总结：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8idea%E4%B8%8A%E8%BF%9B%E8%A1%8Cgit%E6%93%8D%E4%BD%9C"><span class="nav-text">在idea上进行git操作</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">染星辰</p>
+  <div class="site-description" itemprop="description">一生温暖纯良，不舍爱与自由</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/06/Git%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Git操作 | 星辰可染呀">
+      <meta itemprop="description" content="真正的热爱计算机技术，才能走得更远">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-06 23:12:43 / 修改时间：23:14:15" itemprop="dateCreated datePublished" datetime="2023-08-06T23:12:43+08:00">2023-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">真正的热爱计算机技术，才能走得更远</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><p><strong>学习目标</strong>：</p>
+<ul>
+<li><p>git是什么，用来解决什么问题</p>
+</li>
+<li><p>掌握git的核心流程（工作区、暂存区、本地仓库）</p>
+</li>
+<li><p>熟练git的核心命令</p>
+<h2 id="clone和commit"><a href="#clone和commit" class="headerlink" title="clone和commit"></a>clone和commit</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只有第一次需要clone，之后直接pull</span></span><br><span class="line">git clone + 远程仓库 +[空文件夹名字 或者 目标路径] ;</span><br><span class="line">git status ;	<span class="comment">//查看工作区（红色）和缓冲区（绿色）变化</span></span><br><span class="line">git add;</span><br><span class="line"><span class="comment">//这一步会产生一个文件的版本号，只是前7位。</span></span><br><span class="line">git commit -m <span class="string">&quot;提交信息&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一次提交需要配置一下信息，两种方案</span></span><br><span class="line"><span class="comment">//第一种：去目录下找到 .gitconfig文件，没有的话自己新建一个</span></span><br><span class="line"><span class="comment">//复制下面内容添加到.gitconfig文件中</span></span><br><span class="line">[user]</span><br><span class="line">	name = <span class="type">ciggar</span></span><br><span class="line">	<span class="variable">email</span> <span class="operator">=</span> <span class="number">291136733</span><span class="meta">@qq</span>.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第二种执行命令</span></span><br><span class="line">git config --global user.email <span class="number">204102</span><span class="meta">@qq</span>.com</span><br><span class="line"></span><br><span class="line">git config --global user.name tian		<span class="comment">//tian换成你的用户名</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="push和pull"><a href="#push和pull" class="headerlink" title="push和pull"></a>push和pull</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只有当本地仓库中的版本领先于远程仓库的时候，才可以push</span></span><br><span class="line">git push;		<span class="comment">//推到远程仓库中</span></span><br><span class="line"><span class="comment">//只有当本地仓库中的版本落后于远程仓库的时候，不能push,需要先pull</span></span><br><span class="line"></span><br><span class="line">git pull;		<span class="comment">//从远程仓库中拉取最新内容（）</span></span><br><span class="line"><span class="comment">//落后需要pull</span></span><br><span class="line"><span class="comment">//pull完之后，有冲突要解决冲突</span></span><br><span class="line"><span class="comment">//pull 之后记得要 add、commit(解决冲突后内容变了)之后才能push</span></span><br><span class="line"></span><br><span class="line">git log ;		<span class="comment">//获取日志信息</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 查看所有分支</span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line"># 创建分支并切换 iss53</span><br><span class="line">$ git checkout -b iss53</span><br><span class="line"></span><br><span class="line"># 切换分支</span><br><span class="line">$ git checkout iss53</span><br><span class="line"></span><br><span class="line"># 合并分支</span><br><span class="line">$ git merge iss53</span><br></pre></td></tr></table></figure>
+
+<h2 id="工作中一般如何使用"><a href="#工作中一般如何使用" class="headerlink" title="工作中一般如何使用"></a>工作中一般如何使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#  一般会有一个master 主分支</span><br><span class="line">#  会有一个dev分支</span><br><span class="line"></span><br><span class="line"># 1. 如果有需求，会从dev拉一个分支，比如 dev-feature1，所有的提交都提交在这个分支上</span><br><span class="line"># 1.1 从dev拉取一个分支，并切换到这个分支</span><br><span class="line">git checkout -b dev-feature1</span><br><span class="line"></span><br><span class="line"># 2. 等到开发完成，会把这个分支合并到dev。 dev经过测试，会合并到master</span><br><span class="line"># 2.1先切换到dev分支</span><br><span class="line">git checkout dev </span><br><span class="line"></span><br><span class="line"># 2.2合并刚刚的分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="vim使用"><a href="#vim使用" class="headerlink" title="vim使用"></a>vim使用</h2><p>没有修改同一个文件会进入Vim</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.点击i 表示是编辑。才能输入</span></span><br><span class="line"><span class="comment">//2.保存的时候，怎么保存呢？</span></span><br><span class="line"> 点击esc; 输入一个冒号  shift+: (英文状态下) ; 输入wq（保存并退出）</span><br></pre></td></tr></table></figure>
+
+<h2 id="冲突处理"><a href="#冲突处理" class="headerlink" title="冲突处理"></a>冲突处理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">    </span><br><span class="line">===============</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; fgfskljasdljdlkasjksalk</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">// 左到=。就是你自己的代码版本   &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;       --&gt;        ============</span><br><span class="line">    // =到&gt;  是远端的版本      =========       --&gt;        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br><span class="line">    </span><br><span class="line">需要告诉git，如果保留代码。 比如是留你的版本，还是留你同事版本。 </span><br><span class="line"> 1.留代码</span><br><span class="line"> 2.删除分隔符</span><br><span class="line"> 3. 处理好所有的冲突之后， git  add . ;  git commit -m &quot;处理和同事1的冲突&quot;</span><br><span class="line"> 4. push 。 需要抓紧push，防止别人又push了代码    </span><br></pre></td></tr></table></figure>
+
+<h2 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药"></a>后悔药</h2><p>这个命令，危险！慎用</p>
+<ul>
+<li>git checkout（工作区，小心一天白干）</li>
+</ul>
+<blockquote>
+<p>$ git checkout text.txt<br>$ git checkout version</p>
+</blockquote>
+<p>注意：回退的内容，是找不回来的，要慎用。比如你写了一天的代码，都是在工作区的。</p>
+<ul>
+<li><p>git reset (工作区)</p>
+<p><span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'><strong>把缓冲区中的变化，回退到工作区。注意：git reset不会改变文件中的内容</strong></span></p>
+<p>能指定文件reset  –&gt;	git reset a.txt</p>
+<blockquote>
+<p>$ git reset<br>$ git reset a.txt</p>
+</blockquote>
+</li>
+<li><p>git reset –hard  version</p>
+<p>git log 查版本（version）</p>
+<p>回退版本</p>
+<blockquote>
+<p>$ git  log<br>$ git reset –hard  version</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
+<li><p>先push的人不处理冲突，后push的人要处理 冲突</p>
+</li>
+<li><p>和组员一起开发的时候，尽量不要开发同一个文件，很容易产生冲突</p>
+</li>
+<li><p>push之前最好先pull一下，不然可能会push失败</p>
+</li>
+<li><ul>
+<li>早上上班之后，第一件事情，拉取最新的代码（pull）</li>
+<li>晚上下班之前，最后一件事情，把最新的本地代码推送上去（push）。<span style=color:yellow;background:red><strong>代码一定要能编译通过</strong></span>有没有bug无所谓。4</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><p>git在做版本控制的时候，可以让我们忽略一些文件，不去追踪这个仓库中这些文件的变化。</p>
+<p>怎么做呢？</p>
+<ul>
+<li>可以在Git仓库的根目录下 添加 一个 <code>.gitignore</code> 这个名字的文件，可以在这个文件中声明哪些文件不被git追踪版本信息</li>
+</ul>
+<p>对于Java项目来说，我们可以忽略哪些内容呢？</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单个文件</span></span><br><span class="line">xxx.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置文件夹</span></span><br><span class="line">.idea</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置文件的类型</span></span><br><span class="line">*.iml</span><br><span class="line"></span><br><span class="line">target/*.class</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>注意事项：</p>
+<ol>
+<li><p>忽略文件最好是在创建这个远程仓库的时候，就应该自动创建出来</p>
+<p><img src="E:\blog_github\blog\source_posts\img-git\image-20220526172640586.png" alt="image-20220526172640586"></p>
+</li>
+<li><p><span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'><strong>一旦一个文件已经被追踪并且提交到远程仓库中去了，那么再在.gitignore 这个文件中去忽略它的变化，是无效的</strong></span></p>
+</li>
+</ol>
+</blockquote>
+<h2 id="在idea上进行git操作"><a href="#在idea上进行git操作" class="headerlink" title="在idea上进行git操作"></a>在idea上进行git操作</h2><p>首先配置好git路径</p>
+<p><img src="E:\blog_github\blog\source_posts\img-git\idea配置git.png" alt="image-20230406111436344"></p>
+<p>点击Test有版本。</p>
+<p><font color=red><strong>如果项目被git追踪了，则idea中会有对应的颜色提示。</strong></font></p>
+<p>红色代表是新增的文件</p>
+<p>蓝色代表是文件有改动</p>
+<p>绿色代表已经提交。其他的操作与git基本操作一致。</p>
+<p>在文件中，可以看到文件的变动</p>
+<p><img src="E:\blog_github\blog\source_posts\img-git\idea中git的提示.png" alt="image-20230406112925347"></p>
+<p>git可以右键，然后add commit 提交信息。</p>
+<p><strong>常见问题</strong></p>
+<p>如果在git配置中报错fatal: Authentication failed for ‘’，其实就是<strong>凭证失败</strong>的意思</p>
+<p>解决办法如下：<a target="_blank" rel="noopener" href="https://www.bbsmax.com/A/l1dygQ3bJe/">凭证失败解决</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Git/" rel="tag"># Git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/06/Java_SE%E9%9B%86%E5%90%88/" rel="prev" title="Java_SE 集合总结">
+                  <i class="fa fa-angle-left"></i> Java_SE 集合总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/07/HashMap%E5%92%8CHashTable%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="HashMap和HashTable的区别">
+                  HashMap和HashTable的区别 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">染星辰</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
