@@ -19,28 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="大鹏一日同风起，扶摇直上九万里。">
+    <meta name="description" content="请你务必，一而再，再而三，三而不竭，于千万次，毫不犹豫的救自己于水火之间。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="类加载器和双亲委派模型">
-<meta property="og:url" content="http://example.com/2023/08/09/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="JVM">
+<meta property="og:url" content="http://example.com/2023/08/10/JVM/index.html">
 <meta property="og:site_name" content="星辰可染呀">
-<meta property="og:description" content="大鹏一日同风起，扶摇直上九万里。">
+<meta property="og:description" content="请你务必，一而再，再而三，三而不竭，于千万次，毫不犹豫的救自己于水火之间。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-09T00:47:41.000Z">
-<meta property="article:modified_time" content="2023-08-10T11:11:04.655Z">
+<meta property="article:published_time" content="2023-08-10T11:04:52.000Z">
+<meta property="article:modified_time" content="2023-08-10T16:11:29.740Z">
 <meta property="article:author" content="染星辰">
 <meta property="article:tag" content="Java_SE">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/08/09/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/">
+<link rel="canonical" href="http://example.com/2023/08/10/JVM/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/09/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/","path":"2023/08/09/类加载器和双亲委派模型/","title":"类加载器和双亲委派模型"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/10/JVM/","path":"2023/08/10/JVM/","title":"JVM"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>类加载器和双亲委派模型 | 星辰可染呀</title>
+<title>JVM | 星辰可染呀</title>
   
 
 
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B%E5%8F%8A%E4%BC%98%E7%82%B9"><span class="nav-text">类加载器，双亲委派模型及优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%B8%A5%E6%A0%BC%E6%84%8F%E4%B9%89%E4%B8%8A%E6%9D%A5%E8%AF%B4%E6%9C%89%E5%9B%9B%E7%A7%8D"><span class="nav-text">类加载器严格意义上来说有四种</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-text">JVM的组成部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-text">组成部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">运行流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F"><span class="nav-text">JVM运行时数据区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86-1"><span class="nav-text">组成部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-text">什么是程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BJava%E7%9A%84%E5%A0%86"><span class="nav-text">详细介绍一下Java的堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-text">解释一下方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="nav-text">什么是虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">堆栈的区别是什么</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +164,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/09/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/10/JVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,12 +177,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="类加载器和双亲委派模型 | 星辰可染呀">
-      <meta itemprop="description" content="大鹏一日同风起，扶摇直上九万里。">
+      <meta itemprop="name" content="JVM | 星辰可染呀">
+      <meta itemprop="description" content="请你务必，一而再，再而三，三而不竭，于千万次，毫不犹豫的救自己于水火之间。">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          类加载器和双亲委派模型
+          JVM
         </h1>
 
         <div class="post-meta-container">
@@ -193,14 +193,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-08-09 08:47:41" itemprop="dateCreated datePublished" datetime="2023-08-09T08:47:41+08:00">2023-08-09</time>
+      <time title="创建时间：2023-08-10 19:04:52" itemprop="dateCreated datePublished" datetime="2023-08-10T19:04:52+08:00">2023-08-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-10 19:11:04" itemprop="dateModified" datetime="2023-08-10T19:11:04+08:00">2023-08-10</time>
+      <time title="修改时间：2023-08-11 00:11:29" itemprop="dateModified" datetime="2023-08-11T00:11:29+08:00">2023-08-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -222,30 +222,80 @@
     </span>
 </div>
 
-            <div class="post-description">大鹏一日同风起，扶摇直上九万里。</div>
+            <div class="post-description">请你务必，一而再，再而三，三而不竭，于千万次，毫不犹豫的救自己于水火之间。</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="类加载器，双亲委派模型及优点"><a href="#类加载器，双亲委派模型及优点" class="headerlink" title="类加载器，双亲委派模型及优点"></a>类加载器，双亲委派模型及优点</h2><p>回答方向：有四种类加载器–&gt;他们的相同点不同点–&gt;加载一个类的时候如何调用（双亲委派模型）–&gt;类加载器之间的关系并不是严格意义上的继承关系–&gt;这样设计的好处①确保类的安全性（核心类库、重要的类由启动类加载器进行加载，确保核心类库的完整和安全性）②避免重复的类加载，节省内存确保类的一致性。</p>
-<h3 id="类加载器严格意义上来说有四种"><a href="#类加载器严格意义上来说有四种" class="headerlink" title="类加载器严格意义上来说有四种"></a>类加载器严格意义上来说有四种</h3><blockquote>
-<p>启动类加载器</p>
-<p>扩展类加载器</p>
-<p>系统类加载器</p>
-<p>用户自定义类加载器(几乎用不上所以不做讨论)</p>
-</blockquote>
-<p>常用的是启动、扩展、系统，他们三个的区别在于</p>
-<p>启动类加载器是由c++语言编写的，主要负责加载JVM运行时需要的核心类库“&#x2F;lib”目录下的核心类库，是所有其他类的父加载器</p>
-<p>扩展类加载器和系统类加载器是由Java语言实现的</p>
-<p>其中启动类加载器和扩展类加载器是JVM的一部分，由JVM自身提供，系统类加载器是由Java开发者自行实现的。</p>
-<p>当需要加载一个类时，它自身的类加载器不会先加载，会将加载请求委派给父加载器，父加载器也不会加载，继续向上委派，一直委派到启动类加载器，启动类加载器先搜索这个类在不在它加载的范围内，如果在的话，直接进行类加载，如果不在，就会委派给子类，子类看再在不在他的加载范围，不在的话继续向下委派，如果都没有加载，最后系统类加载器进行类加载。</p>
-<p>但这种父子关系不时Java严格意义上的继承关系，只是逻辑上的一种继承关系，并没有被extends关键字修饰，</p>
-<p>这样设计的好处主要有两点：</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="JVM的组成部分"><a href="#JVM的组成部分" class="headerlink" title="JVM的组成部分"></a>JVM的组成部分</h2><ul>
+<li><h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h3><blockquote>
 <ol>
-<li>不会重复的加载一个类，因为所有的类加载器都进行了一次识别，保证了类加载只有一次</li>
-<li>确保类的安全性：Java核心类库等重要类会被启动类加载器加载，而不是被其他类加载器加载。这样可以确保核心类库的完整性和安全性，防止恶意修改或替换核心类库。</li>
+<li>类加载器：ClassLoader()</li>
+<li>运行时数据区域：Runtime DATa Area（JVM栈、本地方法栈、堆、方法区、程序计数器）</li>
+<li>执行引擎：Execution Engine		(j解释器、即时编辑器、垃圾回收)</li>
+<li>本地库接口：Native Method Library</li>
+</ol>
+</blockquote>
+</li>
+<li><h3 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h3><blockquote>
+<ol>
+<li>类加载器将Java代码转换成字节码文件</li>
+<li>运行时数据区，把字节码文件加载到内存中，但是这个字节码问件是JVM的一套指令集规范，底层系统是无法识别的，需要执行引擎运行</li>
+<li>执行引擎把字节码文件翻译成底层系统指令，让CPU去执行，这个时候就需要调用其他语言的本地库接口来实现整个程序过程的功能。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="JVM运行时数据区域"><a href="#JVM运行时数据区域" class="headerlink" title="JVM运行时数据区域"></a>JVM运行时数据区域</h2><ul>
+<li><h3 id="组成部分-1"><a href="#组成部分-1" class="headerlink" title="组成部分"></a>组成部分</h3><blockquote>
+<p>JVM运行时数据区域由五部分组成：<strong>堆</strong>、<strong>方法区</strong>、<strong>JVM栈</strong>（栈）、<strong>本地方法栈</strong>、<strong>程序计数器</strong></p>
+</blockquote>
+<ol>
+<li>堆：里面存储的是对象，它是GC管理的主要区域</li>
+<li>方法区：</li>
+<li>栈：里面存储的栈帧，栈帧里面存的是局部变量、操作数栈、动态链接、方法出口等信息。</li>
+<li>本地方法栈与栈功能相同，本地方法栈执行的是本地方法，一个Java调用非Java代码的接口。</li>
+<li>程序计数器中存放的是当前线程所执行的字节码的行数，JVM工作时候就是通过改变这个计数器的值来选取一个需要执行的字节码指令。</li>
+</ol>
+</li>
+<li><h3 id="什么是程序计数器"><a href="#什么是程序计数器" class="headerlink" title="什么是程序计数器"></a>什么是程序计数器</h3><p>是线程私有的，用于记录正在执行的字节码指令地址，</p>
+<p>JVM处理多线程是通过线程的轮流切换，分配执行时间，当一个线程分配的时间执行完了，就会挂起，处理器执行另一个线程，程序计数器的作用就是用于记录程序执行到了哪一行，当它下一次执行的时候就按照这个行号接着向下执行。</p>
+</li>
+<li><h3 id="详细介绍一下Java的堆"><a href="#详细介绍一下Java的堆" class="headerlink" title="详细介绍一下Java的堆"></a>详细介绍一下Java的堆</h3><blockquote>
+<p>堆是线程共享的区域，主要用来存对象实例，数组等，当堆内没有内存可分配给对象，也无法在扩展，会抛出OutofMemoryError异常。</p>
+<ul>
+<li>Java7中堆分为年轻代、老年代和方法区（永久代），方法区主要保存<strong>类的信息、静态变量、常量、编译后的代码</strong>，java7受GC管理，方法区大小有限，大量动态去生成类，就会放入到方法区，很容易OOM</li>
+<li>Java8中将堆上的方法区移到了本地内存，重新开辟了一块空间叫元空间，避免OOM（堆内存溢出）的出现</li>
+</ul>
+</blockquote>
+</li>
+<li><h3 id="解释一下方法区"><a href="#解释一下方法区" class="headerlink" title="解释一下方法区"></a>解释一下方法区</h3><p>方法区与java堆一样，是各线程共享，主要保存<strong>类的信息、静态变量、常量、编译后的代码</strong></p>
+<p>虽然Java虚拟机规范把方法区描述为堆的一个逻辑部分，版他有一个别名是Non-Heap(非堆)，</p>
+</li>
+<li><h3 id="什么是虚拟机栈"><a href="#什么是虚拟机栈" class="headerlink" title="什么是虚拟机栈"></a>什么是虚拟机栈</h3><p>是线程私有的，生命周期和线程是相同的，它是用来描述方法执行时的内存模型，它是不受GC管理的，每个方法执行时都会创建栈帧，方法开始执行会进栈，执行完会出栈（就等于清空了数据），所以就不需要GC</p>
+</li>
+<li><h3 id="堆栈的区别是什么"><a href="#堆栈的区别是什么" class="headerlink" title="堆栈的区别是什么"></a>堆栈的区别是什么</h3><blockquote>
+<ol>
+<li><p>栈内存用来存局部变量和方法调用，堆内用来存储Java对象和数组。堆会Gc垃圾回收，而栈不会</p>
+</li>
+<li><p>占内存是线程私有的，而堆内是线程共有的。</p>
+</li>
+<li><p>两者异常错误不同的，</p>
+<p>内存不足都会抛出异常</p>
+<p>栈空间不足：<code>Java.lang.StackOverFlowError</code></p>
+<p>堆空间不足：<code>Java.lang.OutOfMemoryError</code></p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>JVM详细介绍一下各部分</p>
+<ol>
+<li>是否是线程私有的</li>
+<li>用来存什么</li>
+<li></li>
 </ol>
 
     </div>
@@ -263,14 +313,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/08/08/%E5%AD%A6%E4%B9%A0%E6%96%B0%E8%AF%AD%E8%A8%80%EF%BC%8C%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" rel="prev" title="学习新语言，解决问题">
-                  <i class="fa fa-angle-left"></i> 学习新语言，解决问题
+                <a href="/2023/08/09/HashMap%E6%B7%BB%E5%8A%A0key-Value%E6%95%B0%E6%8D%AE/" rel="prev" title="HashMap添加key-Value数据">
+                  <i class="fa fa-angle-left"></i> HashMap添加key-Value数据
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/08/09/javaScript-js/" rel="next" title="javaScript(js)">
-                  javaScript(js) <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
