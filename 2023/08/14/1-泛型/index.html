@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="空灵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1_泛型">
+<meta property="og:url" content="http://example.com/2023/08/14/1-%E6%B3%9B%E5%9E%8B/index.html">
+<meta property="og:site_name" content="星辰可染呀">
+<meta property="og:description" content="空灵">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:\git\java-53-course-materials\02-DSDB\02-%E7%AC%94%E8%AE%B0\img\image-20230128152912943.png">
+<meta property="og:image" content="d:\git\java-53-course-materials\02-DSDB\02-%E7%AC%94%E8%AE%B0\img\%E5%8F%82%E6%95%B0%E5%8C%96%E7%B1%BB%E5%9E%8B.png">
+<meta property="og:image" content="d:\git\java-53-course-materials\02-DSDB\02-%E7%AC%94%E8%AE%B0\img\image-20230129090114444.png">
+<meta property="article:published_time" content="2023-08-14T00:29:15.000Z">
+<meta property="article:modified_time" content="2023-08-14T00:56:37.200Z">
+<meta property="article:author" content="染星辰">
+<meta property="article:tag" content="泛型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\git\java-53-course-materials\02-DSDB\02-%E7%AC%94%E8%AE%B0\img\image-20230128152912943.png">
+
+
+<link rel="canonical" href="http://example.com/2023/08/14/1-%E6%B3%9B%E5%9E%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/14/1-%E6%B3%9B%E5%9E%8B/","path":"2023/08/14/1-泛型/","title":"1_泛型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>1_泛型 | 星辰可染呀</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">星辰可染呀</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">恰似人间惊鸿客，墨染星辰云水间</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5"><span class="nav-text">引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E6%A6%82%E5%BF%B5"><span class="nav-text">泛型概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E5%A5%BD%E5%A4%84"><span class="nav-text">泛型好处</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="nav-text">泛型类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E5%9C%A8%E7%88%B6%E5%AD%90%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E4%B8%8A%E7%9A%84%E8%A1%A8%E7%8E%B0"><span class="nav-text">泛型在父子继承关系上的表现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-text">泛型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E9%80%9A%E9%85%8D-%E4%BA%86%E8%A7%A3"><span class="nav-text">泛型的通配: 了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E6%93%A6%E9%99%A4-%E9%87%8D%E8%A6%81-%E9%9C%80%E8%A6%81%E8%AE%B0%E4%BD%8F"><span class="nav-text">泛型的擦除: 重要:需要记住</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">染星辰</p>
+  <div class="site-description" itemprop="description">一生温暖纯良，不舍爱与自由</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/14/1-%E6%B3%9B%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="1_泛型 | 星辰可染呀">
+      <meta itemprop="description" content="空灵">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1_泛型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-14 08:29:15 / 修改时间：08:56:37" itemprop="dateCreated datePublished" datetime="2023-08-14T08:29:15+08:00">2023-08-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E8%AF%BE%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">java学习第二阶段课件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">空灵</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>泛型知识点总结</p>
+</blockquote>
+<p>泛型类：是一种可以在定义类时使用类型参数来表示类中使用的类型的类</p>
+<p>定义了泛型，但是未写在&lt;&gt;中，会将其直接当做Object使用。</p>
+<p>泛型类可以定义多个泛型，但不建议超过两个</p>
+<p>定义多个泛型，使用时，要么全部指定，要么全部不指定。</p>
+<p>泛型必须使用引用类型（基本数据类型使用包装类型）</p>
+<p>泛型类定义泛型的作用域:  在自己的类上，或者类中。</p>
+<p>父类有泛型：</p>
+<ul>
+<li>子类如果继承时，未指定父类泛型，则为默认类型。Object</li>
+<li>子类如果继承时，指定了父类类型，则为指定类型，无论子类定义泛型与否。</li>
+<li>如果继承时，传入了子类指定的泛型，则父类与子类变量类型一致</li>
+</ul>
+<h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p><strong>学习目标：</strong></p>
+<ul>
+<li><p>理解泛型的概念及掌握泛型的好处</p>
+</li>
+<li><p>泛型类、泛型接口的定义</p>
+</li>
+<li><p>理解泛型在父子继承关系上的表现</p>
+</li>
+<li><p>理解泛型的擦除</p>
+</li>
+</ul>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p><strong>背景条件</strong></p>
+<ul>
+<li>汽车类</li>
+<li>汽车的车库(主要用于存放车)。还提供一个方法获取汽车。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 类： 希望被持有的小汽车类</span></span><br><span class="line"><span class="comment"> * 功能： 里面只有一个run方法，打印。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AutoCar</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;小汽车跑跑跑......&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 类：车库类</span></span><br><span class="line"><span class="comment"> * 功能：</span></span><br><span class="line"><span class="comment"> * 1.持有小汽车。</span></span><br><span class="line"><span class="comment"> * 2.对外提供获取小汽车方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HolderAutoCar</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> AutoCar autoCar;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HolderAutoCar</span><span class="params">(AutoCar autoCar)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.autoCar = autoCar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> AutoCar <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.autoCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HolderAutoCarDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用方式</span></span><br><span class="line">        <span class="type">HolderAutoCar</span> <span class="variable">holderAutoCar</span> <span class="operator">=</span> getHolderAutoCar();</span><br><span class="line"></span><br><span class="line">        <span class="type">AutoCar</span> <span class="variable">autoCar</span> <span class="operator">=</span> holderAutoCar.get();</span><br><span class="line">        autoCar.run();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HolderAutoCar <span class="title function_">getHolderAutoCar</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">AutoCar</span> <span class="variable">autoCar</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AutoCar</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 这里的步骤可能很繁琐。</span></span><br><span class="line">        <span class="comment">// 比如这个autoCar需要进行十几个步骤，才能得到</span></span><br><span class="line">        <span class="comment">// 我们使用这个方法来屏蔽这十几个步骤。因为这个AutoCar我们可能只使用，创建是其他程序员创建好。</span></span><br><span class="line"></span><br><span class="line">        <span class="type">HolderAutoCar</span> <span class="variable">holderAutoCar</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HolderAutoCar</span>(autoCar);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> holderAutoCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果现在又有一个卡车类，也想拥有持有类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 卡车类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Truck</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;大卡车跑跑跑......&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 持有卡车类的类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HolderTruck</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Truck truck;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HolderTruck</span><span class="params">(Truck truck)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.truck = truck;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Truck <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.truck;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方式</span></span><br><span class="line"><span class="type">HolderTruck</span> <span class="variable">holderTruck</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HolderTruck</span>(<span class="keyword">new</span> <span class="title class_">Truck</span>());</span><br><span class="line">holderTruck.get().run();</span><br></pre></td></tr></table></figure>
+
+
+
+<p>会发现，小汽车持有类和卡车持有类，非常相似，就隔了一个类型。</p>
+<p><span style=color:red;background:yellow><strong>问题：如果我还有其他的类呢？比如皮卡类，摩托车类？</strong></span></p>
+<p>如果继续这样写下去（一个车写一个车库类），有哪些优点和缺点？</p>
+<p>优点：简单。这样可以一直写下去。</p>
+<p>缺点：持有类的功能很固定，其实就是类型不一样。为每一个都单独写一个类，<font color=red><strong>类数目会急剧增多。</strong></font></p>
+<p><span style=color:red;background:yellow><strong>解决方案1：</strong></span></p>
+<p>使用Object持有这些类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Holder1</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> Object object;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Holder1</span><span class="params">(Object object)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.object = object;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> Object <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.object;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确使用。存AutoCar</span></span><br><span class="line"><span class="type">Holder1</span> <span class="variable">holder11</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Holder1</span>(<span class="keyword">new</span> <span class="title class_">AutoCar</span>());</span><br><span class="line">((AutoCar) holder11.get()).run();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确使用。存Truck</span></span><br><span class="line"><span class="type">Holder1</span> <span class="variable">holder12</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Holder1</span>(<span class="keyword">new</span> <span class="title class_">Truck</span>());</span><br><span class="line"><span class="type">Object</span> <span class="variable">o</span> <span class="operator">=</span> holder12.get();</span><br><span class="line">((Truck) o).run();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误使用。 o是一个Truck对象，但是却把它转成了AutoCar</span></span><br><span class="line">((AutoCar) o).run();</span><br></pre></td></tr></table></figure>
+
+<p><font color=red><strong>问题：</strong></font></p>
+<p>存在类型强转问题,如果类型转换错误，会导致报错。</p>
+<p><img src="D:\git\java-53-course-materials\02-DSDB\02-笔记\img\image-20230128152912943.png" alt="image-20230128152912943"></p>
+<p><span style=color:red;background:yellow><strong>解决方案2：</strong></span></p>
+<p>抽取公共接口，持有类持有接口。运用多态特性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">  <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AutoCar</span> <span class="keyword">implements</span> <span class="title class_">Car</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;小汽车跑跑跑......&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Truck</span> <span class="keyword">implements</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;卡车跑跑跑......&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">truckMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是truck特有的方法&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Holder2</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> Car car;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Holder2</span><span class="params">(Car car)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.car = car;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> Car <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> car;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体使用</span></span><br><span class="line"><span class="type">Holder2</span> <span class="variable">holder2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Holder2</span>(<span class="keyword">new</span> <span class="title class_">AutoCar</span>());</span><br><span class="line">holder2.get().run();</span><br><span class="line"></span><br><span class="line"><span class="type">Holder2</span> <span class="variable">holder21</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Holder2</span>(<span class="keyword">new</span> <span class="title class_">Truck</span>());</span><br><span class="line">holder21.get().run();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果向下转型</span></span><br><span class="line"><span class="type">Truck</span> <span class="variable">truck</span> <span class="operator">=</span> (Truck) holder21.get();</span><br><span class="line">truck.truckMethod();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果转错了类型。</span></span><br><span class="line"><span class="type">AutoCar</span> <span class="variable">autoCar</span> <span class="operator">=</span> (AutoCar) holder21.get();</span><br></pre></td></tr></table></figure>
+
+<p><font color=red><strong>问题：</strong></font></p>
+<ul>
+<li>需要修改代码，如果这个<code>AutoCar</code>是别人提供的，我们就无法添加继承关系。</li>
+<li>只能调用接口所特有的方法，如果想调用子类单独的方法，需要强转</li>
+</ul>
+<p><span style=color:red;background:yellow>**解决方案3： **</span></p>
+<p>使用泛型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 持有类的定义</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Holder3</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> T data;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Holder3</span><span class="params">(T data)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.data = data;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> T <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// 尖括号的指定的类型。先有一个印象</span></span><br><span class="line">Holder3&lt;AutoCar&gt; holder3 = <span class="keyword">new</span> <span class="title class_">Holder3</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">AutoCar</span>());</span><br><span class="line">holder3.get().run();</span><br><span class="line"></span><br><span class="line">Holder3&lt;Truck&gt; holder31 = <span class="keyword">new</span> <span class="title class_">Holder3</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Truck</span>());</span><br><span class="line">holder31.get().run();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="泛型概念"><a href="#泛型概念" class="headerlink" title="泛型概念"></a>泛型概念</h2><p><strong>什么是泛型？</strong></p>
+<p><span style="color:red;">参数化类型。</span>我们在写代码的时候, 可能很多时候我们并不能确定某一个参数的具体类型, 或者, 我们希望代码某个参数类型是灵活可变的,  我们可以先假定一种不存在的类型来代指这个参数类型, 当我们真正使用的时候再传入具体的类型。</p>
+<p><img src="D:\git\java-53-course-materials\02-DSDB\02-笔记\img\参数化类型.png" alt="image-20221101094851766"></p>
+<p><strong>相当于什么呢？</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 举例来说：比如我们之前定义一个变量</span></span><br><span class="line"><span class="comment">// int i ;</span></span><br><span class="line"><span class="comment">// 我们假设i = 1  --&gt; 那i就是1</span></span><br><span class="line"><span class="comment">// 我们假设i = 2  --&gt; 那i就是2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在泛型来说</span></span><br><span class="line"><span class="comment">// 我们使用了一个符号来代替类型。比如我们使用这样一个定义  T data;</span></span><br><span class="line"><span class="comment">// 当我们传 T = String   那data就是String类型的</span></span><br><span class="line"><span class="comment">// 当我们传 T = Integer   那data就是Integer类型的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当我们传 T = AutoCar   那data就是AutoCar类型的</span></span><br><span class="line"><span class="comment">// 当我们传 T = Truck   那data就是Truck类型的</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型好处"><a href="#泛型好处" class="headerlink" title="泛型好处"></a>泛型好处</h2><ol>
+<li><p>省去了类型强转的麻烦</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不用使用强制类型转换。就避免了类型强转问题。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将运行期遇到的问题转移到了编译期</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有泛型之前，编译器是不会检测集合容器中元素的数据类型的，因为它们全部都是Object。使用泛型后，能让编译器在编译的时候借助传入的类型参数（实参）检查对集合容器的插入，获取等操作是否合法。</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>为什么问题早发现比较好？</p>
+<ul>
+<li>自己开发 –&gt; 自测  –&gt; 联调  –&gt; 测试测试  –&gt; 客户使用</li>
+<li>航天中，前期准备阶段 –&gt; 组装调试阶段  –&gt; 发射阶段  –&gt; 运行阶段</li>
+</ul>
+<p>问题越往后才发现，造成的问题也越难以解决，或者说影响越大。</p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><ul>
+<li>泛型类： 泛型定义在类上。<span style=color:red;background:yellow><strong>需要重点掌握</strong></span></li>
+<li>泛型接口：泛型定义在接口上，<span style=color:red;background:yellow><strong>需要重点掌握</strong></span></li>
+<li>泛型方法：泛型定义在方法上，了解即可</li>
+<li>泛型通配： 了解即可</li>
+<li>泛型擦除：重要，要记住</li>
+</ul>
+<p>泛型是在Java 5中被引入的。在Java 5之前，Java的类和方法只能通过Object来实现泛化，这样的代码存在许多问题，如类型转换错误、编译时类型检查缺失等等，限制了代码的可读性、可维护性和安全性。</p>
+<p>引入泛型机制后，Java可以在编译时进行更严格的类型检查，使得代码更加健壮、可读性更强，并且避免了许多运行时类型转换错误的问题。</p>
+<h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><p>泛型类是一种可以在定义类时使用类型参数来表示类中使用的类型的类。在Java中，泛型类可以用于定义一些通用的数据结构或算法，以便能够适应不同类型的数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 泛型类:  所谓泛型类,  就是把泛型&#x27;定义在&#x27;类上</span></span><br><span class="line"><span class="comment">// 定义的方法  类名&lt;泛型类型1, 泛型类型2， ...&gt;</span></span><br><span class="line">格式:  class 类名&lt;泛型类型<span class="number">1</span>,…&gt;&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意1：泛型的使用时候写法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JDK1.7的写法。泛型的写法1 前面写类型，后面直接写 &lt;&gt;</span></span><br><span class="line">User1&lt;String&gt; user1 = <span class="keyword">new</span> <span class="title class_">User1</span>&lt;&gt;();</span><br><span class="line"><span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> user1.data;</span><br><span class="line"></span><br><span class="line"><span class="comment">// JDK1.5 的时候，泛型刚刚出来时候的写法：</span></span><br><span class="line"><span class="comment">// 泛型的写法2 User2&lt;类型&gt; 变量名 = new User2&lt;类型&gt;();</span></span><br><span class="line">User1&lt;Integer&gt; user11 = <span class="keyword">new</span> <span class="title class_">User1</span>&lt;Integer&gt;();</span><br><span class="line"><span class="type">Integer</span> <span class="variable">data1</span> <span class="operator">=</span> user11.data;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意2：默认类型</strong></p>
+<p>定义了泛型，但是未写在&lt;&gt;中，会将其直接当做Object使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">User1</span> <span class="variable">user1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User1</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果不使用 &lt;&gt; 来指定类型，这时候T是个什么类型呢？</span></span><br><span class="line"><span class="comment">// 是默认类型，Object</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">data</span> <span class="operator">=</span> user1.data;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意3: 泛型类可以定义多个泛型</strong></p>
+<ul>
+<li><font color=red><strong>可以定义多个泛型，但不建议超过两个。</strong></font>我们可以在一个泛型类上, 定义多个泛型, 但是建议不要超过两个(并不是语法限制)</li>
+<li><font color=red><strong>定义多个泛型，使用时，要么全部指定，要么全部不指定。</strong></font>当我们给一个泛型类定义多个泛型的时候, 使用的时候, 传泛型就要指明类型, 或者全不指明默认Object</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">User2&lt;String, Integer&gt; user2 = <span class="keyword">new</span> <span class="title class_">User2</span>&lt;&gt;(<span class="string">&quot;zs&quot;</span>, <span class="number">18</span>);</span><br><span class="line"><span class="comment">// User2&lt;String&gt; user3 = new User2&lt;&gt;(&quot;zs&quot;, 18); // 报错，必须全部指定泛型的类型，或者全部不指定。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User2</span> &lt;T, E&gt;&#123;</span><br><span class="line">    T name;</span><br><span class="line">    E age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意4: 定义了泛型不使用: 允许</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义了一个K, 但是我们没有使用</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User3</span> &lt;T, E, K&gt; &#123;</span><br><span class="line">    T name;</span><br><span class="line">    E age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意5: 泛型标识符</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们会假定一种不存在的类型来代替这个参数类型，等我们真正使用的时候再传入具体的类型。</span></span><br><span class="line"><span class="comment">// int i; 这个i是变量。变量名</span></span><br><span class="line"><span class="comment">// T data;  这个T就是标识符。</span></span><br><span class="line"><span class="comment">// 使用单个大写字母。比如 E T K V</span></span><br><span class="line"><span class="comment">// E element; T type; K key; V value</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是一些规范。如果不按照这个规范，写代码也可以跑，但是出问题的风险比较大。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意6: 泛型必须使用引用类型</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User4&lt;<span class="type">int</span>&gt; user1 = <span class="keyword">new</span> <span class="title class_">User4</span>&lt;&gt;(); <span class="comment">// 报错: 泛型必须使用引用类型</span></span><br><span class="line">User4&lt;Integer&gt; user2 = <span class="keyword">new</span> <span class="title class_">User4</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意7:  泛型类, 定义了泛型之后, 泛型的作用域</strong></p>
+<ul>
+<li>泛型类定义泛型的作用域:  在<span style=color:red;background:yellow><strong>自己的</strong></span>类上，或者类中。</li>
+<li>类上：类的定义这行,可以使用泛型。<code>class Son&lt;T&gt; extends Father</code></li>
+<li>类中：代表类体包含内容，包括内部类，可以使用泛型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Father1</span>&#123;</span><br><span class="line">    <span class="comment">// 用不了T, 因为子类定义 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span>&lt;T&gt; <span class="keyword">extends</span> <span class="title class_">Father1</span>&#123; </span><br><span class="line">    T t;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">SonInner</span>&#123;     </span><br><span class="line">        T aInnerT;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GrandSon</span> <span class="keyword">extends</span> <span class="title class_">Son</span>&#123;</span><br><span class="line">   <span class="comment">// 用不了T, 因为父类定义 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="泛型在父子继承关系上的表现"><a href="#泛型在父子继承关系上的表现" class="headerlink" title="泛型在父子继承关系上的表现"></a>泛型在父子继承关系上的表现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Father&lt;Integer&gt; f = <span class="keyword">new</span> <span class="title class_">Father</span>&lt;&gt;();</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">ft</span> <span class="operator">=</span> f.ft;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Son1 定义时没有指定Father泛型的类型，所以默认为Object</span></span><br><span class="line">    <span class="type">Son1</span> <span class="variable">son1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son1</span>();</span><br><span class="line">    <span class="type">Object</span> <span class="variable">ft1</span> <span class="operator">=</span> son1.ft;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Son2 定义时，未指定泛型，指定了 Father泛型为String，所以ft为String</span></span><br><span class="line">    <span class="type">Son2</span> <span class="variable">son2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son2</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">ft2</span> <span class="operator">=</span> son2.ft;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Son3 定义时，指定泛型E，指定了 Father泛型为Integer，所以ft为Integer</span></span><br><span class="line">    Son3&lt;String&gt; son3 = <span class="keyword">new</span> <span class="title class_">Son3</span>&lt;&gt;();</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">ft3</span> <span class="operator">=</span> son3.ft;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Son4 定义时，指定泛型E，指定了 Father泛型为E，所以ft类型和子类一致</span></span><br><span class="line">    Son4&lt;Integer&gt; son4 = <span class="keyword">new</span> <span class="title class_">Son4</span>&lt;&gt;();</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">ft4</span> <span class="operator">=</span> son4.ft;</span><br><span class="line">    Son4&lt;String&gt; son41 = <span class="keyword">new</span> <span class="title class_">Son4</span>&lt;&gt;();</span><br><span class="line">    <span class="type">String</span> <span class="variable">ft41</span> <span class="operator">=</span> son41.ft;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Son5 指定T。 与符号无关</span></span><br><span class="line">    Son5&lt;String&gt; son5 = <span class="keyword">new</span> <span class="title class_">Son5</span>&lt;&gt;();</span><br><span class="line">    <span class="type">String</span> <span class="variable">ft5</span> <span class="operator">=</span> son5.ft;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &lt;T&gt; &#123;</span><br><span class="line">    T ft;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son1</span> <span class="keyword">extends</span>  <span class="title class_">Father</span>&#123; &#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son2</span> <span class="keyword">extends</span> <span class="title class_">Father</span>&lt;String&gt;&#123;&#125;</span><br><span class="line"><span class="comment">// 这个前面的E叫做定义了一个泛型E </span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son3</span>&lt;E&gt; <span class="keyword">extends</span> <span class="title class_">Father</span>&lt;Integer&gt;&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里只是看起来好像是Integer。其实是定义了一个泛型叫做Integer。它和 java.lang.Integer有区别。</span></span><br><span class="line"><span class="comment">// class Son3&lt;Integer&gt; extends Father&lt;Integer&gt;&#123;&#125;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son4</span>&lt;E&gt; <span class="keyword">extends</span> <span class="title class_">Father</span>&lt;E&gt;&#123;&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son5</span>&lt;T&gt; <span class="keyword">extends</span> <span class="title class_">Father</span>&lt;T&gt;&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>背景： 如果父类有泛型，子类情况如下：</p>
+<ul>
+<li><p>如果继承时，<font color=red><strong>未指定父类泛型</strong></font>，则为默认类型。Object</p>
+<ul>
+<li><pre><code class="JAVA">class Son1 extends Father&#123;&#125;
+
+Son1 son1 = new Son1();
+Object object = son1.ft;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 如果继承时，&lt;font color=red&gt;**指定了父类类型**&lt;/font&gt;，则为指定类型，无论子类定义泛型与否。</span><br><span class="line"></span><br><span class="line">  - ```JAVA</span><br><span class="line">    class Son2 extends Father&lt;String&gt;&#123;&#125;  --》 父类变量类型为String</span><br><span class="line">    class Son3&lt;E&gt; extends Father&lt;Integer&gt;&#123;&#125; --》 父类变量类型为Integer</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>如果继承时，<font color=red><strong>传入了子类指定的泛型</strong></font>，则父类与子类变量类型一致</p>
+<ul>
+<li><pre><code class="JAVA">class Son4&lt;E&gt; extends Father&lt;E&gt;&#123;&#125;  // 等到使用Son4的时候，指定什么类型，就是什么类型
+class Son5&lt;T&gt; extends Father&lt;T&gt;&#123;&#125;
+
+// 要注意bug
+
+// 前面一个 &lt;Integer&gt; 叫泛型的定义，相当于我定义了一个符号
+// 后面叫使用
+class Son51&lt;Integer&gt; extends Father&lt;Integer&gt;&#123;&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 泛型接口</span><br><span class="line"></span><br><span class="line">泛型接口是指在&lt;span style=color:red;background:yellow&gt;**声明接口的时候使用泛型参数**&lt;/span&gt;，以便在实现接口时指定具体的类型。这样可以使接口更加灵活和通用，可以适应不同类型的数据结构或对象。</span><br><span class="line"></span><br><span class="line">在泛型接口中，泛型参数可以用在接口中的方法、常量、嵌套类等地方。例如：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public interface List&lt;T&gt; &#123;</span><br><span class="line">    void add(T element);</span><br><span class="line">    T get(int index);</span><br><span class="line">    int size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>在上面的例子中，泛型参数T可以用于add方法的参数类型和get方法的返回类型。</p>
+<p>泛型接口使得Java中的容器类更加通用和灵活，可以适应不同类型的数据结构和对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所谓泛型接口, 就是把泛型定义在接口上</span></span><br><span class="line">格式:  interface 接口名&lt;泛型类型<span class="number">1</span>…&gt;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 泛型标识符。   单个大写字母。 </span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 格式: interface 接口名&lt;泛型类型1…&gt;</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Player</span>&lt;T&gt; &#123;</span><br><span class="line">    T <span class="title function_">play</span><span class="params">(T t)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果实现时候，不指定类型，默认为Object</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">YoungPlayer</span> <span class="keyword">implements</span> <span class="title class_">Player</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">play</span><span class="params">(Object data1)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果实现时，指定为什么类型，则为什么类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChildPlayer</span> <span class="keyword">implements</span> <span class="title class_">Player</span>&lt;Integer&gt;&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Integer <span class="title function_">play</span><span class="params">(Integer data1)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果子类也有泛型，则与子类一致</span></span><br><span class="line"><span class="comment">// 等到这个子类，被创建的时候，才会有具体的类型。 </span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OldPlayer</span>&lt;E&gt; <span class="keyword">implements</span> <span class="title class_">Player</span>&lt;E&gt;&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> E <span class="title function_">play</span><span class="params">(E data1)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>泛型接口类型在什么时候确定？</strong></p>
+<p><font color=red><strong>子类实现该接口时候，或者子接口继承该接口时。需要指定类型</strong></font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Player</span>&lt;T&gt; &#123;</span><br><span class="line">    T <span class="title function_">play</span><span class="params">(T t)</span>;</span><br><span class="line">&#125; </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 1.子类实现该接口，没有指定泛型。		--&gt; 接口中泛型为Object</span></span><br><span class="line"><span class="comment">//  class ChildrenPlayer implements Player &#123;&#125;</span></span><br><span class="line"><span class="comment">//  	 public Object play(Object o) &#123;&#125;</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// 2.子类实现该接口，指定了泛型，给接口指定了类型  --&gt; 接口中泛型为指定的类型</span></span><br><span class="line"><span class="comment">//  class YoungPlayer implements Player&lt;String&gt; &#123;&#125;</span></span><br><span class="line"><span class="comment">//  	 public String play(String s) &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.子类实现该接口，指定了泛型,且符号一致  --&gt; 接口中为指定的泛型</span></span><br><span class="line"><span class="comment">//  class OldPlayer&lt;E&gt; implements Player&lt;E&gt;&#123;&#125;</span></span><br><span class="line"><span class="comment">//	public E play(E e) &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.子接口继承该接口时候</span></span><br><span class="line">与以上行为一致。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 转换器接口，从一个类型转化到另一个类型</span></span><br><span class="line"><span class="comment">// 转换器，是讲一个类型转到另外一个类型，这时候类型肯定不能写死。  所以需要泛型。  f泛型有两个</span></span><br><span class="line"><span class="comment">// 定义这样的接口，有什么好处？   通用。 </span></span><br><span class="line"><span class="comment">// 一个规范。 只要见到这个东西，我就知道它是转换，把一个类型，转换到另外一个类型。 </span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Converter</span>&lt;T, R&gt; &#123;</span><br><span class="line">    R <span class="title function_">convert</span><span class="params">(T t)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从字符串转化为时间类型 我们约定字符串的格式为 yyyy-MM-dd。即这种类型 2022-11-01</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">String2DateConverter</span> <span class="keyword">implements</span> <span class="title class_">Converter</span>&lt;String, Date&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Date <span class="title function_">convert</span><span class="params">(String s)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Date</span> <span class="variable">parse</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            parse = <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd&quot;</span>).parse(s);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> parse;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 还可以写从String类型的转化为Integer</span></span><br><span class="line"><span class="comment">// 从Long 类型转化为 Date类型。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所谓泛型方法, 把泛型定义在方法上</span></span><br><span class="line">格式:  &lt;泛型类型&gt; 返回类型 方法名(泛型类型)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">A</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">t</span> <span class="operator">=</span> a.getT(<span class="number">18</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">zs</span> <span class="operator">=</span> a.getT(<span class="string">&quot;zs&quot;</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//格式:  &lt;泛型类型&gt; 返回类型 方法名(泛型类型 变量名)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; T <span class="title function_">getT</span><span class="params">(T t)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.方法上没有定义泛型，只是使用了泛型，不叫泛型方法。</span></span><br><span class="line"><span class="comment">//比如</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Player</span>&lt;T&gt;&#123;</span><br><span class="line">  T <span class="title function_">play</span><span class="params">(T t)</span>&#123;</span><br><span class="line">      System.out.println(t);</span><br><span class="line">      <span class="keyword">return</span> t;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型的通配-了解"><a href="#泛型的通配-了解" class="headerlink" title="泛型的通配: 了解"></a>泛型的通配: 了解</h2><p><font color=red><strong>以后看源码，能明白含义即可。</strong></font></p>
+<p><img src="D:\git\java-53-course-materials\02-DSDB\02-笔记\img\image-20230129090114444.png" alt="image-20230129090114444"></p>
+<p>泛型不允许协变,  又想产生类似协变的效果, 又不想引入协变带来的问题(类型不匹配问题)</p>
+<p><strong>0.协变和逆变</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer是Number的子类。</span><br><span class="line">所以我们可以使用这种形式。 <span class="type">Number</span> <span class="variable">number</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">10</span>);			父类引用指向子类对象</span><br><span class="line">那这个有父子继承关系吗  User&lt;Number&gt;  User&lt;Integer&gt;</span><br><span class="line"> 		可以这样使用吗？		User&lt;Integer&gt; user1 = <span class="keyword">new</span> <span class="title class_">User</span>&lt;&gt;(<span class="string">&quot;zs&quot;</span>, <span class="number">18</span>);</span><br><span class="line"> 		 User&lt;Number&gt; user2 = user1;</span><br><span class="line"> 结论： 不行。因为  User&lt;Number&gt; 和 User&lt;Integer&gt; 不是父子继承关系。</span><br><span class="line"> 这个操作叫做协变。</span><br></pre></td></tr></table></figure>
+
+<p>协变就是，允许接收该类及该类的子类。</p>
+<p>逆变就是，允许接收该类及该类的父类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组是允许协变的。协变的问题。类型不匹配问题</span></span><br><span class="line">Animal[] animals = <span class="keyword">new</span> <span class="title class_">Cat</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">animals[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line">animals[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line"><span class="comment">// 编译期没有问题。  但是运行期有问题。</span></span><br><span class="line">animals[<span class="number">2</span>] = <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure>
+
+
+
+<p><span style=color:red;background:yellow><strong>泛型的通配</strong></span></p>
+<p>① 泛型通配符&lt;?&gt;<br>任意类型，如果没有明确，那么就是Object以及任意的Java类了<br>② ? extends E<br>向下限定，E及其子类<br>③ ? super E<br>向上限定，E及其父类</p>
+<p><strong>1.任意类型</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>&lt;T&gt; &#123;</span><br><span class="line">  String name;</span><br><span class="line">  T data;</span><br><span class="line">  <span class="comment">// getter &amp; setter &amp; conctructor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们想提供一个方法，打印User对象，方法的签名是以下</span></span><br><span class="line"><span class="comment">// 如果是打印Integer的，可以是以下的</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(User&lt;Integer&gt; user)</span> &#123;</span><br><span class="line">  System.out.println(user.getName() + <span class="string">&quot;--&quot;</span> + user.getData());</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 如果是String类型的，则以上方法用不了</span></span><br><span class="line"><span class="comment">// 可以使用这个类型吗? 也不允许，因为泛型不允许协变</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(User&lt;Object&gt; user)</span> &#123;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 可以使用以下类型来接收。？代表任意类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(User&lt;?&gt; user)</span> &#123;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2.向下限定</strong></p>
+<p><code>? extends E</code></p>
+<p>只允许接收该类及该类子类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 允许接收 Number 及Number的子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">double</span> <span class="title function_">compute</span><span class="params">(User&lt;? extends Number&gt; user)</span> &#123;</span><br><span class="line">  <span class="type">Number</span> <span class="variable">data</span> <span class="operator">=</span> user.getData();</span><br><span class="line">  <span class="keyword">return</span> data.doubleValue() + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User&lt;Integer&gt; user = <span class="keyword">new</span> <span class="title class_">User</span>&lt;&gt;(<span class="string">&quot;zs&quot;</span>, <span class="number">18</span>);</span><br><span class="line">User&lt;Double&gt; user2 = <span class="keyword">new</span> <span class="title class_">User</span>&lt;&gt;(<span class="string">&quot;zs&quot;</span>, <span class="number">18.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">double</span> <span class="variable">val</span> <span class="operator">=</span> genericsExtends2.compute(user);</span><br><span class="line"><span class="type">double</span> <span class="variable">val2</span> <span class="operator">=</span> genericsExtends2.compute(user2);</span><br><span class="line">System.out.println(val);</span><br><span class="line">System.out.println(val2);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3.向上限定</strong></p>
+<p><code>? super E</code></p>
+<p>只允许接收该类及其父类。</p>
+<h2 id="泛型的擦除-重要-需要记住"><a href="#泛型的擦除-重要-需要记住" class="headerlink" title="泛型的擦除: 重要:需要记住"></a>泛型的擦除: 重要:需要记住</h2><p>Java中的泛型<span style=color:red;background:yellow><strong>并不是真的泛型,</strong></span>  Java的泛型只存在于编译之前, 当Java中的泛型编译之后, 会把泛型编译成Object以及类型强转</p>
+<p>效率没有区别。</p>
+<p>使用的时候，安全性有区别。 jdk帮你做的。 更安全点。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B3%9B%E5%9E%8B/" rel="tag"># 泛型</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/12/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/0812_%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E4%B9%8B%E5%81%B7%E5%B8%88%E5%AD%A6%E8%89%BA/" rel="prev" title="学习方法之偷师学艺">
+                  <i class="fa fa-angle-left"></i> 学习方法之偷师学艺
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/14/2-Collection/" rel="next" title="2_Collection">
+                  2_Collection <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">染星辰</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

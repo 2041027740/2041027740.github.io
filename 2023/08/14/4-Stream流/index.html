@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="空灵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4_Stream流">
+<meta property="og:url" content="http://example.com/2023/08/14/4-Stream%E6%B5%81/index.html">
+<meta property="og:site_name" content="星辰可染呀">
+<meta property="og:description" content="空灵">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-14T00:30:33.000Z">
+<meta property="article:modified_time" content="2023-08-14T00:57:07.823Z">
+<meta property="article:author" content="染星辰">
+<meta property="article:tag" content="Stream流">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/14/4-Stream%E6%B5%81/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/14/4-Stream%E6%B5%81/","path":"2023/08/14/4-Stream流/","title":"4_Stream流"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>4_Stream流 | 星辰可染呀</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">星辰可染呀</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">恰似人间惊鸿客，墨染星辰云水间</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B5%81%E8%A7%A3%E5%86%B3%E4%B8%8A%E8%BF%B0%E9%97%AE%E9%A2%98"><span class="nav-text">使用流解决上述问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="nav-text">流的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%81"><span class="nav-text">什么是流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-text">流用来解决什么问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8%E6%B5%81"><span class="nav-text">怎么使用流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%B5%81"><span class="nav-text">创建流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E6%93%8D%E4%BD%9C"><span class="nav-text">中间操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#filter-%E8%BF%87%E6%BB%A4%E6%93%8D%E4%BD%9C"><span class="nav-text">&#x3D;&#x3D;filter(过滤操作)&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distinct-%E5%8E%BB%E9%87%8D"><span class="nav-text">distinct(去重)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-%E6%88%AA%E5%8F%96"><span class="nav-text">limit(截取)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skip-%E8%B7%B3%E8%BF%87"><span class="nav-text">skip(跳过)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map-%E8%BD%AC%E6%8D%A2"><span class="nav-text">&#x3D;&#x3D;map(转换)&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sorted-%E6%8E%92%E5%BA%8F"><span class="nav-text">sorted(排序)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%93%8D%E4%BD%9C"><span class="nav-text">终止操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#anyMatch-%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA%E5%8C%B9%E9%85%8D"><span class="nav-text">anyMatch(是否有任意一个匹配)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#allMatch-%E6%98%AF%E5%90%A6%E6%89%80%E6%9C%89%E7%9A%84%E5%85%A8%E5%8C%B9%E9%85%8D"><span class="nav-text">allMatch(是否所有的全匹配)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#noneMatch-%E6%B2%A1%E6%9C%89%E5%8C%B9%E9%85%8D"><span class="nav-text">noneMatch(没有匹配)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findAny-%E6%89%BE%E5%88%B0%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA"><span class="nav-text">findAny(找到任意一个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findFirst-%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA"><span class="nav-text">findFirst(找到第一个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach"><span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#count"><span class="nav-text">count</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce"><span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#collect"><span class="nav-text">&#x3D;&#x3D;collect&#x3D;&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B6%E9%9B%86"><span class="nav-text">收集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="nav-text">使用案例</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">染星辰</p>
+  <div class="site-description" itemprop="description">一生温暖纯良，不舍爱与自由</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/14/4-Stream%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="4_Stream流 | 星辰可染呀">
+      <meta itemprop="description" content="空灵">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          4_Stream流
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-14 08:30:33 / 修改时间：08:57:07" itemprop="dateCreated datePublished" datetime="2023-08-14T08:30:33+08:00">2023-08-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E8%AF%BE%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">java学习第二阶段课件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">空灵</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>学习目标</p>
+<ul>
+<li>掌握流的使用</li>
+<li>掌握流的几个重要中间操作。（filter，map）</li>
+<li>掌握流的几个重要终止操作（collect）</li>
+<li><span style=color:red;background:yellow><strong>会使用流进行数据的处理工作</strong></span></li>
+</ul>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Address</span> &#123;</span><br><span class="line">        BJ, SH, WH, SZ</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> age, <span class="type">int</span> height, Address address)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.height = height;</span><br><span class="line">        <span class="built_in">this</span>.address = address;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> height;</span><br><span class="line">    <span class="keyword">private</span> Address address;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// todo getter &amp; setter</span></span><br><span class="line">  <span class="comment">// hashcode &amp; equals</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentList</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> List&lt;Student&gt; studentList;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">StudentList</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.studentList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;aa&quot;</span>, <span class="number">18</span>, <span class="number">170</span>, Student.Address.BJ));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;bb&quot;</span>, <span class="number">20</span>, <span class="number">163</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;cc&quot;</span>, <span class="number">30</span>, <span class="number">182</span>, Student.Address.WH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;dd&quot;</span>, <span class="number">16</span>, <span class="number">190</span>, Student.Address.BJ));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ee&quot;</span>, <span class="number">15</span>, <span class="number">210</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ff&quot;</span>, <span class="number">17</span>, <span class="number">160</span>, Student.Address.WH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;gg&quot;</span>, <span class="number">18</span>, <span class="number">169</span>, Student.Address.BJ));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;hh&quot;</span>, <span class="number">20</span>, <span class="number">173</span>, Student.Address.WH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ii&quot;</span>, <span class="number">22</span>, <span class="number">192</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;jj&quot;</span>, <span class="number">25</span>, <span class="number">172</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;kk&quot;</span>, <span class="number">24</span>, <span class="number">188</span>, Student.Address.BJ));</span><br><span class="line">    <span class="comment">// 重复元素 kk</span></span><br><span class="line">    <span class="comment">// studentList.add(new Student(&quot;kk&quot;, 24, 188, Student.Address.BJ));</span></span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ll&quot;</span>, <span class="number">17</span>, <span class="number">161</span>, Student.Address.WH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;mm&quot;</span>, <span class="number">18</span>, <span class="number">169</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;nn&quot;</span>, <span class="number">20</span>, <span class="number">162</span>, Student.Address.BJ));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;oo&quot;</span>, <span class="number">22</span>, <span class="number">166</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;pp&quot;</span>, <span class="number">24</span>, <span class="number">176</span>, Student.Address.WH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;qq&quot;</span>, <span class="number">22</span>, <span class="number">173</span>, Student.Address.BJ));</span><br><span class="line">    <span class="comment">// 重复元素 qq</span></span><br><span class="line">    <span class="comment">// studentList.add(new Student(&quot;qq&quot;, 22, 173, Student.Address.BJ));</span></span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;rr&quot;</span>, <span class="number">24</span>, <span class="number">177</span>, Student.Address.BJ));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ss&quot;</span>, <span class="number">17</span>, <span class="number">169</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;tt&quot;</span>, <span class="number">18</span>, <span class="number">170</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;uu&quot;</span>, <span class="number">20</span>, <span class="number">171</span>, Student.Address.WH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;vv&quot;</span>, <span class="number">22</span>, <span class="number">172</span>, Student.Address.WH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ww&quot;</span>, <span class="number">24</span>, <span class="number">181</span>, Student.Address.BJ));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;xx&quot;</span>, <span class="number">18</span>, <span class="number">188</span>, Student.Address.SH));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;yy&quot;</span>, <span class="number">20</span>, <span class="number">183</span>, Student.Address.BJ));</span><br><span class="line">    studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;zz&quot;</span>, <span class="number">22</span>, <span class="number">191</span>, Student.Address.WH));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们要对这个学生列表进行处理:  <span style="color:red">得到来自北京同学, 并且高度最高的三个同学</span></p>
+<p><span style="font-size:20px;color:red;">应该怎么做？</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">StudentList</span> <span class="variable">studentList</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StudentList</span>();</span><br><span class="line">    List&lt;Student&gt; students = studentList.studentList;</span><br><span class="line"></span><br><span class="line">  TreeSet&lt;Student&gt; treeSet = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Student&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Student o1, Student o2)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> o2.getHeight() - o1.getHeight();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (Student student : students) &#123;</span><br><span class="line">      <span class="keyword">if</span> (student.getAddress() == Student.Address.BJ) &#123;</span><br><span class="line">        studentTreeSet.add(student);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    System.out.println(studentTreeSet.first());</span><br><span class="line">    studentTreeSet.pollFirst();</span><br><span class="line">    System.out.println(studentTreeSet.first());</span><br><span class="line">    studentTreeSet.pollFirst();</span><br><span class="line">    System.out.println(studentTreeSet.first());</span><br><span class="line">    studentTreeSet.pollFirst();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用流解决上述问题"><a href="#使用流解决上述问题" class="headerlink" title="使用流解决上述问题"></a>使用流解决上述问题</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testWithStream</span><span class="params">()</span> &#123;</span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    List&lt;Student&gt; students = studentList.stream().filter(p -&gt; p.getAddress() == Student.Address.BJ).sorted(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Student&gt;() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Student s1, Student s2)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> s2.getHeight() - s1.getHeight();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).limit(<span class="number">3</span>).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    System.out.println(students);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="流的概述"><a href="#流的概述" class="headerlink" title="流的概述"></a>流的概述</h2><h3 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h3><blockquote>
+<p><code>Java 8 API</code>添加了一个新的抽象称为流Stream，可以让你以一种声明的方式处理数据。</p>
+<p>这种风格将要处理的元素集合看作一种流， 流在管道中传输， 并且可以在管道的节点上进行处理， 比如筛选， 排序，聚合等。</p>
+</blockquote>
+<p>通俗的讲: 也就是说, <code>Stream</code>流是Java在<code>JDK1.8</code>提供的对<span style="font-size:20px;color:red;">集合数据进行优化&#x2F;简化操作</span>的一种数据处理方式。</p>
+<p>流  IO流。   面试官问到这种问题，你首先需要沟通，确定一下面试官想问的是什么东西，是Stream还是IO流。</p>
+<h3 id="流用来解决什么问题"><a href="#流用来解决什么问题" class="headerlink" title="流用来解决什么问题"></a>流用来解决什么问题</h3><p>Stream流一般用来处理Java中的集合类数据, 进以避免在日常代码书写中的对集合数据操作的性能以及代码冗长问题。</p>
+<h3 id="怎么使用流"><a href="#怎么使用流" class="headerlink" title="怎么使用流"></a>怎么使用流</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用一个流的时候，通常包括三个基本步：</span><br><span class="line"><span class="number">1.</span> 一个数据源, 创建一个流</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 多个/<span class="number">0</span>个 中间操作, 形成一条流水线</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 一个终止/终端操作, 执行流水线,并生成结果</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建流"><a href="#创建流" class="headerlink" title="创建流"></a>创建流</h2><p>1.<span style="color:red"> 调用集合类的stream方法,生成一个流</span>(最常用&#x2F;常见)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Collection</span> <span class="variable">collection</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"><span class="type">Stream</span> <span class="variable">stream</span> <span class="operator">=</span> collection.stream();</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>由值创建</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; zs = Stream.of(<span class="string">&quot;zs&quot;</span>, <span class="string">&quot;ls&quot;</span>, <span class="string">&quot;wu&quot;</span>, <span class="string">&quot;zl&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>3.由数组创建</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String [] strs = &#123;<span class="string">&quot;zs&quot;</span>, <span class="string">&quot;ls&quot;</span>, <span class="string">&quot;wu&quot;</span>&#125;;</span><br><span class="line">Stream&lt;String&gt; stream = Arrays.stream(strs);</span><br></pre></td></tr></table></figure>
+
+<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><p>两个简单的中止操作：</p>
+<p>count(): 流里面有多少元素，最终会返回Long类型。</p>
+<p>collect(Collectors.toList())： 将流里面的元素，存储为一个List;</p>
+<h3 id="filter-过滤操作"><a href="#filter-过滤操作" class="headerlink" title="&#x3D;&#x3D;filter(过滤操作)&#x3D;&#x3D;"></a><span style="color:red;">&#x3D;&#x3D;filter(过滤操作)&#x3D;&#x3D;</span></h3><p><span style=color:red;background:yellow><strong>filter方法</strong></span>用于通过设置的条件过滤出元素。</p>
+<p><span style="font-size:20px;color:red;">使用场景：</span></p>
+<ul>
+<li>对元素进行过滤。比如想要某个地区的学生，比如想要年龄大于20的学生。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"><span class="comment">// 获取所有北京地区的同学</span></span><br><span class="line">List&lt;Student&gt; collect = studentList.stream()</span><br><span class="line">  .filter(s -&gt; s.getAddress().equals(Student.Address.BJ))</span><br><span class="line">  .collect(Collectors.toList());</span><br><span class="line">System.out.println(collect);</span><br></pre></td></tr></table></figure>
+
+<p>注意: 每次中间操作会返回一个 Stream (可以有多次中间操作),这就允许对其操作可以像链条一样排列,变成一个管道。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Stream&lt;T&gt; filter(Predicate&lt;? super T&gt; predicate); </span></span><br><span class="line"><span class="comment">// public interface Predicate&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter方法参数----  需要传入的是一个 Predicate类型的实例。</span></span><br><span class="line"><span class="comment">// Predicate 里面只有一个方法。输入参数根据流里的数据确定，输出参数是个boolean</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="distinct-去重"><a href="#distinct-去重" class="headerlink" title="distinct(去重)"></a>distinct(去重)</h3><p>distinct方法用于筛选元素(相当于去除重复元素)</p>
+<p><span style="font-size:20px;color:red;">使用场景：</span></p>
+<ul>
+<li>对元素进行去重处理。底层是<code>LinkedHashSet</code></li>
+</ul>
+<p>所以需要注意：如果使用自定义的类，调用distinct，需要重写hashCode和equals方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Stream&lt;T&gt; distinct();</span></span><br><span class="line"><span class="comment">//  distinct方法----筛选元素, 筛选的机制是根据元素的hashCode和equals判断重复</span></span><br><span class="line">List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 北京的人</span></span><br><span class="line"><span class="type">long</span> <span class="variable">beijingCount</span> <span class="operator">=</span> studentList.stream()</span><br><span class="line">  <span class="comment">// 过滤 只取出北京的</span></span><br><span class="line">  .filter(s -&gt; Student.Address.BJ.equals(s.getAddress())).count();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 去重后北京的人</span></span><br><span class="line"><span class="type">long</span> <span class="variable">distinctBeijingCount</span> <span class="operator">=</span> studentList.stream()</span><br><span class="line">  .filter(s -&gt; Student.Address.BJ.equals(s.getAddress())).distinct().count();</span><br><span class="line"></span><br><span class="line">System.out.println(beijingCount);</span><br><span class="line">System.out.println(distinctBeijingCount);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="limit-截取"><a href="#limit-截取" class="headerlink" title="limit(截取)"></a>limit(截取)</h3><p>limit 方法用于获取指定数量(最大)的流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Stream&lt;T&gt; limit(long maxSize);</span></span><br><span class="line"><span class="comment">// limit(n)方法, 返回前n个元素.</span></span><br><span class="line"><span class="comment">// 如果流中有10个元素，limit(3) 则只返回3个元素。</span></span><br><span class="line"><span class="comment">// 如果流中有1个元素，limit(3) 则只返回1个元素。</span></span><br><span class="line"></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取身高高于210的</span></span><br><span class="line">    List&lt;Student&gt; superHighPeople = studentList.stream().filter(s -&gt; s.getHeight() &gt; <span class="number">210</span>)</span><br><span class="line">        .limit(<span class="number">3</span>).collect(Collectors.toList());</span><br><span class="line">    System.out.println(superHighPeople);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取身高高于180的</span></span><br><span class="line">    List&lt;Student&gt; highPeople = studentList.stream().filter(s -&gt; s.getHeight() &gt; <span class="number">180</span>)</span><br><span class="line">        .limit(<span class="number">3</span>).collect(Collectors.toList());</span><br><span class="line">    System.out.println(highPeople);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取高于160的</span></span><br><span class="line">    List&lt;Student&gt; normalPeople = studentList.stream().filter(s -&gt; s.getHeight() &gt; <span class="number">160</span>)</span><br><span class="line">        .limit(<span class="number">3</span>).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    System.out.println(normalPeople);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="skip-跳过"><a href="#skip-跳过" class="headerlink" title="skip(跳过)"></a>skip(跳过)</h3><p>skip(n)方法, 跳过前n个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">    List&lt;Person&gt; personList = StudentList.personList;</span><br><span class="line"><span class="comment">// Stream&lt;T&gt; skip(long n);</span></span><br><span class="line"><span class="comment">// skip(n)方法, 跳过前n个元素, 返回之后的元素.  (如果整体不够n个, 返回空流)</span></span><br><span class="line"><span class="comment">// 1 2 3 4 5   skip(2) 。 返回3 4 5 </span></span><br><span class="line"><span class="comment">//   skip(5) 返回 空的</span></span><br><span class="line"><span class="comment">//   skip(8) 返回 空的</span></span><br><span class="line"></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 总共五个元素</span></span><br><span class="line">    List&lt;Student&gt; collect1 = studentList.stream().filter(s -&gt; s.getAge() &gt; <span class="number">22</span> &amp;&amp; s.getAge() &lt; <span class="number">25</span>)</span><br><span class="line">        .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    System.out.println(collect1);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 跳过1个元素，只剩下4个</span></span><br><span class="line">    List&lt;Student&gt; collect2 = studentList.stream().filter(s -&gt; s.getAge() &gt; <span class="number">22</span> &amp;&amp; s.getAge() &lt; <span class="number">25</span>)</span><br><span class="line">        .skip(<span class="number">1</span>).collect(Collectors.toList());</span><br><span class="line">    System.out.println(collect2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="map-转换"><a href="#map-转换" class="headerlink" title="&#x3D;&#x3D;map(转换)&#x3D;&#x3D;"></a><span style="color:red;">&#x3D;&#x3D;map(转换)&#x3D;&#x3D;</span></h3><p>map 方法用于映射每个元素到对应的结果。</p>
+<p>从一个类型转换到另外一种类型。或者不变化类型</p>
+<p><span style="font-size:20px;color:red;">使用场景：</span></p>
+<ul>
+<li><span style=color:yellow;background:red><strong>输入的是一个类型，希望以另外一个类型输出。</strong></span><ul>
+<li>比如我想将一批人的年龄，转化为 青年（0-29），中青年（30-39），中年（40-49），中老年（50岁以上）。 </li>
+<li>比如我想将身高，映射为 超高人，高人，普通人。[190, +无穷), [175, 190) , (-无穷, 175]</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper);</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> map映射返回新的数据,  map的参数是一个方法</span></span><br><span class="line">        </span><br><span class="line">	<span class="comment">// 获取所有学生姓名</span></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    List&lt;String&gt; collect = studentList.stream().map(student -&gt; student.getName())</span><br><span class="line">        .collect(Collectors.toList());</span><br><span class="line">    System.out.println(collect);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取所有学生姓名的首字母</span></span><br><span class="line">   List&lt;String&gt; collect1 = studentList.stream().map(s -&gt; s.getName().substring(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">       .collect(Collectors.toList());</span><br><span class="line">   System.out.println(collect1);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 获取非常高的学生(超过190) 返回高人这个类</span></span><br><span class="line">    List&lt;SuperPerson&gt; collect2 = studentList.stream().filter(s -&gt; s.getHeight() &gt; <span class="number">190</span>)</span><br><span class="line">        .map(s -&gt; <span class="keyword">new</span> <span class="title class_">SuperPerson</span>(s.getName(), s.getHeight()))</span><br><span class="line">        .collect(Collectors.toList());</span><br><span class="line">    System.out.println(collect2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SuperPerson</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只需要人是什么类型的  </span></span><br><span class="line"><span class="comment">// 超高人，高人，普通人</span></span><br><span class="line"><span class="comment">// [190, +无穷), [175, 190) , (-无穷, 175]</span></span><br><span class="line"></span><br><span class="line">List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line">List&lt;String&gt; collect = studentList.stream()</span><br><span class="line">  .filter(s -&gt; Student.Address.BJ.equals(s.getAddress())).map(s -&gt; &#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> s.getHeight();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (height &gt;= <span class="number">190</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;超高人&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (height &gt;= <span class="number">175</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;高人&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;普通人&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).collect(Collectors.toList());</span><br><span class="line">System.out.println(collect);</span><br></pre></td></tr></table></figure>
+
+<h3 id="sorted-排序"><a href="#sorted-排序" class="headerlink" title="sorted(排序)"></a>sorted(排序)</h3><p>sorted 方法用于对流进行排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//     Stream&lt;T&gt; sorted();: 自然顺序排序</span></span><br><span class="line"><span class="comment">//     Stream&lt;T&gt; sorted(Comparator&lt;? super T&gt; comparator);: 提供一个比较器</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 对高于180的同学根据身高进行排序</span></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line">    List&lt;Student&gt; collect = studentList.stream().</span><br><span class="line">        filter(s -&gt; s.getHeight() &gt; <span class="number">180</span>)</span><br><span class="line">        .sorted((s1, s2) -&gt; s1.getHeight() - s2.getHeight())</span><br><span class="line">        .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    System.out.println(collect);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对高于180的同学根据身高进行排序(从高到低)</span></span><br><span class="line">List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line">List&lt;Student&gt; collect = studentList.stream().</span><br><span class="line">    filter(s -&gt; s.getHeight() &gt; <span class="number">180</span>)</span><br><span class="line">    .sorted((s1, s2) -&gt; s2.getHeight() - s1.getHeight())</span><br><span class="line">    .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">System.out.println(collect);</span><br></pre></td></tr></table></figure>
+
+<h2 id="终止操作"><a href="#终止操作" class="headerlink" title="终止操作"></a>终止操作</h2><h3 id="anyMatch-是否有任意一个匹配"><a href="#anyMatch-是否有任意一个匹配" class="headerlink" title="anyMatch(是否有任意一个匹配)"></a>anyMatch(是否有任意一个匹配)</h3><p>anyMatch:检查流到最后的数据,  是否有一个&#x2F;多个数据匹配某种情况</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  boolean anyMatch(Predicate&lt;? super T&gt; predicate);</span></span><br><span class="line"><span class="comment">//  anyMatch: 判断该stream中的所有元素, 是否存在某个/某些元素,可以根据某个条件处理之后, 满足true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  判断是否存在北京的同学</span></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b1</span> <span class="operator">=</span> studentList.stream()</span><br><span class="line">        .anyMatch(a -&gt; &#123;</span><br><span class="line">          <span class="keyword">return</span> a.getAddress() == Student.Address.BJ;</span><br><span class="line">        &#125;);</span><br><span class="line">    System.out.println(b1);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  判断高于190的是否存在北京的同学</span></span><br><span class="line">		<span class="type">boolean</span> <span class="variable">b2</span> <span class="operator">=</span> studentList.stream()</span><br><span class="line">        .filter(s -&gt; s.getHeight() &gt; <span class="number">190</span>)</span><br><span class="line">        .anyMatch(a -&gt; &#123;</span><br><span class="line">          <span class="keyword">return</span> a.getAddress() == Student.Address.BJ;</span><br><span class="line">        &#125;);</span><br><span class="line">    System.out.println(b2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="allMatch-是否所有的全匹配"><a href="#allMatch-是否所有的全匹配" class="headerlink" title="allMatch(是否所有的全匹配)"></a>allMatch(是否所有的全匹配)</h3><p>allMatch:检查是否所有元素都匹配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// boolean allMatch(Predicate&lt;? super T&gt; predicate);</span></span><br><span class="line"><span class="comment">// allMatch: 判断该stream中的所有元素, 是否所有元素 可以根据某个条件处理之后, 满足true</span></span><br><span class="line">    <span class="comment">//  判断是否都是北京的同学</span></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b1</span> <span class="operator">=</span> studentList.stream()</span><br><span class="line">        .allMatch(a -&gt; &#123;</span><br><span class="line">          <span class="keyword">return</span> a.getAddress() == Student.Address.BJ;</span><br><span class="line">        &#125;);</span><br><span class="line">    System.out.println(b1);</span><br><span class="line">    <span class="comment">//  判断高于200的是否都是上海的同学</span></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b2</span> <span class="operator">=</span> studentList.stream().filter(s -&gt; s.getHeight() &gt;= <span class="number">200</span>)</span><br><span class="line">        .allMatch(s -&gt; s.getAddress() == Student.Address.SH);</span><br><span class="line">    System.out.println(b2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="noneMatch-没有匹配"><a href="#noneMatch-没有匹配" class="headerlink" title="noneMatch(没有匹配)"></a>noneMatch(没有匹配)</h3><p>noneMatch: 检查是否没有匹配元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// boolean noneMatch(Predicate&lt;? super T&gt; predicate);</span></span><br><span class="line"><span class="comment">// noneMatch: 判断该stream中的所有元素, 是否所有元素 可以根据某个条件处理之后, 满足false</span></span><br><span class="line"></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断是否不存在深圳的同学</span></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b1</span> <span class="operator">=</span> studentList.stream().noneMatch(s -&gt; Student.Address.SZ.equals(s.getAddress()));</span><br><span class="line"></span><br><span class="line">    System.out.println(b1);</span><br></pre></td></tr></table></figure>
+
+<h3 id="findAny-找到任意一个"><a href="#findAny-找到任意一个" class="headerlink" title="findAny(找到任意一个)"></a>findAny(找到任意一个)</h3><p>findAny:返回流中任意元素: 默认第一个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Optional&lt;T&gt; findAny();</span></span><br><span class="line"><span class="comment">// findAny: 返回任意元素(默认第一个)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//  返回任意一个同学</span></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    Optional&lt;Student&gt; any = studentList.stream()</span><br><span class="line">        .findAny();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//<span class="doctag">TODO:</span> 注意, Optional作为一个容器代表一个值存在或者不存在</span></span><br><span class="line">    <span class="comment">//<span class="doctag">TODO:</span> Optional中存在几个方法, 可以让使用者显式的检查值存在或者不存在</span></span><br><span class="line">    <span class="comment">// &lt;1&gt;: isPresent()方法:  如果 Optional包含值返回true, 否则返回false</span></span><br><span class="line">    <span class="comment">// &lt;2&gt;: ifPresent(代码块)方法: 会将Optional包含的值, 传给指定的代码块</span></span><br><span class="line">    <span class="comment">// &lt;3&gt;: get()方法: 如果Optional包含值, 返回包含的值, 否则抛出异常</span></span><br><span class="line">    <span class="comment">// &lt;4&gt;: orElse(默认值):  如果Optional包含值, 返回包含的值, 否则返回默认值</span></span><br><span class="line">    any.isPresent();</span><br><span class="line">    any.ifPresent(a -&gt; System.out.println(a));</span><br><span class="line">    any.get();</span><br><span class="line"></span><br><span class="line">    any.orElse(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;默认值&quot;</span>, <span class="number">18</span>, <span class="number">140</span>, Student.Address.SH));</span><br><span class="line"></span><br><span class="line">    System.out.println(any);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一般的用法</span></span><br><span class="line"><span class="keyword">if</span> (any.isPresent())&#123;</span><br><span class="line">  <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> any.get();</span><br><span class="line">  System.out.println(student);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回任意一个身高小于170同学</span></span><br><span class="line"> List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 找到任意一个小于170的</span></span><br><span class="line"> Optional&lt;Student&gt; any = studentList.stream().filter(s -&gt; s.getHeight() &lt; <span class="number">170</span>).findAny();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (any.isPresent()) &#123;</span><br><span class="line">   <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> any.get();</span><br><span class="line">   System.out.println(<span class="string">&quot;这里有一个170以下的学生&quot;</span> + student);</span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;没有170以下的学生&quot;</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="findFirst-找到第一个"><a href="#findFirst-找到第一个" class="headerlink" title="findFirst(找到第一个)"></a>findFirst(找到第一个)</h3><p>findFirst:返回第一个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Optional&lt;T&gt; findFirst();</span></span><br><span class="line"><span class="comment">//  findFirst: 返回第一个元素</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  获得年龄最小的同学</span></span><br><span class="line">    Optional&lt;Student&gt; any = studentList.parallelStream()</span><br><span class="line">        .sorted((o1, o2) -&gt; o1.getAge() - o2.getAge()).findAny();</span><br><span class="line">    System.out.println(any.get());</span><br></pre></td></tr></table></figure>
+
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><p>forEach: 遍历流。遍历一下流里面所有的数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  void forEach(Consumer&lt;? super T&gt; action);</span></span><br><span class="line"><span class="comment">//  forEach: 遍历元素(void方法)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  遍历列表</span></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line">    studentList.stream()</span><br><span class="line">        .sorted((o1, o2) -&gt; o1.getAge() - o2.getAge())</span><br><span class="line">        .forEach(a -&gt; System.out.println(a));</span><br></pre></td></tr></table></figure>
+
+<h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3><p>count: 返回元素中数量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  long count();</span></span><br><span class="line"><span class="comment">//  count: 计算元素个数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  北京同学的数量</span></span><br><span class="line">    List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    <span class="type">long</span> <span class="variable">count</span> <span class="operator">=</span> studentList.stream()</span><br><span class="line">        .filter(a -&gt; a.getAddress() == Student.Address.BJ)</span><br><span class="line">        .count();</span><br><span class="line">    System.out.println(count);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><p>reduce: 计算元素</p>
+<p>reduce: 将参加计算的元素按照某种方式减少。</p>
+<ul>
+<li><p>比如，两个元素比较，返回大的； 按照这个方式，最终会拿到最大的</p>
+</li>
+<li><p>两个元素，返回和； 按照这个方式，最终会拿到所有的和</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> List&lt;Person&gt; personList = StudentList.personList;</span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> 规约 reduce</span></span><br><span class="line"><span class="comment">//  &lt;1&gt;一参情况: Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator)</span></span><br><span class="line"><span class="comment">//  &lt;2&gt;二参情况: T reduce(T identity, BinaryOperator&lt;T&gt; accumulator);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  1参数:</span></span><br><span class="line"><span class="comment">//  返回值类型为Optional, 是应对如果流中没有任何元素情况(这种情况没有初始值就无法返回结果)</span></span><br><span class="line"><span class="comment">//  所以1参是把结果包裹在一个Optional对象里(可以通过get方法获取),用以表明/处理结果可能不存在情况</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  2参数:</span></span><br><span class="line"><span class="comment">//  BinaryOperator: 将两个元素合起来产生一个新值</span></span><br><span class="line"><span class="comment">//  identity: 计算的初始值/起始值(用来和第一个元素计算结果)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  <span class="doctag">TODO:</span>班级同学年龄总和</span></span><br><span class="line">    Optional&lt;Integer&gt; optional = studentList.stream()</span><br><span class="line">        .map(a -&gt; a.getAge())</span><br><span class="line">        .reduce((a, b) -&gt; a + b);</span><br><span class="line"></span><br><span class="line">    <span class="type">Integer</span> <span class="variable">sum</span> <span class="operator">=</span> optional.get();</span><br><span class="line">    System.out.println(sum);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 年龄最大的学生</span></span><br><span class="line">    Optional&lt;Integer&gt; reduce2 = studentList.stream().map(a -&gt; a.getAge()).reduce((a, b) -&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> b;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Optional&lt;Integer&gt; reduce3 = studentList.stream().map(a -&gt; a.getAge()).reduce(Integer::max);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 年龄最小的学生</span></span><br><span class="line">    Optional&lt;Integer&gt; reduce4 = studentList.stream().map(a -&gt; a.getAge()).reduce((a, b) -&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    Optional&lt;Integer&gt; reduce5 = studentList.stream().map(a -&gt; a.getAge()).reduce(Integer::min);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    System.out.println(reduce2 + <span class="string">&quot;==&quot;</span> + reduce3);</span><br><span class="line">    System.out.println(reduce4 + <span class="string">&quot;==&quot;</span> + reduce5);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="collect"><a href="#collect" class="headerlink" title="&#x3D;&#x3D;collect&#x3D;&#x3D;"></a><span style="color:red;">&#x3D;&#x3D;collect&#x3D;&#x3D;</span></h3><p>collect: 收集器, 用于收集数据经过流计算的结果</p>
+<h4 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h4><p>作用是将元素分别归纳进可变容器 <code>List</code>、<code>Map</code>、<code>Set</code>、<code>Collection</code> 或者<code>ConcurrentMap</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Collectors.toList()</span></span><br><span class="line"><span class="comment">// Collectors.toCollection()</span></span><br><span class="line"><span class="comment">// Collectors.toSet()</span></span><br><span class="line"><span class="comment">// Collectors.toMap()</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">StudentList</span>().studentList;</span><br><span class="line"><span class="comment">// 获取武汉同学的集合 toList</span></span><br><span class="line">List&lt;Student&gt; collect = studentList.stream().filter(a -&gt; a.getAddress() == Student.Address.WH)</span><br><span class="line">    .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">System.out.println(collect);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获得武汉同学集合: toCollection</span></span><br><span class="line">    LinkedList&lt;Student&gt; collect = studentList.stream().filter(a -&gt; a.getAddress() == Student.Address.WH)</span><br><span class="line">        .collect(Collectors.toCollection(() -&gt; <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;()));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获得武汉同学集合: toSet</span></span><br><span class="line">   Set&lt;Student&gt; studentSet = studentList.stream().filter(a -&gt; a.getAddress() == Student.Address.WH)</span><br><span class="line">       .collect(Collectors.toSet());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获得武汉同学集合(姓名和年龄): toMap</span></span><br><span class="line">    Map&lt;String, Integer&gt; collect1 = studentList.stream().filter(a -&gt; a.getAddress() == Student.Address.WH)</span><br><span class="line">        .collect(Collectors.toMap(Student::getName, student -&gt; student.getAge()));</span><br><span class="line"></span><br><span class="line">    System.out.println(collect1);</span><br><span class="line"><span class="comment">// 获得武汉同学集合(姓名和对象本身)</span></span><br><span class="line">    Map&lt;String, Student&gt; collect2 =</span><br><span class="line">        studentList.stream().filter(a -&gt; a.getAddress() == Student.Address.WH)</span><br><span class="line">        .collect(Collectors.toMap(Student::getName, student -&gt; student));</span><br><span class="line"></span><br><span class="line">    System.out.println(collect2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.找出一个集合中来自北京的人</span></span><br><span class="line"><span class="comment">// filter </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.找出来自武汉，年龄大于20的人数</span></span><br><span class="line"><span class="comment">// filter  filter count</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.给一个集合，需要一个根据名字到对应对象的Map</span></span><br><span class="line"><span class="comment">// toMap()</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可读性怎么样？   可读性很差</span></span><br><span class="line"><span class="comment">// 流，自己学习的时候，可以用。在王道这写项目的时候，也可以用。</span></span><br><span class="line"><span class="comment">// 在工作过程中，你的同事用，你再用。</span></span><br><span class="line"><span class="comment">// 用的时候，注意一些保命妙招。疯狂加注释。</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Stream%E6%B5%81/" rel="tag"># Stream流</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/14/3-Map/" rel="prev" title="3_Map">
+                  <i class="fa fa-angle-left"></i> 3_Map
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/14/5-Git/" rel="next" title="5_Git">
+                  5_Git <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">染星辰</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
