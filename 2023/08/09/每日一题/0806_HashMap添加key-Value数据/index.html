@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E6%B7%BB%E5%8A%A0key-Value%E6%95%B0%E6%8D%AE"><span class="nav-text">HashMap添加key-Value数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%B8%80%E4%BB%BDkey-value%E6%95%B0%E6%8D%AE-%E8%A6%81%E6%B7%BB%E5%8A%A0%E7%9A%84HashMap%E4%B8%AD"><span class="nav-text">有一份key-value数据, 要添加的HashMap中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%87%BAkey-%E8%AE%A1%E7%AE%97-hash%E5%80%BC"><span class="nav-text">取出key 计算 hash值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E8%AE%A1%E7%AE%97%E7%9A%84hash%E5%80%BC%E5%92%8C%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6%E5%8F%96%E6%A8%A1-n-1-hash"><span class="nav-text">用计算的hash值和数组长度取模: (n - 1) &amp; hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E4%B8%8A%E4%B8%80%E6%AD%A5%E8%AE%A1%E7%AE%97%E7%9A%84%E4%B8%8B%E6%A0%87-%E5%88%A4%E6%96%AD%E8%BF%99%E4%B8%AA%E4%B8%8B%E6%A0%87%E4%BD%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%82%A8%E4%BA%86%E5%86%85%E5%AE%B9%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E5%AD%98%E5%82%A8%E5%86%85%E5%AE%B9-%E7%9B%B4%E6%8E%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9%E5%AD%98%E5%82%A8%E5%88%B0%E8%BF%99%E4%B8%AA%E4%B8%8B%E6%A0%87%E4%BD%8D%E7%BD%AE%EF%BC%8C%E7%BB%93%E7%82%B9%E6%98%AFNode%E7%B1%BB%E5%9E%8B-%E5%8C%85%E5%90%AB-key-value-hash-next%E5%9B%9B%E4%B8%AA%E5%8F%82%E6%95%B0"><span class="nav-text">根据上一步计算的下标, 判断这个下标位置是否已经存储了内容，如果没有存储内容, 直接创建一个结点存储到这个下标位置，结点是Node类型, 包含: key,value, hash,next四个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E5%85%83%E7%B4%A0-%E6%98%AF%E5%90%A6%E5%85%83%E7%B4%A0%E9%87%8D%E5%A4%8D"><span class="nav-text">判断是否有元素,是否元素重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E4%B8%8A%E8%BF%B0%E6%AD%A5%E9%AA%A4%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F%E4%B8%80%E4%BB%BDkey-value%E6%95%B0%E6%8D%AE-%E6%9C%89%E5%8F%AF%E8%83%BD%E5%BC%95%E8%B5%B7%E6%89%A9%E5%AE%B9-%E6%95%B4%E4%BD%93%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B6%85%E8%BF%87%E9%98%88%E5%80%BC"><span class="nav-text">假设上述步骤添加成功一份key-value数据:  有可能引起扩容 (整体存储的数据超过阈值)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E6%89%80%E6%9C%89%E7%9A%84%E6%89%A9%E5%AE%B9%EF%BC%8C%E9%83%BD%E6%9C%89%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E5%8E%9F%E6%9C%AC%E6%95%B0%E7%BB%84%E6%9F%90%E4%B8%AA%E4%BD%8D%E7%BD%AE%E5%A6%82%E6%9E%9C%E6%9C%89%E7%BA%A2%E9%BB%91%E6%A0%91%EF%BC%8C%E7%BA%A2%E9%BB%91%E6%A0%91%E8%A2%AB%E6%8B%86%E6%88%90%E4%B8%A4%E9%83%A8%E5%88%86-%E4%BD%8E%E4%BD%8D%E5%92%8C%E9%AB%98%E4%BD%8D-%EF%BC%8C%E4%BB%BB%E4%B8%80%E4%BD%8D%E7%BD%AE%E7%BB%93%E7%82%B9%E6%95%B0%E5%8F%98%E5%B0%91%EF%BC%8C-%E5%8F%88%E6%9C%89%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%BA%A2%E9%BB%91%E6%A0%91%E8%BD%AC%E5%8C%96%E4%B8%BA%E9%93%BE%E8%A1%A8"><span class="nav-text">上述所有的扩容，都有可能导致原本数组某个位置如果有红黑树，红黑树被拆成两部分(低位和高位)，任一位置结点数变少， 又有可能导致红黑树转化为链表</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E6%B7%BB%E5%8A%A0key-Value%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text">HashMap添加key-Value数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%B8%80%E4%BB%BDkey-value%E6%95%B0%E6%8D%AE-%E8%A6%81%E6%B7%BB%E5%8A%A0%E7%9A%84HashMap%E4%B8%AD"><span class="nav-number">1.1.</span> <span class="nav-text">有一份key-value数据, 要添加的HashMap中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%87%BAkey-%E8%AE%A1%E7%AE%97-hash%E5%80%BC"><span class="nav-number">1.2.</span> <span class="nav-text">取出key 计算 hash值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E8%AE%A1%E7%AE%97%E7%9A%84hash%E5%80%BC%E5%92%8C%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6%E5%8F%96%E6%A8%A1-n-1-hash"><span class="nav-number">1.3.</span> <span class="nav-text">用计算的hash值和数组长度取模: (n - 1) &amp; hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E4%B8%8A%E4%B8%80%E6%AD%A5%E8%AE%A1%E7%AE%97%E7%9A%84%E4%B8%8B%E6%A0%87-%E5%88%A4%E6%96%AD%E8%BF%99%E4%B8%AA%E4%B8%8B%E6%A0%87%E4%BD%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%82%A8%E4%BA%86%E5%86%85%E5%AE%B9%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E5%AD%98%E5%82%A8%E5%86%85%E5%AE%B9-%E7%9B%B4%E6%8E%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9%E5%AD%98%E5%82%A8%E5%88%B0%E8%BF%99%E4%B8%AA%E4%B8%8B%E6%A0%87%E4%BD%8D%E7%BD%AE%EF%BC%8C%E7%BB%93%E7%82%B9%E6%98%AFNode%E7%B1%BB%E5%9E%8B-%E5%8C%85%E5%90%AB-key-value-hash-next%E5%9B%9B%E4%B8%AA%E5%8F%82%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">根据上一步计算的下标, 判断这个下标位置是否已经存储了内容，如果没有存储内容, 直接创建一个结点存储到这个下标位置，结点是Node类型, 包含: key,value, hash,next四个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E5%85%83%E7%B4%A0-%E6%98%AF%E5%90%A6%E5%85%83%E7%B4%A0%E9%87%8D%E5%A4%8D"><span class="nav-number">1.5.</span> <span class="nav-text">判断是否有元素,是否元素重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E4%B8%8A%E8%BF%B0%E6%AD%A5%E9%AA%A4%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F%E4%B8%80%E4%BB%BDkey-value%E6%95%B0%E6%8D%AE-%E6%9C%89%E5%8F%AF%E8%83%BD%E5%BC%95%E8%B5%B7%E6%89%A9%E5%AE%B9-%E6%95%B4%E4%BD%93%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B6%85%E8%BF%87%E9%98%88%E5%80%BC"><span class="nav-number">1.6.</span> <span class="nav-text">假设上述步骤添加成功一份key-value数据:  有可能引起扩容 (整体存储的数据超过阈值)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E6%89%80%E6%9C%89%E7%9A%84%E6%89%A9%E5%AE%B9%EF%BC%8C%E9%83%BD%E6%9C%89%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E5%8E%9F%E6%9C%AC%E6%95%B0%E7%BB%84%E6%9F%90%E4%B8%AA%E4%BD%8D%E7%BD%AE%E5%A6%82%E6%9E%9C%E6%9C%89%E7%BA%A2%E9%BB%91%E6%A0%91%EF%BC%8C%E7%BA%A2%E9%BB%91%E6%A0%91%E8%A2%AB%E6%8B%86%E6%88%90%E4%B8%A4%E9%83%A8%E5%88%86-%E4%BD%8E%E4%BD%8D%E5%92%8C%E9%AB%98%E4%BD%8D-%EF%BC%8C%E4%BB%BB%E4%B8%80%E4%BD%8D%E7%BD%AE%E7%BB%93%E7%82%B9%E6%95%B0%E5%8F%98%E5%B0%91%EF%BC%8C-%E5%8F%88%E6%9C%89%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%BA%A2%E9%BB%91%E6%A0%91%E8%BD%AC%E5%8C%96%E4%B8%BA%E9%93%BE%E8%A1%A8"><span class="nav-number">1.7.</span> <span class="nav-text">上述所有的扩容，都有可能导致原本数组某个位置如果有红黑树，红黑树被拆成两部分(低位和高位)，任一位置结点数变少， 又有可能导致红黑树转化为链表</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -126,18 +126,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -251,8 +251,36 @@
     
     
     
+	
+	 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+   </div>
+ 
+	
 
     <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>染星辰
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/08/09/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0806_HashMap%E6%B7%BB%E5%8A%A0key-Value%E6%95%B0%E6%8D%AE/" title="HashMap添加key-Value数据">http://example.com/2023/08/09/每日一题/0806_HashMap添加key-Value数据/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
           <div class="post-tags">
               <a href="/tags/Java-SE/" rel="tag"># Java_SE</a>
           </div>
@@ -280,6 +308,7 @@
 
 
 
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81ODg4OS8zNTM1MQ=="></div>
 </div>
   </main>
 
@@ -315,6 +344,41 @@
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
+
+
+
+
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
     </div>
   </footer>
 
@@ -346,6 +410,7 @@
 
 
 
+<script src="/js/third-party/comments/livere.js"></script>
 
 </body>
 </html>
