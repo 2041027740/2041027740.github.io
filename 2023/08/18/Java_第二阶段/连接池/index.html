@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="连接池、池化思想 三方连接池 &#96;DBCP&#96;、&#96;C3p0&#96;、阿里的&#96;Druid&#96;、&#96;springboot&#96;的&#96;HikariCP&#96;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="连接池">
+<meta property="og:url" content="http://example.com/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/index.html">
+<meta property="og:site_name" content="星辰可染呀">
+<meta property="og:description" content="连接池、池化思想 三方连接池 &#96;DBCP&#96;、&#96;C3p0&#96;、阿里的&#96;Druid&#96;、&#96;springboot&#96;的&#96;HikariCP&#96;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-18T13:47:35.000Z">
+<meta property="article:modified_time" content="2023-08-20T13:50:05.969Z">
+<meta property="article:author" content="染星辰">
+<meta property="article:tag" content="连接池">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/","path":"2023/08/18/Java_第二阶段/连接池/","title":"连接池"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>连接池 | 星辰可染呀</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">星辰可染呀</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">恰似人间惊鸿客，墨染星辰云水间</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-number">1.</span> <span class="nav-text">连接池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.1.</span> <span class="nav-text">连接池介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%E3%80%81%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84"><span class="nav-number">1.1.2.</span> <span class="nav-text">连接池有什么好处、线程池有什么好处</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%96%B9%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-number">1.2.</span> <span class="nav-text">三方连接池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DBCP"><span class="nav-number">1.2.1.</span> <span class="nav-text">DBCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C3PO"><span class="nav-number">1.2.2.</span> <span class="nav-text">C3PO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Druid-%E9%98%BF%E9%87%8C"><span class="nav-number">1.2.3.</span> <span class="nav-text">Druid(阿里)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HikariCP"><span class="nav-number">1.2.4.</span> <span class="nav-text">HikariCP</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="染星辰"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">染星辰</p>
+  <div class="site-description" itemprop="description">一生温暖纯良，不舍爱与自由</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/2041027740" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2041027740" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="连接池 | 星辰可染呀">
+      <meta itemprop="description" content="连接池、池化思想 三方连接池 `DBCP`、`C3p0`、阿里的`Druid`、`springboot`的`HikariCP`">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          连接池
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-18 21:47:35" itemprop="dateCreated datePublished" datetime="2023-08-18T21:47:35+08:00">2023-08-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-20 21:50:05" itemprop="dateModified" datetime="2023-08-20T21:50:05+08:00">2023-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" itemprop="url" rel="index"><span itemprop="name">Java_第二阶段</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">连接池、池化思想 三方连接池 `DBCP`、`C3p0`、阿里的`Druid`、`springboot`的`HikariCP`</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h1><h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>每次执行SQL都需要</p>
+<ul>
+<li>建立连接</li>
+<li>校验身份</li>
+<li>断开连接</li>
+</ul>
+<p><strong>连接池：</strong></p>
+<p>使用：从池子里拿</p>
+<p>使用完：完放回池子</p>
+<p>连接池：–&gt;连接的缓冲池</p>
+<h3 id="连接池介绍"><a href="#连接池介绍" class="headerlink" title="连接池介绍"></a>连接池介绍</h3><ul>
+<li><p>创建和管理一个连接的缓冲池的技术</p>
+</li>
+<li><p>这些连接准备好被任何需要它们的线程使用。</p>
+<p>使用连接池的好处：省时、简化编程、资源受控</p>
+<ul>
+<li>减少连接创建时间</li>
+<li>简化编程模式</li>
+<li>受控的资源使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="连接池有什么好处、线程池有什么好处"><a href="#连接池有什么好处、线程池有什么好处" class="headerlink" title="连接池有什么好处、线程池有什么好处"></a><strong>连接池有什么好处、线程池有什么好处</strong></h3><blockquote>
+<p>池化技术、池化思想：</p>
+<ul>
+<li><p>池化技术是一种常见的资源管理技术，它可以通过预先创建和维护一定量的资源实例来提高系统的性能和可靠性</p>
+</li>
+<li><p>池化技术是一种常见的资源管理技术，通过事先创建和维护一定的资源实例，等需要用这个资源就直接拿来用而不是你要用资源就去创建，这样就限制了资源实例的数量，避免过多的实例占用系统资源，节约了资源，用完之后把这个资源实例还回去，</p>
+</li>
+</ul>
+<p>这样以来就不用的频繁去创建资源和销毁资源，提高了性能，</p>
+<p>同时池化技术通过实时监控资源实例的状态，如果资源实例异常，池化技术会自动将其标记为无效实例，并重新创建新的实例，如果已达上限，之后的服务就拒绝。这样可以提高系统的可靠性和稳定性。</p>
+<p>池化技术也可以通过配置文件或代码来管理资源实例，减少了资源管理的复杂性。</p>
+<p>总之，池化技术是一种非常有用的技术，可以提高系统的性能、可靠性、节约资源和简化开发。在高并发、大数据量的应用场景下，使用池化技术可以发挥更加显著的优势。常见的池化技术包括连接池、线程池、对象池等。</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>节约资源：池化技术可以限制资源实例的数量，避免过多的实例占用系统资源。</li>
+<li>提高性能：避免频繁创建和销毁资源</li>
+<li>提高可靠性：池化技术可以实时监控资源实例的状态，如果资源实例异常或超出，池化技术会自动将其标记为无效实例，并重新创建新的实例。这样可以提高系统的可靠性和稳定性。已达上限，之后的服务就拒绝，</li>
+<li>简化开发：池化技术可以通过配置文件或代码来管理资源实例，使得开发人员可以更加方便地使用资源实例，减少了资源管理的复杂性。</li>
+</ol>
+</blockquote>
+<h2 id="三方连接池"><a href="#三方连接池" class="headerlink" title="三方连接池"></a>三方连接池</h2><p>三方连接池可以跟着文档敲出来就行</p>
+<p>Java开发者就在<code>JDBC</code>中定义了一个数据库连接池的接口（ <code>javax.sql.Datasource </code>），其他的数据库连接池的实现都需要去实现这个接口，这就对我们Java开发者来说造成了极大的便利，方便我们去在Java中使用数据库连接池。</p>
+<p><code>DataSource</code>接口，就是<code>JDBC</code>提供给我们的一个获取连接的接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DataSource</span>  <span class="keyword">extends</span> <span class="title class_">CommonDataSource</span>, Wrapper &#123;</span><br><span class="line"></span><br><span class="line">  Connection <span class="title function_">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException;</span><br><span class="line"></span><br><span class="line">  Connection <span class="title function_">getConnection</span><span class="params">(String username, String password)</span></span><br><span class="line">    <span class="keyword">throws</span> SQLException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DBCP"><a href="#DBCP" class="headerlink" title="DBCP"></a><code>DBCP</code></h3><p>两个jar包版本必须匹配</p>
+<ul>
+<li><p>导包。需要两个包：</p>
+<p><code>commons-dbc 1.4</code></p>
+<p><code>Commons-pool 1.5.4</code></p>
+<p>DBCP三方连接池提供的连接都是子类</p>
+</li>
+<li><p>配置</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">123456</span></span><br><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test7</span></span><br><span class="line"><span class="attr">driverClassName</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="comment"># 配置的参数。可以不用在url后面写。以分号分割</span></span><br><span class="line"><span class="attr">connectionProperties</span>=<span class="string">characterEncoding=utf8;useSSL=false</span></span><br><span class="line"><span class="comment"># 初始化容量。</span></span><br><span class="line"><span class="attr">initialSize</span>=<span class="string">10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DbcpDataSource1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">        <span class="type">DataSource</span> <span class="variable">dataSource</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">            properties.load(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;dbcp.properties&quot;</span>));</span><br><span class="line">            dataSource = BasicDataSourceFactory.createDataSource(properties);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> dataSource.getConnection();</span><br><span class="line"></span><br><span class="line">        ExecuteQueryByConnection.executeQuery(connection);</span><br><span class="line"></span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExecuteQueryByConnection</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">executeQuery</span><span class="params">(Connection connection)</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">        <span class="type">PreparedStatement</span> <span class="variable">preparedStatement</span> <span class="operator">=</span> connection.prepareStatement(<span class="string">&quot;select * from account&quot;</span>);</span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> preparedStatement.executeQuery();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> resultSet.getInt(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> resultSet.getString(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">            <span class="type">BigDecimal</span> <span class="variable">money</span> <span class="operator">=</span> resultSet.getBigDecimal(<span class="string">&quot;money&quot;</span>);</span><br><span class="line"></span><br><span class="line">            System.out.println(id + <span class="string">&quot; __ &quot;</span> + name + <span class="string">&quot; __ &quot;</span> + money);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之前特别流行的连接池，但是由于中间几年没有更新，所以现在一般都是一些老项目在使用。</p>
+</li>
+</ul>
+<h3 id="C3PO"><a href="#C3PO" class="headerlink" title="C3PO"></a><code>C3PO</code></h3><ul>
+<li>导包</li>
+</ul>
+<p>两个jar包版本必须匹配</p>
+<p><code>C3P0</code></p>
+<p><code>mchange-commons-java</code></p>
+<ul>
+<li><p>配置(两种配置方式<code>.xml</code>或者<code>.properties</code>)</p>
+<p><strong>文件位置和文件名称都是写死。</strong></p>
+<p>位置需要在<code>scr</code>目录下，</p>
+<p>方式一：</p>
+<ol>
+<li><code>c3p0-config.xml</code></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">c3p0-config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">default-config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClass&quot;</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span></span></span><br><span class="line"><span class="tag">                <span class="attr">name</span>=<span class="string">&quot;jdbcUrl&quot;</span>&gt;</span>jdbc:mysql://localhost:3306/test7?characterEncoding=utf8<span class="symbol">&amp;amp;</span>useSSL=false<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span>&gt;</span>root<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;checkoutTimeout&quot;</span>&gt;</span>30000<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;idleConnectionTestPeriod&quot;</span>&gt;</span>30<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;initialPoolSize&quot;</span>&gt;</span>10<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxIdleTime&quot;</span>&gt;</span>30<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxPoolSize&quot;</span>&gt;</span>100<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;minPoolSize&quot;</span>&gt;</span>10<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">default-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">c3p0-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>方式二：properties文件</p>
+<ol>
+<li><code>c3po.properties</code></li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">c3p0.driverClass</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">c3p0.jdbcUrl</span>=<span class="string">jdbc:mysql://localhost:3306/test7?characterEncoding=utf8&amp;useSSL=false</span></span><br><span class="line"><span class="attr">c3p0.user</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">c3p0.password</span>=<span class="string">123456</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> DataSource cpds;</span><br><span class="line">    </span><br><span class="line"> <span class="keyword">static</span> &#123;</span><br><span class="line">   <span class="comment">// 会自动去类路径下，会找指定的配置文件</span></span><br><span class="line">   cpds = <span class="keyword">new</span> <span class="title class_">ComboPooledDataSource</span>();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><span style=color:red;background:yellow><strong>注意：</strong></span><code>c3p0</code>的配置文件位置，都是写死在<code>C3p0</code>的代码里，所以配置文件的名字和位置都只能是固定的。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Druid-阿里"><a href="#Druid-阿里" class="headerlink" title="Druid(阿里)"></a>Druid(阿里)</h3><ol>
+<li>导包<br>druid-1.2.15</li>
+<li>配置<br><code>.properties</code>位置不限定，能找到就行</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">driverClassName</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test7?characterEncoding=utf8&amp;useSSL=false</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">123456</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">properties.load(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;druid.properties&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="type">DataSource</span> <span class="variable">dataSource</span> <span class="operator">=</span> DruidDataSourceFactory.createDataSource(properties);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> dataSource.getConnection();</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="HikariCP"><a href="#HikariCP" class="headerlink" title="HikariCP"></a><code>HikariCP</code></h3><p><code>Springboot</code>的一个数据库连接池。比较厉害。</p>
+<ol>
+<li><p>导包<br>两个包：</p>
+</li>
+<li><p><code>jdk8</code>–&gt;下载4.0.3 –&gt;view All –&gt;4.0.3.jar</p>
+</li>
+<li><p>slf4-1.7.3.0</p>
+</li>
+<li><p>配置<br><code>.properties</code>位置不限定，能找到就行</p>
+</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">jdbcUrl</span>=<span class="string">jdbc:mysql://localhost:3306/test7?characterEncoding=utf8&amp;useSSL=false</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">123456</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">properties.load(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;hikaricp.properties&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="type">HikariConfig</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HikariConfig</span>(properties);</span><br><span class="line"><span class="type">HikariDataSource</span> <span class="variable">hikariDataSource</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HikariDataSource</span>(config);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> hikariDataSource.getConnection();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+	
+	 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+   </div>
+ 
+	
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>染星辰
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="连接池">http://example.com/2023/08/18/Java_第二阶段/连接池/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" rel="tag"># 连接池</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/17/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0816%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" rel="prev" title="浏览器输入url发生了什么">
+                  <i class="fa fa-angle-left"></i> 浏览器输入url发生了什么
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/" rel="next" title="池化思想">
+                  池化思想 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81ODg4OS8zNTM1MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">染星辰</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div> -->
+
+
+
+
+
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
