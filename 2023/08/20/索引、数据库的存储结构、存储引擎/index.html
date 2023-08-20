@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="索引的数据结构、数据库的组成结构、存储引擎、主键\非主键索引、回表、覆盖索引、explain看查询的过程（**待补充**）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="索引、数据库的存储结构、存储引擎">
+<meta property="og:url" content="http://example.com/2023/08/20/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html">
+<meta property="og:site_name" content="星辰可染呀">
+<meta property="og:description" content="索引的数据结构、数据库的组成结构、存储引擎、主键\非主键索引、回表、覆盖索引、explain看查询的过程（**待补充**）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-20T13:43:56.000Z">
+<meta property="article:modified_time" content="2023-08-20T13:44:35.327Z">
+<meta property="article:author" content="染星辰">
+<meta property="article:tag" content="索引">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/20/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/20/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/","path":"2023/08/20/索引、数据库的存储结构、存储引擎/","title":"索引、数据库的存储结构、存储引擎"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>索引、数据库的存储结构、存储引擎 | 星辰可染呀</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">星辰可染呀</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">恰似人间惊鸿客，墨染星辰云水间</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">1.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">索引简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">索引的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">MySQL索引的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MyISAM"><span class="nav-number">1.3.1.</span> <span class="nav-text">MyISAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">InnoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyISAM%E5%92%8CInnoDB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.3.</span> <span class="nav-text">MyISAM和InnoDB的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E8%A1%A8"><span class="nav-number">1.3.4.</span> <span class="nav-text">回表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="nav-number">1.3.5.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E8%AF%AD%E6%B3%95"><span class="nav-number">1.3.6.</span> <span class="nav-text">索引语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">1.3.7.</span> <span class="nav-text">索引面试题</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="染星辰"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">染星辰</p>
+  <div class="site-description" itemprop="description">一生温暖纯良，不舍爱与自由</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/2041027740" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2041027740" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/20/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="索引、数据库的存储结构、存储引擎 | 星辰可染呀">
+      <meta itemprop="description" content="索引的数据结构、数据库的组成结构、存储引擎、主键\非主键索引、回表、覆盖索引、explain看查询的过程（**待补充**）">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          索引、数据库的存储结构、存储引擎
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-20 21:43:56 / 修改时间：21:44:35" itemprop="dateCreated datePublished" datetime="2023-08-20T21:43:56+08:00">2023-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" itemprop="url" rel="index"><span itemprop="name">Java_第二阶段</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">索引的数据结构、数据库的组成结构、存储引擎、主键\非主键索引、回表、覆盖索引、explain看查询的过程（**待补充**）</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="索引简介"><a href="#索引简介" class="headerlink" title="索引简介"></a>索引简介</h2><ul>
+<li><p>帮助我们<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'><strong>提高查询速度</strong></span>的<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'><strong>数据结构</strong></span></p>
+</li>
+<li><p>可以根据关键字快速定位到数据所在的位置，从而加速查询操作。</p>
+</li>
+</ul>
+<p>通常包括一个或多个列，每个列包含一个唯一的值，用于标识数据行。当查询语句包含一个或多个索引列时，数据库可以使用索引来快速定位符合条件的数据行，而不必扫描整个数据表。这可以大大提高查询速度，特别是对于大型数据表和复杂查询语句的情况</p>
+<p>单表数据库 最多单表在<code>1000w</code>数据左右插入<br>太多之后，查询性能会急剧下降。</p>
+<h2 id="索引的数据结构"><a href="#索引的数据结构" class="headerlink" title="索引的数据结构"></a>索引的数据结构</h2><ul>
+<li><p>适不适合当索引的三个指标：</p>
+<ul>
+<li>查询单个值</li>
+<li>查询范围值</li>
+<li>插入数据</li>
+</ul>
+</li>
+<li><p>数据结构：</p>
+<ul>
+<li>数组、链表、有序数组、二叉搜索树、B树、B+树、Hash表</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>数组</p>
+<ol>
+<li>查单个值，慢（比较所有数据）</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li>查范围值，慢（比较所有数据）</li>
+<li>插入值，速度快（插到尾部）</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>链表</li>
+</ul>
+<ol>
+<li>查单个值，慢（要比较所有的数据）</li>
+<li>查范围值，慢（要比较所有的数据）</li>
+<li>插入值，快</li>
+</ol>
+</blockquote>
+<blockquote>
+<ul>
+<li>有序数组<ol>
+<li>查单个值，快（采用二分法，时间复杂度logn）</li>
+<li>查范围值，快（有序，先用二分法查到边界，然后往前或往后查询）</li>
+<li>插入值，慢（需要挪动数据）</li>
+</ol>
+</li>
+<li>有序数组一般不用来作索引，它不适合用来做普通的索引</li>
+<li>但是，有一些场景下是可以用它来做索引的，比如说保存的是一些历史数据，不需要频繁的插入和删除数据，像2016年的淘宝订单。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>二叉搜索树（左小右大）</p>
+<ol>
+<li>查单个值，快</li>
+<li>查范围值，中等（要在父节点和子节点来回跳转）</li>
+<li>插入值，速度快</li>
+</ol>
+<p>缺点：只有两个孩子，当数据量增大，树高度会升高，查询的次数增多，影响查询效率</p>
+</li>
+<li><p>红黑树（特殊的二叉搜索树）</p>
+<ol>
+<li>查单个值，快</li>
+<li>查范围值，中等（要在父节点和子节点来回跳转）</li>
+<li>插入值，速度快</li>
+</ol>
+<p>缺点：存储信息的密度不高，当数据量增大，树高度会升高，查询的次数增多，对于关系型数据库，数据都是存放在磁盘里，每一层就要读一次磁盘，影响查询效率。</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>B树<ol>
+<li>查单个值</li>
+<li>查范围值</li>
+<li>插入值</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>B+树<ol>
+<li>查单个值</li>
+<li>查多个值</li>
+<li>插入值</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Hash表<ol>
+<li>查单个值</li>
+<li>查多个值</li>
+<li>插入值</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p>索引的结构为什么选B+树，为啥不选红黑树或者二叉树为索引<br>先分析显而易见不适合用来做索引的</p>
+<p>使用索引的目的是为了帮我们提高查询效率</p>
+<p>数组和链表查询数据需要一个一个数据的比较，显然不适合做索引，</p>
+<p>有序数组是用二分法查询单个数据，和范围数据很快，但是插入数据需要移动大量数据，所以我们一般也不使用它，除非有特殊的使用场景，像是存储一些不需要频繁增删的数据，比如说淘宝的2016年的订单数据之类的</p>
+<p>二叉搜索树在查询范围值的时候需要在父子节点之间来回的跳转，比较麻烦，而且当存储数据太多的时候树高就会增高，会拖慢查询的效率。</p>
+<p>红黑树，是特殊的二叉树，</p>
+<h2 id="MySQL索引的实现"><a href="#MySQL索引的实现" class="headerlink" title="MySQL索引的实现"></a>MySQL索引的实现</h2><p>索引的实现其实就是去介绍一下，数据库中数据到底是怎样存储的。在介绍这个之前，我们需要先了解一下数据库的组成结构。</p>
+<ul>
+<li><p>数据库的组成结构</p>
+<ul>
+<li><p>连接器<br>校验用户名和密码，建立网络连接</p>
+</li>
+<li><p>分析器</p>
+<p>词法、语法分析，编译SQL</p>
+</li>
+<li><p>优化器<br>主要用于选择执行路径<br>表的关联中，先打开哪张表。</p>
+<ol>
+<li>SQL语句选择哪个索引x来查询</li>
+<li>连接时，连接了多张表，x，选择连接的先后顺序</li>
+</ol>
+</li>
+<li><p>执行器</p>
+<p>执行SQL编译后的命令、调用存储引擎的接口，执行指令</p>
+</li>
+<li><p>存储引擎</p>
+<p>存储数据（MySQL底层怎样组织这些数据）</p>
+<ul>
+<li><code>MyISAM</code></li>
+<li><code>InnoDB</code></li>
+<li><code>Memory</code>：基本不用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a><code>MyISAM</code></h3><ul>
+<li><p>表都有三个文件：</p>
+<blockquote>
+<ul>
+<li><code>.frm</code>：表结构定义文件<br> 表里边有哪些列，列的类型</li>
+<li><code>.MYD</code>：数据文件</li>
+<li><code>.MYI</code>：索引文件</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>主键索引</strong>：<br>根据主键这一列的值，建立一个B+树——&gt;主键索引树</p>
+<blockquote>
+<p><strong>key：主键的值</strong></p>
+<p><strong>data：主键这一行数据对应的地址值</strong></p>
+</blockquote>
+</li>
+<li><p><strong>非主键索引</strong><br>非主键的列为索引列 –》一个表可以有多个索引树</p>
+<blockquote>
+<p><strong>key：索引列的值</strong></p>
+<p><strong>data：索引列这一行数据对应的地址值</strong></p>
+</blockquote>
+</li>
+</ul>
+<p><strong>非聚集索引：数据和索引分开存储</strong></p>
+<h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a><code>InnoDB</code></h3><ul>
+<li><p>两个文件</p>
+<blockquote>
+<ul>
+<li><code>.frm</code>表结构定义文件<br>表里边有哪些列，列的类型</li>
+<li><code>.ibd</code>数据和索引文件<br>文件中存储了数据和索引</li>
+</ul>
+</blockquote>
+</li>
+<li><p>在InnoDB中，数据是依附于主键索引树来存储的，假如没有主键的话，那么就不存在主键索引树，那么数据也没办法存储。</p>
+</li>
+<li><p>所以对于InnoDB的表来说，<span style=color:red;background:yellow><strong>必须得有一个主键。</strong></span></p>
+</li>
+<li><p>对于InnoDB的表来说，如果用户在建表的时候，没有设置主键，那么InnoDB会维护一个隐藏的列来当做主键。</p>
+</li>
+<li><p>主键索引</p>
+<blockquote>
+<ul>
+<li>key：索引列的值</li>
+<li>data：索引列这一行对应的<strong>其他数据</strong></li>
+</ul>
+</blockquote>
+<p><strong>聚集索引：</strong></p>
+<p>在InnoDB的<span style=color:red;background:yellow><strong>主键索引中</strong></span>，索引和数据是存储在同一个数据页中，也就是索引和数据是存储在一起的，这种叫做聚集索引。</p>
+</li>
+<li><p>非主键索引</p>
+<blockquote>
+<ul>
+<li>key：索引列的值</li>
+<li>data：索引列这一行数据对应的主键值</li>
+</ul>
+</blockquote>
+</li>
+<li><p>在InnoDB的非主键索引中，索引只和主键存储在到了一起，实际上没有和数据存储在一起，其实也是<span style=color:red;background:yellow><strong>非聚集索引。</strong></span></p>
+</li>
+</ul>
+<p>总结：</p>
+<blockquote>
+<p>聚集索引：索引和数据存储在一起（不是和单个数据存储在一起，而是和所有的数据一块存在一起）</p>
+<p>非聚集索引：索引和数据分开存储</p>
+</blockquote>
+<h3 id="MyISAM和InnoDB的区别"><a href="#MyISAM和InnoDB的区别" class="headerlink" title="MyISAM和InnoDB的区别"></a><code>MyISAM</code>和<code>InnoDB</code>的区别</h3><ul>
+<li><p>存储文件不一样，<br>（frm、MYD、MYI)<br>(frm，ibd)</p>
+</li>
+<li><p><strong><code>InnoDB</code>支持事务、<code>MyISAM</code>不支持事务</strong><br><code>MyISAM</code>不支持事务（不需要增删改），存储历史数据，普通日志数据（对数据的重视程度）</p>
+</li>
+<li><p><code>InnoDB</code>支持外键、<code>MyISAM</code>不支持外键</p>
+</li>
+<li><p><code>InnoDB</code>支持表锁和行锁、<code>MyISAM</code>只支持表锁</p>
+</li>
+</ul>
+<h3 id="回表"><a href="#回表" class="headerlink" title="回表"></a>回表</h3><p>回表：我们去非主键索引树查找数据，但是找到的数据满足不了我们的需求，这个时候就要回到主键索引树查找数据，这个从非主键索引树，查到主键的值回到主键索引树查找我们需要的数据就是回表</p>
+<h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><p>查询只需要从索引中获取所需的数据，而不需要额外地回表（即访问主表）来获取其他字段的值，那么这个索引就是一个覆盖索引。这可以减少磁盘IO操作和数据的读取时间，从而提高查询性能。</p>
+<p>（就是说我们去数据库查询数据，在非主键索引树中的数据能满足我们的需求，不需要回表，这个索引是就是覆盖索引）</p>
+<blockquote>
+<p>举例：<code>select ID from T where k =3</code></p>
+<p>如果执行的语句是 这时只需要查 ID 的值，而 ID 的值已经在 k 索引树上了，因此可以直接提供查询结果，不需要回表。也就是说，在这个查询里面，索引 k 已经“覆盖了”我们的查询需求，我们称为<span style=color:yellow;background:red><strong>覆盖索引</strong></span>。由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。</p>
+</blockquote>
+<p>今后建议大家，不要写  select * from T where k&#x3D;3; 需要哪些列，你就把这些列，全部写出来。</p>
+<h3 id="索引语法"><a href="#索引语法" class="headerlink" title="索引语法"></a>索引语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询索引</span></span><br><span class="line"><span class="keyword">show</span> index <span class="keyword">from</span> table_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 建立索引（建表时建立）</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    age <span class="type">int</span>(<span class="number">10</span>),</span><br><span class="line">    gender <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- index 索引名字（列名）</span></span><br><span class="line">    <span class="comment">-- 下边时联合索引</span></span><br><span class="line">    <span class="comment">-- index 索引名（列明，列名）</span></span><br><span class="line">    index idx_name(name) [<span class="keyword">using</span> BTree]</span><br><span class="line">)ENGINE<span class="operator">=</span>InnoDB;</span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> index <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除索引</span></span><br><span class="line"><span class="comment">-- alter table table_name drop index index_name;</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">drop</span> index idx_name;</span><br><span class="line"><span class="comment">-- 添加索引</span></span><br><span class="line"><span class="comment">-- alter table table_name add index index_name(column_name);</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> index idx_name_agr(name,age)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>有时候发现一条SQL，特别慢，怎么办？</p>
+<p><code>select * from t where s = &#39;ee&#39;;</code></p>
+<p>第一步：</p>
+<p>检查SQL写的有没有问题，Where里边有没有索引，如果有尝试改造SQL，（看能不能用覆盖索引，减少回表）</p>
+<p>如果 条件没办法动，尝试建索引</p>
+<p>explain 命令可以看查询的过程，查询中是否用了索引（待补充）</p>
+<p><code>select * from t where k=5 and s = &#39;ee&#39;;</code></p>
+<h3 id="索引面试题"><a href="#索引面试题" class="headerlink" title="索引面试题"></a>索引面试题</h3><ol>
+<li><p>索引采用的是什么数据结构？为什么采用这种数据结构<br>B+树。列举一下其他的数据结构，对比一下。</p>
+</li>
+<li><p>数据库为什么推荐使用自定义主键，并且在MySQL中使用推荐使用主键自增的策略？</p>
+<ul>
+<li><p>自定义主键：Mysql默认使用的时InnoDB存储引擎，那么InnoDB存储引擎存储数据必须有主键索引树，所以即便我们不指定主键，那么InnoDB也会自己创建一个隐藏的主键，与其让它自己创建一个我们无法使用的隐藏主键，还不如我们自己指定一个主键，可以使用，不至于去浪费主键索引树带来的索引性能，所以推荐自定义主键。</p>
+</li>
+<li><p>自增策略：</p>
+<p>因为自增的策略，在插入时，永远只会插入到索引树的右侧，这样可以保证树的结构不会发生很大的改变，如果我们不适用这个自增策略的话，会使主键索引树的结构发生很大变化，而结构的改变是需要消耗时间的，所以这样能够确保插入的效率会比较稳定。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">creat <span class="keyword">table</span> student(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line">    </span><br><span class="line">    creat_time <span class="type">timestamp</span> <span class="keyword">default</span> curent_timestamp;</span><br><span class="line">    update_time <span class="type">timestamp</span> <span class="keyword">default</span> <span class="built_in">current_timestamp</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="built_in">current_timestamp</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>InnoDB和MyISAM有什么区别？什么情况下使用MyISAM？ </p>
+</li>
+<li><p>什么是回表，如何避免</p>
+<blockquote>
+<p>回表：在一次查询中，假如需要先根据非主键索引树查询主键值，然后再根据主键值查询主键索引树，这种查询了两遍索引树的情况，叫做回表。</p>
+</blockquote>
+<p>避免回表方法：</p>
+<ul>
+<li><p>尽量使用主键查询</p>
+</li>
+<li><p>尽量避免写 select *</p>
+</li>
+<li><p>可以考虑使用联合索引.多个列创建一个索引。</p>
+</li>
+</ul>
+</li>
+<li><p>索引性能这么好，是不是一个表建立的索引越多越好？</p>
+<blockquote>
+<p>不是。</p>
+<ol>
+<li>声明一个索引列，需要建立一个索引树，需要占用空间</li>
+<li>假如声明的索引变多了之后，对应的索引树也会变多，查询的效率固然会提升，但是增删改的时候要去改变数据，改变数据势必会改变索引树的结构，维护这些索引树的成本也就提升了，增删改的效率也就降低了。</li>
+</ol>
+<p>那么一般针对一个表，建立几个索引比较合适呢？通常默认为一个表建立的索引不要超过5个。</p>
+</blockquote>
+</li>
+<li><p>什么样子的列适合当索引</p>
+<blockquote>
+<ul>
+<li><p>数据不重复出现的</p>
+</li>
+<li><p>值尽量不为空的（null）</p>
+</li>
+<li><p>业务场景中查询条件比较多的</p>
+</li>
+<li><p>这一列的值不经常变化的</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+	
+	 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+   </div>
+ 
+	
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>染星辰
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/08/20/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" title="索引、数据库的存储结构、存储引擎">http://example.com/2023/08/20/索引、数据库的存储结构、存储引擎/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag"># 索引</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/" rel="prev" title="池化思想">
+                  <i class="fa fa-angle-left"></i> 池化思想
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81ODg4OS8zNTM1MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">染星辰</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div> -->
+
+
+
+
+
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
