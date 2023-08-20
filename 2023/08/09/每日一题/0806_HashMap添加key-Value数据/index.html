@@ -119,6 +119,8 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="染星辰"
+      src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">染星辰</p>
   <div class="site-description" itemprop="description">一生温暖纯良，不舍爱与自由</div>
 </div>
@@ -126,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -142,6 +144,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/2041027740" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2041027740" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -308,7 +315,7 @@
 
 
 
-    <div class="comments gitalk-container"></div>
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81ODg4OS8zNTM1MQ=="></div>
 </div>
   </main>
 
@@ -341,8 +348,10 @@
       </span>
     </span>
 </div>
+
+<!--
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
+  </div> -->
 
 
 
@@ -410,10 +419,7 @@ $(document).ready(function() {
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
-
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"mint":true,"count":true,"github_id":2041027740,"repo":"BlogComent","client_id":"f2ff4a8f131603ef550c","client_secret":"54a15181b18442103a74b74a34f233a8034c184e","admin_user":2041027740,"distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4edc6ea3d729901e57680b25379db583"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script src="/js/third-party/comments/livere.js"></script>
 
 </body>
 </html>
