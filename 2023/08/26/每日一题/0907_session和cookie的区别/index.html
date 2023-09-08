@@ -19,28 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="金鳞岂是池中物 一遇风云便化龙。">
+    <meta name="description" content="未来的路就在脚下，不要悲伤不要害怕，充满信心期盼着明天。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="池化思想">
-<meta property="og:url" content="http://example.com/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/index.html">
+<meta property="og:title" content="session和cookie的区别">
+<meta property="og:url" content="http://example.com/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="星辰可染呀">
-<meta property="og:description" content="金鳞岂是池中物 一遇风云便化龙。">
+<meta property="og:description" content="未来的路就在脚下，不要悲伤不要害怕，充满信心期盼着明天。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-19T00:34:29.000Z">
-<meta property="article:modified_time" content="2023-08-23T05:21:54.997Z">
+<meta property="article:published_time" content="2023-08-26T06:50:58.234Z">
+<meta property="article:modified_time" content="2023-09-08T06:07:12.820Z">
 <meta property="article:author" content="染星辰">
-<meta property="article:tag" content="池化思想">
+<meta property="article:tag" content="session和cookie">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/">
+<link rel="canonical" href="http://example.com/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/","path":"2023/08/19/每日一题/0818池化思想/","title":"池化思想"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/","path":"2023/08/26/每日一题/0907_session和cookie的区别/","title":"session和cookie的区别"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>池化思想 | 星辰可染呀</title>
+<title>session和cookie的区别 | 星辰可染呀</title>
   
 
 
@@ -100,7 +100,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -113,6 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%B3%E7%90%86%E4%B8%BB%E7%BA%BF%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">梳理主线：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">cookie和session的区别</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -170,7 +171,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,12 +184,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="池化思想 | 星辰可染呀">
-      <meta itemprop="description" content="金鳞岂是池中物 一遇风云便化龙。">
+      <meta itemprop="name" content="session和cookie的区别 | 星辰可染呀">
+      <meta itemprop="description" content="未来的路就在脚下，不要悲伤不要害怕，充满信心期盼着明天。">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          池化思想
+          session和cookie的区别
         </h1>
 
         <div class="post-meta-container">
@@ -199,14 +200,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-08-19 08:34:29" itemprop="dateCreated datePublished" datetime="2023-08-19T08:34:29+08:00">2023-08-19</time>
+      <time title="创建时间：2023-08-26 14:50:58" itemprop="dateCreated datePublished" datetime="2023-08-26T14:50:58+08:00">2023-08-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-23 13:21:54" itemprop="dateModified" datetime="2023-08-23T13:21:54+08:00">2023-08-23</time>
+      <time title="修改时间：2023-09-08 14:07:12" itemprop="dateModified" datetime="2023-09-08T14:07:12+08:00">2023-09-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -228,30 +229,34 @@
     </span>
 </div>
 
-            <div class="post-description">金鳞岂是池中物 一遇风云便化龙。</div>
+            <div class="post-description">未来的路就在脚下，不要悲伤不要害怕，充满信心期盼着明天。</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>池化技术、池化思想：</p>
-<ul>
-<li><p>池化技术是一种常见的资源管理技术，它可以通过预先创建和维护一定量的资源实例来提高系统的性能和可靠性</p>
-</li>
-<li><p>池化技术是一种常见的资源管理技术，通过事先创建和维护一定的资源实例，等需要用这个资源就直接拿来用而不是你要用资源就去创建，这样就限制了资源实例的数量，避免过多的实例占用系统资源，节约了资源，用完之后把这个资源实例还回去，</p>
-</li>
-</ul>
-<p> 这样以来就不用的频繁去创建资源和销毁资源，提高了性能，</p>
-<p> 同时池化技术通过实时监控资源实例的状态，如果资源实例异常，池化技术会自动将其标记为无效实例，并重新创建新的实例，如果已达上限，之后的服务就拒绝。这样可以提高系统的可靠性和稳定性。</p>
-<p> 池化技术也可以通过配置文件或代码来管理资源实例，减少了资源管理的复杂性。</p>
-<p> 总之，池化技术是一种非常有用的技术，可以提高系统的性能、可靠性、节约资源和简化开发。在高并发、大数据量的应用场景下，使用池化技术可以发挥更加显著的优势。常见的池化技术包括连接池、线程池、对象池等。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="梳理主线："><a href="#梳理主线：" class="headerlink" title="梳理主线："></a>梳理主线：</h2><blockquote>
 <ol>
-<li>节约资源：池化技术可以限制资源实例的数量，避免过多的实例占用系统资源。</li>
-<li>提高性能：避免频繁创建和销毁资源</li>
-<li>提高可靠性：池化技术可以实时监控资源实例的状态，如果资源实例异常或超出，池化技术会自动将其标记为无效实例，并重新创建新的实例。这样可以提高系统的可靠性和稳定性。已达上限，之后的服务就拒绝，</li>
-<li>简化开发：池化技术可以通过配置文件或代码来管理资源实例，使得开发人员可以更加方便地使用资源实例，减少了资源管理的复杂性。</li>
+<li>http是无状态的协议</li>
+<li>因为它的无状态性，所以无法维持会话，因为这个原因，我们引入了会话技术</li>
+<li>简单来说cookie和session，是存储了一些信息，可以识别到发送的请求来自谁。</li>
+<li>他们二者的区别在于，cookie是客户端技术，它把信息以键值对的形式存储再浏览器，类型是string类型的，在cookie的使用，session是服务端技术，所以存储信息的大小，用session存储的信息格式，是不是敏感信息，能不能够跨应用</li>
 </ol>
+</blockquote>
+<h2 id="cookie和session的区别"><a href="#cookie和session的区别" class="headerlink" title="cookie和session的区别"></a>cookie和session的区别</h2><p>谈到cookie和session,我们不得不说一下引用的原因，由于Http它是无状态的协议，所以每个http的请求都是独立的，这就导至了一个问题，我想要维持一个会话的话，需要将上次发送的请求在下一次请求中携带，这就导致了维持一次会话的代价很高，为了解决这个问题，引入了这个会话技术session和cookie</p>
+<ul>
+<li>其中cookie是客户端技术，它将客户的一些信息以键值对的形式，存储在浏览器的缓存中，存储的大小是由限度的，只能存储几kb，存储的类型是String</li>
+<li>session是服务端技术，它存储是以键值对的形式，存储在服务器中，所以他的存储是受服务器存储容量限制，所以可以存放大量信息，存储的类型是，以object的类型存储在Map中</li>
+</ul>
+<p>cookie和session的传输过程</p>
+<ul>
+<li>对于这个cookie，在每次发送请求的时候，会将存在浏览器缓存中的一些cookie信息，在请求头中携带（所以说它的存储大小是受限制的），服务器可以通过这个信息来确定是来自于那个客户端的吗，这样就可以保持这种对话，但由于cookie会在请求头中携带，所以安全性不高，很容易被人给抓包抓到，所以，一般不用来存储一些敏感的信息。</li>
+<li>存储一些敏感的信息，可以用session，session它其实是基于cookie的，会把该用户的信息存储到session中，并生成一个sessionID,返回给浏览器，cookie会存储这个sessionID 用来维持会话</li>
+<li>“存储一些敏感的信息时，可以使用Session。我们举一个用户登录的例子来说一下session的作用过程，用户在浏览器输入用户名和密码，通过请求报文发送到服务器，服务器对去数据库中进行数据的查找，如果用户名和密码正确，Session会在用户成功登录后，将用户相关的数据存储在服务器端，并生成一个Session ID。服务器会将这个Session ID封装在响应报文中返回给浏览器。而这个Session ID 通常会被存储在Cookie中，以维持用户的会话状态。”</li>
+<li>cookie它是可以跨引用的，存储cookie是使用的ConcrumentHashMap它是线程安全的，而sessions是不能够跨应用的，只能在本应用使用。如果session想要跨应用需要进行一些特殊的处理，比如将Session数据存储在持久化存储（如数据库）中，以实现可伸缩性和持久性。</li>
+<li>Session数据通常在用户关闭浏览器后被删除，或者在一定时间内处于非活动状态后被删除。它们的持久性通常由服务器的配置来控制。而cookie的数据可以设置过期时间时间到了对cookie进行清楚，如果没有设置的话，关闭浏览器后数据就会被删除</li>
+</ul>
 
     </div>
 
@@ -280,7 +285,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/" title="池化思想">http://example.com/2023/08/19/每日一题/0818池化思想/</a>
+      <a href="http://example.com/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/" title="session和cookie的区别">http://example.com/2023/08/26/每日一题/0907_session和cookie的区别/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -289,20 +294,20 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/" rel="tag"># 池化思想</a>
+              <a href="/tags/session%E5%92%8Ccookie/" rel="tag"># session和cookie</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" rel="prev" title="连接池">
-                  <i class="fa fa-angle-left"></i> 连接池
+                <a href="/2023/08/25/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0825_TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC/" rel="prev" title="TCP和UDP">
+                  <i class="fa fa-angle-left"></i> TCP和UDP
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/08/20/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="next" title="索引、数据库的存储结构、存储引擎">
-                  索引、数据库的存储结构、存储引擎 <i class="fa fa-angle-right"></i>
+                <a href="/2023/09/08/%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/" rel="next" title="管理员账户修改">
+                  管理员账户修改 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
