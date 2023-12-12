@@ -124,18 +124,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -166,7 +166,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/08/%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/02/Java_%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -184,7 +184,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/09/08/%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">管理员账户修改</a>
+          <a href="/2023/11/02/Java_%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta-container">
@@ -194,18 +194,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-09-08 14:20:46 / 修改时间：14:20:55" itemprop="dateCreated datePublished" datetime="2023-09-08T14:20:46+08:00">2023-09-08</time>
+      <time title="创建时间：2023-11-02 11:50:18" itemprop="dateCreated datePublished" datetime="2023-11-02T11:50:18+08:00">2023-11-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
+        <i class="far fa-calendar-check"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%97%AE%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">问题</span></a>
-        </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-04 21:16:29" itemprop="dateModified" datetime="2023-10-04T21:16:29+08:00">2023-10-04</time>
     </span>
 
   
@@ -218,15 +215,167 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>有意思。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/09/08/%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="Java线程池详解与使用"><a href="#Java线程池详解与使用" class="headerlink" title="Java线程池详解与使用"></a>Java线程池详解与使用</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在并发处理任务时，使用多线程技术是一种常见的方法。通常情况下，我们会通过<code>new Thread()</code>来创建新线程来实现并发执行任务。然而，这种方法存在一些弊端：</p>
+<ul>
+<li>频繁创建和销毁线程会耗费性能和资源。</li>
+<li>新线程创建后可能仅执行一些简单任务后就销毁，无法复用。</li>
+<li>大量任务短时间内到达时，线程的大规模创建可能导致性能瓶颈、资源占用过多或内存溢出等问题，降低系统稳定性。</li>
+</ul>
+<p>为了解决这些问题，通常会使用线程池。线程池具有以下好处：</p>
+<ul>
+<li>降低系统资源消耗。</li>
+<li>提高系统响应速度。</li>
+<li>方便线程管理。</li>
+</ul>
+<p>Java中有多种创建和使用线程池的方法，主要有以下三种：</p>
+<ol>
+<li>使用Java标准库中<code>java.util.concurrent.Executors</code>工厂类。</li>
+<li>直接使用<code>ThreadPoolExecutor</code>类。</li>
+<li>使用Spring框架封装的线程池，底层也是对 <code>ThreadPoolExecutor</code> 的封装。</li>
+</ol>
+<h2 id="Java线程池的核心参数"><a href="#Java线程池的核心参数" class="headerlink" title="Java线程池的核心参数"></a>Java线程池的核心参数</h2><p>在线程池创建时，需要指定一些关键参数，共有七个参数：</p>
+<ol>
+<li><p><code>corePoolSize</code>：核心线程数，线程池中一直存在的线程数量。</p>
+</li>
+<li><p><code>maximumPoolSize</code>：最大线程数，线程池允许的最大线程数量。</p>
+</li>
+<li><p><code>keepAliveTime</code>：空闲线程存活时间，即线程在空闲一段时间后会被回收。</p>
+</li>
+<li><p><code>TimeUnit</code>：时间单位，表示<code>keepAliveTime</code>的时间单位。</p>
+<blockquote>
+<p>枚举类型。通常取值：</p>
+<ul>
+<li><code>TimeUnit.NANOSECONDS;</code> 纳秒</li>
+<li><code>TimeUnit.MICROSECONDS;</code> 微秒</li>
+<li><code>TimeUnit.MILLISECONDS;</code> 毫秒</li>
+<li><code>TimeUnit.SECONDS;</code> 秒</li>
+<li><code>TimeUnit.MINUTES;</code> 分</li>
+<li><code>TimeUnit.HOURS;</code> 时</li>
+<li><code>TimeUnit.DAYS;</code> 天</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>BlockingQueue</code>：线程池任务队列，用于存储等待执行的任务。</p>
+<blockquote>
+<p>当线程池中的线程都在忙碌时，新提交的任务会被放入队列中等待执行。可传的值可以是不同类型的阻塞队列：</p>
+<ul>
+<li><code>new ArrayBlockingQueue&lt;Runnable/Callable&gt;():</code> <code>ArrayBlockingQueue</code>, 一个由数组结构组成的<strong>有界阻塞队列</strong>。</li>
+<li><code>new LinkedBlockingQueue&lt;Runnable/Callable&gt;(): ``LinkedBlockingQueue</code>, 一个由链表结构组成的<strong>有界阻塞队列</strong>。</li>
+<li><code>new SynchronousQueue&lt;Runnable/Callable&gt;():</code> <code>SynchronousQueue</code>, 一个不存储元素的阻塞队列，即直接提交给线程不保持它们。</li>
+<li><code>new PriorityBlockingQueue&lt;Runnable/Callable&gt;():</code> <code>PriorityBlockingQueue</code>, 一个支持优先级排序的<strong>无界阻塞队列</strong>。</li>
+<li><code>new DelayQueue&lt;Runnable/Callable&gt;():</code> <code>DelayQueue</code>：一个使用优先级队列实现的<strong>无界阻塞队列</strong>，只有在延迟期满时才能从中提取元素。</li>
+<li><code>new LinkedTransferQueue&lt;Runnable/Callable&gt;():</code> <code>LinkedTransferQueue</code>, 一个由链表结构组成的<strong>无界阻塞队列</strong>。与 <code>SynchronousQueue</code> 类似，还含有非阻塞方法。</li>
+<li><code>new LinkedBlockingDeque&lt;Runnable/Callable&gt;():</code> <code>LinkedBlockingDeque</code>, 一个由链表结构组成的<strong>双向阻塞队列</strong>。</li>
+</ul>
+<p>比较常用的是 <code>LinkedBlockingQueue</code>，线程池的排队策略和 <code>BlockingQueue</code> 息息相关。</p>
+</blockquote>
+</li>
+<li><p><code>ThreadFactory</code>：创建线程的工厂。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义线程工厂类</span></span><br><span class="line"><span class="comment">//实现ThreadFactory接口，并重写里面的newThread方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThreadFactory</span> <span class="keyword">implements</span> <span class="title class_">ThreadFactory</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Thread <span class="title function_">newThread</span><span class="params">(Runnable r)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建并返回自定义的线程对象</span></span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置线程名称</span></span><br><span class="line">        thread.setName(<span class="string">&quot;Thread-&quot;</span> + r.hashCode());</span><br><span class="line">        <span class="comment">// 设置线程优先级（最大值：10）</span></span><br><span class="line">       thread.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">        <span class="comment">// 设置线程的守护状态</span></span><br><span class="line">        thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 返回新线程</span></span><br><span class="line">        <span class="keyword">return</span> thread;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者使用lambda表达式完成传参</span></span><br><span class="line"><span class="type">ThreadPoolExecutor</span> <span class="variable">threadPoolExecutor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">3000l</span>, TimeUnit.SECONDS, <span class="keyword">new</span> <span class="title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="number">200</span>), r -&gt; &#123;</span><br><span class="line">         <span class="comment">// 创建并返回自定义的线程对象</span></span><br><span class="line">         <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r);</span><br><span class="line">         <span class="comment">// 设置线程名称</span></span><br><span class="line">         thread.setName(<span class="string">&quot;Thread-&quot;</span> + r.hashCode());</span><br><span class="line">         <span class="comment">// 设置线程优先级（最大值：10）</span></span><br><span class="line">         thread.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">         <span class="comment">// 设置线程的守护状态</span></span><br><span class="line">         thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">         <span class="comment">// 返回新线程</span></span><br><span class="line">         <span class="keyword">return</span> thread;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><code>RejectedExecutionHandler</code>：拒绝策略，定义当线程池无法接受新任务时应采取的策略。</p>
+<blockquote>
+<p>这个参数用于定义在出现这种情况时应采取的策略。可传的值通常是预定义的策略，如：</p>
+<ul>
+<li><code>ThreadPoolExecutor.AbortPolicy</code>：拒绝并抛出异常。(默认为这种)</li>
+<li><code>ThreadPoolExecutor.CallerRunsPolicy</code>：使用当前调用的线程来执行此任务。</li>
+<li><code>ThreadPoolExecutor.DiscardOldestPolicy</code>：抛弃队列头部（最旧）的一个任务，并执行当前任务。</li>
+<li><code>ThreadPoolExecutor.DiscardPolicy</code>：忽略并抛弃当前任务。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="创建线程池的三种方式"><a href="#创建线程池的三种方式" class="headerlink" title="创建线程池的三种方式"></a>创建线程池的三种方式</h2><h3 id="1-使用java-util-concurrent-Executors工厂类"><a href="#1-使用java-util-concurrent-Executors工厂类" class="headerlink" title="1. 使用java.util.concurrent.Executors工厂类"></a>1. 使用<code>java.util.concurrent.Executors</code>工厂类</h3><p>Java标准库提供了一些静态方法来创建常见类型的线程池，包括：</p>
+<ul>
+<li><p><code>newCachedThreadPool()</code>：创建一个可根据需要自动扩展的线程池。</p>
+<blockquote>
+<p>特点:</p>
+<ol>
+<li>维护了一个可自动扩容的线程容器，每当需要执行一个新任务时，有活跃的线程就使用该线程，否则就新建一条线程。</li>
+<li>线程池的最大线程数为Integer.MAX_VALUE，基本上不受限制。</li>
+<li>使用完毕后的线程会回归线程池，如果这个线程在60秒之后依旧空闲，那么就会被移除</li>
+<li>线程池初始线程个数为0</li>
+</ol>
+<p>适用于线程生命周期短且频繁创建的场景</p>
+</blockquote>
+</li>
+<li><p><code>newFixedThreadPool(int nThreads)</code>：创建一个固定线程数量的线程池。</p>
+<blockquote>
+<p>特点:</p>
+<ol>
+<li>创建一个固定线程数量的线程池，在整个线程池的生命周期中，线程池中的数量不会变化</li>
+<li>维护一个无界队列（暂存已提交的来不及执行的任务）按照任务的提交顺序，将任务执行完毕</li>
+</ol>
+<p>这种类型的线程池适用于执行长时任务或需要限制并发数量的场景。</p>
+</blockquote>
+</li>
+<li><p><code>newSingleThreadExecutor()</code>：创建一个仅包含一个线程的线程池。</p>
+<blockquote>
+<p>特点:</p>
+<ol>
+<li>线程数量固定为1个，在整个线程池的生命周期中，线程池中的数量不会变化</li>
+<li>维护了一个无界队列（暂存已提交的来不及执行的任务）按照任务的提交顺序，将任务执行完毕</li>
+</ol>
+<p>这种类型的线程池适用于需要保证任务顺序执行，不需要同时执行的场景</p>
+</blockquote>
+</li>
+</ul>
+<p>其中无界队列指的是一个不确定长度的可自由扩容的队列，遵循” 先进先出” 的特点，理论上可以容量无限的任务。<br>使用以上方法就可以得到一个具有相应特点的线程池对象，具体情况使用哪个线程池要具体分析。<br>上面通过 <code>Executors</code> 创建的线程池，返回的是一个实现了 <code>ExecutorService</code> 接口的线程池，我们通常使用这个接口来承接返回的线程池，我们可以通过这个接口中的一系列方法来操作管理线程池，比如提交任务，关闭线程池等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//提交一个Runnable类型的任务(实现了Runnable接口，并重写了run方法的任务)，任务的执行没有返回值，可以不接返回值</span></span><br><span class="line">Future&lt;?&gt; submit(Runnable task);</span><br><span class="line"></span><br><span class="line"><span class="comment">//提交一个Callable类型的任务(实现了Callable接口，并重写而来call方法的任务)，任务的执行有返回值，返回值封装在一个Future&lt;T&gt;类型的值中，通过其中的get()方法获得</span></span><br><span class="line">Future&lt;T&gt; <span class="title function_">submit</span><span class="params">(Callable&lt;T&gt; task)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行完任务列表中所有已提交的任务，关闭线程池，不再接受新任务。</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">shutdown</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 立刻停止所有正在执行的活动任务，也不再处理任务列表中等待的任务，并直接返回等待执行的任务列表。</span></span><br><span class="line">List&lt;Runnable&gt; <span class="title function_">shutdownNow</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>阿里巴巴 <code>Java</code> 开发规范手册中，就明确禁止用这种方式来新建线程池。</p>
+</li>
+<li><p>主要原因：</p>
+<ul>
+<li><p>无界队列。<code>Executors.newFixedThreadPool</code> 固定容量线程池和 <code>Executors.newSingleThreadExecutor</code> 单个容量线程池都会创建一个无界的队列来支持任务提交。也就是说，只要不停的往线程池提交任务，这个任务队列就会不断变长。如果因一些意外问题导致任务处理速度完全跟不上提交速度，程序有堆溢出<code>（OutOfMemoryError）</code>的风险。</p>
+</li>
+<li><p>无限的线程对象。<code>Executors.newCachedThreadPool</code> 会创建一个线程数量可以无限制增长的线程池，实际上该线程池的线程容量最大值是 <code>Integer.MAX_VALUE</code>。这显然也是很有风险的事情，可能浪费大量线程资源，影响程序的效率。</p>
+</li>
+<li><p>配置不灵活：<code>Executors</code> 工具类提供的方法创建的线程池，其线程数、队列策略等参数都是固定的，无法根据系统的实际需要进行调整。实际上，线程池的配置应该根据硬件条件，实际任务需求等灵活调整。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-直接使用ThreadPoolExecutor类"><a href="#2-直接使用ThreadPoolExecutor类" class="headerlink" title="2. 直接使用ThreadPoolExecutor类"></a>2. 直接使用<code>ThreadPoolExecutor</code>类</h3><p>可以直接创建<code>ThreadPoolExecutor</code>对象，自定义线程池的参数，如<code>corePoolSize</code>、<code>maximumPoolSize</code>、<code>keepAliveTime</code>、<code>BlockingQueue</code>、<code>ThreadFactory</code>和<code>RejectedExecutionHandler</code>等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">javaCopy <span class="type">codeThreadPoolExecutor</span> <span class="variable">threadPoolExecutor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">    corePoolSize,</span><br><span class="line">    maximumPoolSize,</span><br><span class="line">    keepAliveTime,</span><br><span class="line">    TimeUnit,</span><br><span class="line">    BlockingQueue,</span><br><span class="line">    ThreadFactory,</span><br><span class="line">    RejectedExecutionHandler</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用ThreadPoolExecutor手动创建线程池，并提交任务</span></span><br><span class="line"><span class="type">ThreadPoolExecutor</span> <span class="variable">threadPoolExecutor1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(<span class="number">20</span>,</span><br><span class="line">             <span class="number">50</span>,</span><br><span class="line">             <span class="number">600L</span>,</span><br><span class="line">             TimeUnit.SECONDS,</span><br><span class="line">             <span class="keyword">new</span> <span class="title class_">LinkedBlockingDeque</span>&lt;&gt;(<span class="number">200</span>),</span><br><span class="line">             r -&gt; &#123;</span><br><span class="line">                 <span class="comment">// 创建并返回自定义的线程对象</span></span><br><span class="line">                 <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r);</span><br><span class="line">                 <span class="comment">// 设置线程名称</span></span><br><span class="line">                 thread.setName(<span class="string">&quot;Thread-&quot;</span> + r.hashCode());</span><br><span class="line">                 <span class="comment">// 设置线程优先级（最大值：10）</span></span><br><span class="line">                 thread.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">                 <span class="comment">// 设置线程的守护状态</span></span><br><span class="line">                 thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">                 <span class="comment">// 返回新线程</span></span><br><span class="line">                 <span class="keyword">return</span> thread;</span><br><span class="line">             &#125;,</span><br><span class="line">             <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.AbortPolicy());</span><br><span class="line">             </span><br><span class="line">     <span class="comment">//提交任务</span></span><br><span class="line">     <span class="comment">//提交Runnable任务</span></span><br><span class="line">     threadPoolExecutor1.submit(() -&gt; System.out.println(<span class="string">&quot;你好朋友！&quot;</span>));</span><br><span class="line">     <span class="comment">//提交Callable任务</span></span><br><span class="line">     System.out.println(threadPoolExecutor1.submit(() -&gt; <span class="string">&quot;你好呀朋友！！&quot;</span>).get());</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-使用Spring框架封装的线程池"><a href="#3-使用Spring框架封装的线程池" class="headerlink" title="3. 使用Spring框架封装的线程池"></a>3. 使用Spring框架封装的线程池</h3><p><code>Spring</code> 框架也基于 <code>ThreadPoolExecutor</code> 封装了一个线程池，在 <code>Spring</code> 框架的应用中的使用上更加简便。</p>
+<h4 id="使用默认线程池"><a href="#使用默认线程池" class="headerlink" title="使用默认线程池"></a>使用默认线程池</h4><ol>
+<li>在启动类上添加<code>@EnableAsync</code>注解。</li>
+<li>在需要异步处理的方法上添加<code>@Async</code>注解。</li>
+<li>注入<code>ThreadPoolTaskExecutor</code>组件，该组件是 <code>Spring</code> 框架在加载容器的时候自动创建并注册到容器中的，可直接使用它往Spring默认的线程池中提交任务。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadPoolApplicationTestsServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">ThreadPoolApplicationTestsService</span> &#123;</span><br><span class="line">    <span class="comment">//直接注入即可使用</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    ThreadPoolTaskExecutor threadPoolTaskExecutor;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="comment">//往Spring自带的线程池中提交任务，获得返回结果，并打印</span></span><br><span class="line">        System.out.println(threadPoolTaskExecutor.submit(() -&gt; <span class="string">&quot;你好呀小朋友！！&quot;</span>);</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        <span class="comment">//往Spring自带的线程池中提交任务，获得返回结果，并打印</span></span><br><span class="line">        System.out.println(threadPoolTaskExecutor.submit(() -&gt; <span class="string">&quot;你好呀大朋友！！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h4><p>利用 <code>SpringBoot</code> 的自动装配的功能，配置一个自定义的线程池，并注册到容器中，供其他的组件注入使用。</p>
+<ol>
+<li><p>在配置文件中配置线程池的参数。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  task.pool.corePoolSize=50</span></span><br><span class="line"><span class="comment">#  task.pool.maxPoolSize=100</span></span><br><span class="line"><span class="comment">#  task.pool.keepAliveSeconds=3000</span></span><br><span class="line"><span class="comment">#  task.pool.queueCapacity=100</span></span><br><span class="line"><span class="attr">task:</span></span><br><span class="line">  <span class="attr">pool:</span></span><br><span class="line">    <span class="attr">core-size:</span> <span class="number">50</span></span><br><span class="line">    <span class="attr">max-size:</span> <span class="number">100</span></span><br><span class="line">    <span class="attr">keep-alive:</span> <span class="number">3000</span></span><br><span class="line">    <span class="attr">queue-capacity:</span> <span class="number">100</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个读取配置文件中参数的配置类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tzjw.marketweixin.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 线程池参数类</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> 2023/09/21 09:55</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;task.pool&quot;)</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolProperties</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> coreSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> maxSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> keepAlive;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> queueCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个线程池配置类，修改默认线程池的配置，将自定义的线程池注册到容器中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tzjw.marketweixin.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.AsyncConfigurer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.EnableAsync;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executor;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ThreadPoolExecutor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 线程池配置类</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> 2023/09/21 09:59</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(ThreadPoolProperties.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TaskExecutePool</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ThreadPoolProperties threadPoolProperties;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 修改默认线程池的配置,将自定义的线程池注册到容器中</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ThreadPoolTaskExecutor</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     <span class="meta">@Bean</span></span><br><span class="line">     <span class="keyword">public</span> ThreadPoolTaskExecutor <span class="title function_">myThreadPoolTaskExecutor</span><span class="params">()</span> &#123;</span><br><span class="line">         <span class="type">ThreadPoolTaskExecutor</span> <span class="variable">executor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolTaskExecutor</span>();</span><br><span class="line">         <span class="comment">// 核心线程数</span></span><br><span class="line">         executor.setCorePoolSize(threadPoolProperties.getCoreSize());</span><br><span class="line">         <span class="comment">// 最大线程数</span></span><br><span class="line">         executor.setMaxPoolSize(threadPoolProperties.getMaxSize());</span><br><span class="line">         <span class="comment">// 非核心线程活跃时间</span></span><br><span class="line">         executor.setKeepAliveSeconds(threadPoolProperties.getKeepAlive());</span><br><span class="line">         <span class="comment">// 队列容量</span></span><br><span class="line">         executor.setQueueCapacity(threadPoolProperties.getQueueCapacity());</span><br><span class="line">         <span class="comment">// 设置线程的前缀名</span></span><br><span class="line">         executor.setThreadNamePrefix(<span class="string">&quot;market&quot;</span>);</span><br><span class="line">         <span class="comment">// 设置拒绝策略</span></span><br><span class="line">         executor.setRejectedExecutionHandler(<span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.CallerRunsPolicy());</span><br><span class="line">         <span class="comment">// 是否在任务执行完后关闭线程池</span></span><br><span class="line">         executor.setWaitForTasksToCompleteOnShutdown(<span class="literal">false</span>);</span><br><span class="line">         <span class="comment">//初始化</span></span><br><span class="line">         executor.initialize();</span><br><span class="line">         <span class="keyword">return</span> executor;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了方便往线程池中提交任务，我们还可以写一个工具类，注册到容器中，简化提交任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tzjw.marketweixin.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.tzjw.marketweixin.config.TaskExecutePool;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.SneakyThrows;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.task.TaskExecutor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.Async;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.AsyncResult;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Callable;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Future;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 使用线程池的工具类</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> 2023/09/21 10:25</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringThreadPoolUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   ThreadPoolTaskExecutor taskExecutor;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 往线程池中提交任务</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> task</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> java.util.concurrent.Future&lt;T&gt;</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span> 2023/09/21 16:46</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; Future&lt;T&gt; <span class="title function_">submitTask</span><span class="params">(Callable&lt;T&gt; task)</span> &#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> taskExecutor.submit(task);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;Error submitting task to the thread pool.&quot;</span>, e);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过上面的封装之后，我们后续只需要在项目中引入 <code>SpringThreadPoolUtil</code> 这个组件，调用其中的 <code>submitTask</code> 方法，传入一个 <code>Callable</code> 类型的任务就可以向线程池中提交任务，并获得返回值。具体的使用实例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HomeIndexServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">HomeIndexService</span> &#123;</span><br><span class="line">   <span class="comment">//注入工具类对象</span></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   SpringThreadPoolUtil springThreadPoolUtil;</span><br><span class="line">      </span><br><span class="line">   <span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title function_">getIndexData</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="comment">// 使用线程池提交数据库查询任务</span></span><br><span class="line">       Future&lt;List&gt; adFuture = springThreadPoolUtil.submitTask(() -&gt; &#123;</span><br><span class="line">           <span class="type">MarketAdExample</span> <span class="variable">marketAdExample</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MarketAdExample</span>();</span><br><span class="line">           marketAdExample.setOrderByClause(<span class="string">&quot;add_time desc&quot;</span>);</span><br><span class="line">           marketAdExample.createCriteria().andDeletedEqualTo(<span class="literal">false</span>);</span><br><span class="line">           <span class="keyword">return</span> marketAdMapper.selectByExample(<span class="keyword">new</span> <span class="title class_">MarketAdExample</span>());</span><br><span class="line">       &#125;); </span><br><span class="line">       <span class="comment">//解析</span></span><br><span class="line">       List&lt;MarketAd&gt; = adFuture.get();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用线程池的工具类"><a href="#使用线程池的工具类" class="headerlink" title="使用线程池的工具类"></a>使用线程池的工具类</h2><p>为了更方便地向线程池提交任务，可以创建一个工具类，将线程池的提交任务操作封装起来。下面是一个示例工具类的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">javaCopy code@Component</span><br><span class="line">public class SpringThreadPoolUtil &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    ThreadPoolTaskExecutor taskExecutor;</span><br><span class="line"></span><br><span class="line">    public &lt;T&gt; Future&lt;T&gt; submitTask(Callable&lt;T&gt; task) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            return taskExecutor.submit(task);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            throw new RuntimeException(&quot;Error submitting task to the thread pool.&quot;, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过上述工具类，可以在业务代码中轻松地往线程池中提交任务，并获得返回值，实现并行处理任务。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用线程池是提高并发处理性能和资源利用率的重要方法之一。本文介绍了Java线程池的核心参数、创建线程池的三种方式以及Spring框架中的线程池使用方法。选择合适的线程池类型和配置参数可以更好地满足不同应用场景的需求，提高系统的稳定性和性能。</p>
+<p>希望本文对你理解和使用Java线程池有所帮助！</p>
+
       
     </div>
 
@@ -255,7 +404,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/09/%E6%8A%80%E6%9C%AF/00_06_MinIo%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -273,7 +422,151 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">session和cookie的区别</a>
+          <a href="/2023/10/09/%E6%8A%80%E6%9C%AF/00_06_MinIo%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-09 09:31:55 / 修改时间：09:04:26" itemprop="dateCreated datePublished" datetime="2023-10-09T09:31:55+08:00">2023-10-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+	
+	 
+	
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/09/%E6%8A%80%E6%9C%AF/00_01_Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 星辰可染呀">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/09/%E6%8A%80%E6%9C%AF/00_01_Linux/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-09 09:05:03 / 修改时间：09:04:26" itemprop="dateCreated datePublished" datetime="2023-10-09T09:05:03+08:00">2023-10-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+	
+	 
+	
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/09/%E6%8A%80%E6%9C%AF/00_03_Docker%E5%AE%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 星辰可染呀">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/09/%E6%8A%80%E6%9C%AF/00_03_Docker%E5%AE%B9%E5%99%A8/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta-container">
@@ -284,7 +577,78 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-08-26 14:50:58" itemprop="dateCreated datePublished" datetime="2023-08-26T14:50:58+08:00">2023-08-26</time>
+      <time title="创建时间：2023-10-09 09:04:26" itemprop="dateCreated datePublished" datetime="2023-10-09T09:04:26+08:00">2023-10-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+	
+	 
+	
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/07/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 星辰可染呀">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/07/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC/" class="post-title-link" itemprop="url">session和cookie的区别</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-07 20:18:13" itemprop="dateCreated datePublished" datetime="2023-10-07T20:18:13+08:00">2023-10-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -316,7 +680,7 @@
           <p>未来的路就在脚下，不要悲伤不要害怕，充满信心期盼着明天。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/08/26/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB/">
+              <a class="btn" href="/2023/10/07/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0907_session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -350,7 +714,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/25/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0825_TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/04/Java_%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -368,7 +732,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/25/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0825_TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC/" class="post-title-link" itemprop="url">TCP和UDP</a>
+          <a href="/2023/10/04/Java_%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta-container">
@@ -379,14 +743,769 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-08-25 08:34:29" itemprop="dateCreated datePublished" datetime="2023-08-25T08:34:29+08:00">2023-08-25</time>
+      <time title="创建时间：2023-10-04 21:17:35" itemprop="dateCreated datePublished" datetime="2023-10-04T21:17:35+08:00">2023-10-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-26 15:18:58" itemprop="dateModified" datetime="2023-08-26T15:18:58+08:00">2023-08-26</time>
+      <time title="修改时间：2023-11-02 13:14:49" itemprop="dateModified" datetime="2023-11-02T13:14:49+08:00">2023-11-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Java线程池详解与使用"><a href="#Java线程池详解与使用" class="headerlink" title="Java线程池详解与使用"></a>Java线程池详解与使用</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在并发处理任务时，使用多线程技术是一种常见的方法。通常情况下，我们会通过<code>new Thread()</code>来创建新线程来实现并发执行任务。然而，这种方法存在一些弊端：</p>
+<ul>
+<li>频繁创建和销毁线程会耗费性能和资源。</li>
+<li>新线程创建后可能仅执行一些简单任务后就销毁，无法复用。</li>
+<li>大量任务短时间内到达时，线程的大规模创建可能导致性能瓶颈、资源占用过多或内存溢出等问题，降低系统稳定性。</li>
+</ul>
+<p>为了解决这些问题，通常会使用线程池。线程池具有以下好处：</p>
+<ul>
+<li>降低系统资源消耗。</li>
+<li>提高系统响应速度。</li>
+<li>方便线程管理。</li>
+</ul>
+<p>Java中有多种创建和使用线程池的方法，主要有以下三种：</p>
+<ol>
+<li>使用Java标准库中<code>java.util.concurrent.Executors</code>工厂类。</li>
+<li>直接使用<code>ThreadPoolExecutor</code>类。</li>
+<li>使用Spring框架封装的线程池，底层也是对 <code>ThreadPoolExecutor</code> 的封装。</li>
+</ol>
+<h2 id="Java线程池的核心参数"><a href="#Java线程池的核心参数" class="headerlink" title="Java线程池的核心参数"></a>Java线程池的核心参数</h2><p>在线程池创建时，需要指定一些关键参数，共有七个参数：</p>
+<ol>
+<li><p><code>corePoolSize</code>：核心线程数，线程池中一直存在的线程数量。</p>
+</li>
+<li><p><code>maximumPoolSize</code>：最大线程数，线程池允许的最大线程数量。</p>
+</li>
+<li><p><code>keepAliveTime</code>：空闲线程存活时间，即线程在空闲一段时间后会被回收。</p>
+</li>
+<li><p><code>TimeUnit</code>：时间单位，表示<code>keepAliveTime</code>的时间单位。</p>
+<blockquote>
+<p>枚举类型。通常取值：</p>
+<ul>
+<li><code>TimeUnit.NANOSECONDS;</code> 纳秒</li>
+<li><code>TimeUnit.MICROSECONDS;</code> 微秒</li>
+<li><code>TimeUnit.MILLISECONDS;</code> 毫秒</li>
+<li><code>TimeUnit.SECONDS;</code> 秒</li>
+<li><code>TimeUnit.MINUTES;</code> 分</li>
+<li><code>TimeUnit.HOURS;</code> 时</li>
+<li><code>TimeUnit.DAYS;</code> 天</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>BlockingQueue</code>：线程池任务队列，用于存储等待执行的任务。</p>
+<blockquote>
+<p>当线程池中的线程都在忙碌时，新提交的任务会被放入队列中等待执行。可传的值可以是不同类型的阻塞队列：</p>
+<ul>
+<li><code>new ArrayBlockingQueue&lt;Runnable/Callable&gt;():</code> <code>ArrayBlockingQueue</code>, 一个由数组结构组成的<strong>有界阻塞队列</strong>。</li>
+<li><code>new LinkedBlockingQueue&lt;Runnable/Callable&gt;(): ``LinkedBlockingQueue</code>, 一个由链表结构组成的<strong>有界阻塞队列</strong>。</li>
+<li><code>new SynchronousQueue&lt;Runnable/Callable&gt;():</code> <code>SynchronousQueue</code>, 一个不存储元素的阻塞队列，即直接提交给线程不保持它们。</li>
+<li><code>new PriorityBlockingQueue&lt;Runnable/Callable&gt;():</code> <code>PriorityBlockingQueue</code>, 一个支持优先级排序的<strong>无界阻塞队列</strong>。</li>
+<li><code>new DelayQueue&lt;Runnable/Callable&gt;():</code> <code>DelayQueue</code>：一个使用优先级队列实现的<strong>无界阻塞队列</strong>，只有在延迟期满时才能从中提取元素。</li>
+<li><code>new LinkedTransferQueue&lt;Runnable/Callable&gt;():</code> <code>LinkedTransferQueue</code>, 一个由链表结构组成的<strong>无界阻塞队列</strong>。与 <code>SynchronousQueue</code> 类似，还含有非阻塞方法。</li>
+<li><code>new LinkedBlockingDeque&lt;Runnable/Callable&gt;():</code> <code>LinkedBlockingDeque</code>, 一个由链表结构组成的<strong>双向阻塞队列</strong>。</li>
+</ul>
+<p>比较常用的是 <code>LinkedBlockingQueue</code>，线程池的排队策略和 <code>BlockingQueue</code> 息息相关。</p>
+</blockquote>
+</li>
+<li><p><code>ThreadFactory</code>：创建线程的工厂。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义线程工厂类</span></span><br><span class="line"><span class="comment">//实现ThreadFactory接口，并重写里面的newThread方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThreadFactory</span> <span class="keyword">implements</span> <span class="title class_">ThreadFactory</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Thread <span class="title function_">newThread</span><span class="params">(Runnable r)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建并返回自定义的线程对象</span></span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置线程名称</span></span><br><span class="line">        thread.setName(<span class="string">&quot;Thread-&quot;</span> + r.hashCode());</span><br><span class="line">        <span class="comment">// 设置线程优先级（最大值：10）</span></span><br><span class="line">       thread.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">        <span class="comment">// 设置线程的守护状态</span></span><br><span class="line">        thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 返回新线程</span></span><br><span class="line">        <span class="keyword">return</span> thread;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者使用lambda表达式完成传参</span></span><br><span class="line"><span class="type">ThreadPoolExecutor</span> <span class="variable">threadPoolExecutor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">3000l</span>, TimeUnit.SECONDS, <span class="keyword">new</span> <span class="title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="number">200</span>), r -&gt; &#123;</span><br><span class="line">         <span class="comment">// 创建并返回自定义的线程对象</span></span><br><span class="line">         <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r);</span><br><span class="line">         <span class="comment">// 设置线程名称</span></span><br><span class="line">         thread.setName(<span class="string">&quot;Thread-&quot;</span> + r.hashCode());</span><br><span class="line">         <span class="comment">// 设置线程优先级（最大值：10）</span></span><br><span class="line">         thread.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">         <span class="comment">// 设置线程的守护状态</span></span><br><span class="line">         thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">         <span class="comment">// 返回新线程</span></span><br><span class="line">         <span class="keyword">return</span> thread;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><code>RejectedExecutionHandler</code>：拒绝策略，定义当线程池无法接受新任务时应采取的策略。</p>
+<blockquote>
+<p>这个参数用于定义在出现这种情况时应采取的策略。可传的值通常是预定义的策略，如：</p>
+<ul>
+<li><code>ThreadPoolExecutor.AbortPolicy</code>：拒绝并抛出异常。(默认为这种)</li>
+<li><code>ThreadPoolExecutor.CallerRunsPolicy</code>：使用当前调用的线程来执行此任务。</li>
+<li><code>ThreadPoolExecutor.DiscardOldestPolicy</code>：抛弃队列头部（最旧）的一个任务，并执行当前任务。</li>
+<li><code>ThreadPoolExecutor.DiscardPolicy</code>：忽略并抛弃当前任务。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="创建线程池的三种方式"><a href="#创建线程池的三种方式" class="headerlink" title="创建线程池的三种方式"></a>创建线程池的三种方式</h2><h3 id="1-使用java-util-concurrent-Executors工厂类"><a href="#1-使用java-util-concurrent-Executors工厂类" class="headerlink" title="1. 使用java.util.concurrent.Executors工厂类"></a>1. 使用<code>java.util.concurrent.Executors</code>工厂类</h3><p>Java标准库提供了一些静态方法来创建常见类型的线程池，包括：</p>
+<ul>
+<li><p><code>newCachedThreadPool()</code>：创建一个可根据需要自动扩展的线程池。</p>
+<blockquote>
+<p>特点:</p>
+<ol>
+<li>维护了一个可自动扩容的线程容器，每当需要执行一个新任务时，有活跃的线程就使用该线程，否则就新建一条线程。</li>
+<li>线程池的最大线程数为Integer.MAX_VALUE，基本上不受限制。</li>
+<li>使用完毕后的线程会回归线程池，如果这个线程在60秒之后依旧空闲，那么就会被移除</li>
+<li>线程池初始线程个数为0</li>
+</ol>
+<p>适用于线程生命周期短且频繁创建的场景</p>
+</blockquote>
+</li>
+<li><p><code>newFixedThreadPool(int nThreads)</code>：创建一个固定线程数量的线程池。</p>
+<blockquote>
+<p>特点:</p>
+<ol>
+<li>创建一个固定线程数量的线程池，在整个线程池的生命周期中，线程池中的数量不会变化</li>
+<li>维护一个无界队列（暂存已提交的来不及执行的任务）按照任务的提交顺序，将任务执行完毕</li>
+</ol>
+<p>这种类型的线程池适用于执行长时任务或需要限制并发数量的场景。</p>
+</blockquote>
+</li>
+<li><p><code>newSingleThreadExecutor()</code>：创建一个仅包含一个线程的线程池。</p>
+<blockquote>
+<p>特点:</p>
+<ol>
+<li>线程数量固定为1个，在整个线程池的生命周期中，线程池中的数量不会变化</li>
+<li>维护了一个无界队列（暂存已提交的来不及执行的任务）按照任务的提交顺序，将任务执行完毕</li>
+</ol>
+<p>这种类型的线程池适用于需要保证任务顺序执行，不需要同时执行的场景</p>
+</blockquote>
+</li>
+</ul>
+<p>其中无界队列指的是一个不确定长度的可自由扩容的队列，遵循” 先进先出” 的特点，理论上可以容量无限的任务。<br>使用以上方法就可以得到一个具有相应特点的线程池对象，具体情况使用哪个线程池要具体分析。<br>上面通过 <code>Executors</code> 创建的线程池，返回的是一个实现了 <code>ExecutorService</code> 接口的线程池，我们通常使用这个接口来承接返回的线程池，我们可以通过这个接口中的一系列方法来操作管理线程池，比如提交任务，关闭线程池等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//提交一个Runnable类型的任务(实现了Runnable接口，并重写了run方法的任务)，任务的执行没有返回值，可以不接返回值</span></span><br><span class="line">Future&lt;?&gt; submit(Runnable task);</span><br><span class="line"></span><br><span class="line"><span class="comment">//提交一个Callable类型的任务(实现了Callable接口，并重写而来call方法的任务)，任务的执行有返回值，返回值封装在一个Future&lt;T&gt;类型的值中，通过其中的get()方法获得</span></span><br><span class="line">Future&lt;T&gt; <span class="title function_">submit</span><span class="params">(Callable&lt;T&gt; task)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行完任务列表中所有已提交的任务，关闭线程池，不再接受新任务。</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">shutdown</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 立刻停止所有正在执行的活动任务，也不再处理任务列表中等待的任务，并直接返回等待执行的任务列表。</span></span><br><span class="line">List&lt;Runnable&gt; <span class="title function_">shutdownNow</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>阿里巴巴 <code>Java</code> 开发规范手册中，就明确禁止用这种方式来新建线程池。</p>
+</li>
+<li><p>主要原因：</p>
+<ul>
+<li><p>无界队列。<code>Executors.newFixedThreadPool</code> 固定容量线程池和 <code>Executors.newSingleThreadExecutor</code> 单个容量线程池都会创建一个无界的队列来支持任务提交。也就是说，只要不停的往线程池提交任务，这个任务队列就会不断变长。如果因一些意外问题导致任务处理速度完全跟不上提交速度，程序有堆溢出<code>（OutOfMemoryError）</code>的风险。</p>
+</li>
+<li><p>无限的线程对象。<code>Executors.newCachedThreadPool</code> 会创建一个线程数量可以无限制增长的线程池，实际上该线程池的线程容量最大值是 <code>Integer.MAX_VALUE</code>。这显然也是很有风险的事情，可能浪费大量线程资源，影响程序的效率。</p>
+</li>
+<li><p>配置不灵活：<code>Executors</code> 工具类提供的方法创建的线程池，其线程数、队列策略等参数都是固定的，无法根据系统的实际需要进行调整。实际上，线程池的配置应该根据硬件条件，实际任务需求等灵活调整。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-直接使用ThreadPoolExecutor类"><a href="#2-直接使用ThreadPoolExecutor类" class="headerlink" title="2. 直接使用ThreadPoolExecutor类"></a>2. 直接使用<code>ThreadPoolExecutor</code>类</h3><p>可以直接创建<code>ThreadPoolExecutor</code>对象，自定义线程池的参数，如<code>corePoolSize</code>、<code>maximumPoolSize</code>、<code>keepAliveTime</code>、<code>BlockingQueue</code>、<code>ThreadFactory</code>和<code>RejectedExecutionHandler</code>等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">javaCopy <span class="type">codeThreadPoolExecutor</span> <span class="variable">threadPoolExecutor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">    corePoolSize,</span><br><span class="line">    maximumPoolSize,</span><br><span class="line">    keepAliveTime,</span><br><span class="line">    TimeUnit,</span><br><span class="line">    BlockingQueue,</span><br><span class="line">    ThreadFactory,</span><br><span class="line">    RejectedExecutionHandler</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用ThreadPoolExecutor手动创建线程池，并提交任务</span></span><br><span class="line"><span class="type">ThreadPoolExecutor</span> <span class="variable">threadPoolExecutor1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(<span class="number">20</span>,</span><br><span class="line">             <span class="number">50</span>,</span><br><span class="line">             <span class="number">600L</span>,</span><br><span class="line">             TimeUnit.SECONDS,</span><br><span class="line">             <span class="keyword">new</span> <span class="title class_">LinkedBlockingDeque</span>&lt;&gt;(<span class="number">200</span>),</span><br><span class="line">             r -&gt; &#123;</span><br><span class="line">                 <span class="comment">// 创建并返回自定义的线程对象</span></span><br><span class="line">                 <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r);</span><br><span class="line">                 <span class="comment">// 设置线程名称</span></span><br><span class="line">                 thread.setName(<span class="string">&quot;Thread-&quot;</span> + r.hashCode());</span><br><span class="line">                 <span class="comment">// 设置线程优先级（最大值：10）</span></span><br><span class="line">                 thread.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">                 <span class="comment">// 设置线程的守护状态</span></span><br><span class="line">                 thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">                 <span class="comment">// 返回新线程</span></span><br><span class="line">                 <span class="keyword">return</span> thread;</span><br><span class="line">             &#125;,</span><br><span class="line">             <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.AbortPolicy());</span><br><span class="line">             </span><br><span class="line">     <span class="comment">//提交任务</span></span><br><span class="line">     <span class="comment">//提交Runnable任务</span></span><br><span class="line">     threadPoolExecutor1.submit(() -&gt; System.out.println(<span class="string">&quot;你好朋友！&quot;</span>));</span><br><span class="line">     <span class="comment">//提交Callable任务</span></span><br><span class="line">     System.out.println(threadPoolExecutor1.submit(() -&gt; <span class="string">&quot;你好呀朋友！！&quot;</span>).get());</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-使用Spring框架封装的线程池"><a href="#3-使用Spring框架封装的线程池" class="headerlink" title="3. 使用Spring框架封装的线程池"></a>3. 使用Spring框架封装的线程池</h3><p><code>Spring</code> 框架也基于 <code>ThreadPoolExecutor</code> 封装了一个线程池，在 <code>Spring</code> 框架的应用中的使用上更加简便。</p>
+<h4 id="使用默认线程池"><a href="#使用默认线程池" class="headerlink" title="使用默认线程池"></a>使用默认线程池</h4><ol>
+<li>在启动类上添加<code>@EnableAsync</code>注解。</li>
+<li>在需要异步处理的方法上添加<code>@Async</code>注解。</li>
+<li>注入<code>ThreadPoolTaskExecutor</code>组件，该组件是 <code>Spring</code> 框架在加载容器的时候自动创建并注册到容器中的，可直接使用它往Spring默认的线程池中提交任务。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadPoolApplicationTestsServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">ThreadPoolApplicationTestsService</span> &#123;</span><br><span class="line">    <span class="comment">//直接注入即可使用</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    ThreadPoolTaskExecutor threadPoolTaskExecutor;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="comment">//往Spring自带的线程池中提交任务，获得返回结果，并打印</span></span><br><span class="line">        System.out.println(threadPoolTaskExecutor.submit(() -&gt; <span class="string">&quot;你好呀小朋友！！&quot;</span>);</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        <span class="comment">//往Spring自带的线程池中提交任务，获得返回结果，并打印</span></span><br><span class="line">        System.out.println(threadPoolTaskExecutor.submit(() -&gt; <span class="string">&quot;你好呀大朋友！！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h4><p>利用 <code>SpringBoot</code> 的自动装配的功能，配置一个自定义的线程池，并注册到容器中，供其他的组件注入使用。</p>
+<ol>
+<li><p>在配置文件中配置线程池的参数。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  task.pool.corePoolSize=50</span></span><br><span class="line"><span class="comment">#  task.pool.maxPoolSize=100</span></span><br><span class="line"><span class="comment">#  task.pool.keepAliveSeconds=3000</span></span><br><span class="line"><span class="comment">#  task.pool.queueCapacity=100</span></span><br><span class="line"><span class="attr">task:</span></span><br><span class="line">  <span class="attr">pool:</span></span><br><span class="line">    <span class="attr">core-size:</span> <span class="number">50</span></span><br><span class="line">    <span class="attr">max-size:</span> <span class="number">100</span></span><br><span class="line">    <span class="attr">keep-alive:</span> <span class="number">3000</span></span><br><span class="line">    <span class="attr">queue-capacity:</span> <span class="number">100</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个读取配置文件中参数的配置类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tzjw.marketweixin.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 线程池参数类</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> 2023/09/21 09:55</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;task.pool&quot;)</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolProperties</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> coreSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> maxSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> keepAlive;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> queueCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个线程池配置类，修改默认线程池的配置，将自定义的线程池注册到容器中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tzjw.marketweixin.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.AsyncConfigurer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.EnableAsync;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executor;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ThreadPoolExecutor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 线程池配置类</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> 2023/09/21 09:59</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(ThreadPoolProperties.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TaskExecutePool</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ThreadPoolProperties threadPoolProperties;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 修改默认线程池的配置,将自定义的线程池注册到容器中</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ThreadPoolTaskExecutor</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     <span class="meta">@Bean</span></span><br><span class="line">     <span class="keyword">public</span> ThreadPoolTaskExecutor <span class="title function_">myThreadPoolTaskExecutor</span><span class="params">()</span> &#123;</span><br><span class="line">         <span class="type">ThreadPoolTaskExecutor</span> <span class="variable">executor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolTaskExecutor</span>();</span><br><span class="line">         <span class="comment">// 核心线程数</span></span><br><span class="line">         executor.setCorePoolSize(threadPoolProperties.getCoreSize());</span><br><span class="line">         <span class="comment">// 最大线程数</span></span><br><span class="line">         executor.setMaxPoolSize(threadPoolProperties.getMaxSize());</span><br><span class="line">         <span class="comment">// 非核心线程活跃时间</span></span><br><span class="line">         executor.setKeepAliveSeconds(threadPoolProperties.getKeepAlive());</span><br><span class="line">         <span class="comment">// 队列容量</span></span><br><span class="line">         executor.setQueueCapacity(threadPoolProperties.getQueueCapacity());</span><br><span class="line">         <span class="comment">// 设置线程的前缀名</span></span><br><span class="line">         executor.setThreadNamePrefix(<span class="string">&quot;market&quot;</span>);</span><br><span class="line">         <span class="comment">// 设置拒绝策略</span></span><br><span class="line">         executor.setRejectedExecutionHandler(<span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.CallerRunsPolicy());</span><br><span class="line">         <span class="comment">// 是否在任务执行完后关闭线程池</span></span><br><span class="line">         executor.setWaitForTasksToCompleteOnShutdown(<span class="literal">false</span>);</span><br><span class="line">         <span class="comment">//初始化</span></span><br><span class="line">         executor.initialize();</span><br><span class="line">         <span class="keyword">return</span> executor;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了方便往线程池中提交任务，我们还可以写一个工具类，注册到容器中，简化提交任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tzjw.marketweixin.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.tzjw.marketweixin.config.TaskExecutePool;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.SneakyThrows;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.task.TaskExecutor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.Async;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.AsyncResult;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Callable;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Future;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 使用线程池的工具类</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> 2023/09/21 10:25</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringThreadPoolUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   ThreadPoolTaskExecutor taskExecutor;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 往线程池中提交任务</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> task</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> java.util.concurrent.Future&lt;T&gt;</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@author</span> Xiaobin</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span> 2023/09/21 16:46</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; Future&lt;T&gt; <span class="title function_">submitTask</span><span class="params">(Callable&lt;T&gt; task)</span> &#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> taskExecutor.submit(task);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;Error submitting task to the thread pool.&quot;</span>, e);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过上面的封装之后，我们后续只需要在项目中引入 <code>SpringThreadPoolUtil</code> 这个组件，调用其中的 <code>submitTask</code> 方法，传入一个 <code>Callable</code> 类型的任务就可以向线程池中提交任务，并获得返回值。具体的使用实例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HomeIndexServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">HomeIndexService</span> &#123;</span><br><span class="line">   <span class="comment">//注入工具类对象</span></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   SpringThreadPoolUtil springThreadPoolUtil;</span><br><span class="line">      </span><br><span class="line">   <span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title function_">getIndexData</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="comment">// 使用线程池提交数据库查询任务</span></span><br><span class="line">       Future&lt;List&gt; adFuture = springThreadPoolUtil.submitTask(() -&gt; &#123;</span><br><span class="line">           <span class="type">MarketAdExample</span> <span class="variable">marketAdExample</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MarketAdExample</span>();</span><br><span class="line">           marketAdExample.setOrderByClause(<span class="string">&quot;add_time desc&quot;</span>);</span><br><span class="line">           marketAdExample.createCriteria().andDeletedEqualTo(<span class="literal">false</span>);</span><br><span class="line">           <span class="keyword">return</span> marketAdMapper.selectByExample(<span class="keyword">new</span> <span class="title class_">MarketAdExample</span>());</span><br><span class="line">       &#125;); </span><br><span class="line">       <span class="comment">//解析</span></span><br><span class="line">       List&lt;MarketAd&gt; = adFuture.get();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用线程池的工具类"><a href="#使用线程池的工具类" class="headerlink" title="使用线程池的工具类"></a>使用线程池的工具类</h2><p>为了更方便地向线程池提交任务，可以创建一个工具类，将线程池的提交任务操作封装起来。下面是一个示例工具类的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">javaCopy code@Component</span><br><span class="line">public class SpringThreadPoolUtil &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    ThreadPoolTaskExecutor taskExecutor;</span><br><span class="line"></span><br><span class="line">    public &lt;T&gt; Future&lt;T&gt; submitTask(Callable&lt;T&gt; task) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            return taskExecutor.submit(task);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            throw new RuntimeException(&quot;Error submitting task to the thread pool.&quot;, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过上述工具类，可以在业务代码中轻松地往线程池中提交任务，并获得返回值，实现并行处理任务。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用线程池是提高并发处理性能和资源利用率的重要方法之一。本文介绍了Java线程池的核心参数、创建线程池的三种方式以及Spring框架中的线程池使用方法。选择合适的线程池类型和配置参数可以更好地满足不同应用场景的需求，提高系统的稳定性和性能。</p>
+<p>希望本文对你理解和使用Java线程池有所帮助！</p>
+
+      
+    </div>
+
+    
+    
+    
+	
+	 
+	
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/04/Java_%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/SpringCloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 星辰可染呀">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/04/Java_%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/SpringCloud/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-04 20:06:46" itemprop="dateCreated datePublished" datetime="2023-10-04T20:06:46+08:00">2023-10-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-02 11:49:38" itemprop="dateModified" datetime="2023-11-02T11:49:38+08:00">2023-11-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h1><h2 id="架构理论"><a href="#架构理论" class="headerlink" title="架构理论"></a>架构理论</h2><h3 id="单体架构"><a href="#单体架构" class="headerlink" title="单体架构"></a>单体架构</h3><h4 id="单体架构的特征"><a href="#单体架构的特征" class="headerlink" title="单体架构的特征"></a>单体架构的特征</h4><ul>
+<li>单体架构是一种传统的应用程序架构，它将整个应用程序作为一个单一的、单独的单元来构建和部署。</li>
+</ul>
+<h4 id="单体架构的优势"><a href="#单体架构的优势" class="headerlink" title="单体架构的优势"></a>单体架构的优势</h4><ul>
+<li>应用的开发很简单。</li>
+<li>易于对应用程序进行大规模的更改。</li>
+<li>测试相对直观简单。</li>
+<li>部署简单明了。</li>
+<li>横向扩容不费吹灰之力。</li>
+</ul>
+<h4 id="单体架构的弊端"><a href="#单体架构的弊端" class="headerlink" title="单体架构的弊端"></a>单体架构的弊端</h4><ul>
+<li>代码复杂，严重耦合，难以维护。</li>
+<li>从代码提交到实际部署的周期很长。</li>
+<li>扩展性受限。</li>
+<li>开发慢，启动慢，严重影响开发效率。</li>
+<li>交付可靠的单体应用困难。</li>
+</ul>
+<h3 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h3><h4 id="什么是微服务架构"><a href="#什么是微服务架构" class="headerlink" title="什么是微服务架构"></a>什么是微服务架构</h4><ul>
+<li>微服务架构是一种应用程序架构风格，将应用程序拆分为一组小型、独立的服务，每个服务都有自己的数据存储、业务逻辑和用户界面，并可以独立部署和扩展。</li>
+</ul>
+<h4 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h4><ul>
+<li>每个微服务都是一个独立的应用程序单元，通常根据单一职责原则实现一组相关功能。</li>
+</ul>
+<h4 id="微服务架构的优势"><a href="#微服务架构的优势" class="headerlink" title="微服务架构的优势"></a>微服务架构的优势</h4><ul>
+<li>每个服务都相对较小，容易维护。</li>
+<li>快速的持续交付和持续部署。</li>
+<li>应用扩展灵活。</li>
+<li>更好的容错性。</li>
+</ul>
+<h4 id="微服务架构的弊端"><a href="#微服务架构的弊端" class="headerlink" title="微服务架构的弊端"></a>微服务架构的弊端</h4><ul>
+<li>分布式系统可能复杂难以管理。</li>
+<li>分布式部署追踪问题难。</li>
+<li>分布式事务比较难处理。</li>
+<li>服务数量增加，管理复杂性增加。</li>
+</ul>
+<h2 id="微服务的实现"><a href="#微服务的实现" class="headerlink" title="微服务的实现"></a>微服务的实现</h2><h3 id="微服务有哪两种常见的服务划分方式"><a href="#微服务有哪两种常见的服务划分方式" class="headerlink" title="微服务有哪两种常见的服务划分方式"></a>微服务有哪两种常见的服务划分方式</h3><ul>
+<li>横向划分：按照业务划分。</li>
+<li>纵向划分：按照层次划分（表现层、业务层、持久层）。</li>
+</ul>
+<h3 id="实现微服务"><a href="#实现微服务" class="headerlink" title="实现微服务"></a>实现微服务</h3><h4 id="自己实现遇到的问题"><a href="#自己实现遇到的问题" class="headerlink" title="自己实现遇到的问题"></a>自己实现遇到的问题</h4><ul>
+<li>服务间的调用问题，包括通信方式和协议。</li>
+<li>各个服务的管理问题。</li>
+</ul>
+<h4 id="微服务框架解决以上问题"><a href="#微服务框架解决以上问题" class="headerlink" title="微服务框架解决以上问题"></a>微服务框架解决以上问题</h4><ul>
+<li>Dubbo：用于服务之间的通信和调用。</li>
+<li>Spring Cloud：提供了一整套微服务架构的解决方案。</li>
+</ul>
+<h4 id="Spring-Cloud基于Spring-Boot提出"><a href="#Spring-Cloud基于Spring-Boot提出" class="headerlink" title="Spring Cloud基于Spring Boot提出"></a>Spring Cloud基于Spring Boot提出</h4><ul>
+<li>服务注册与自动发现：Eureka、Nacos。</li>
+<li>面向接口的服务调用：Feign。</li>
+<li>服务调用的负载均衡：Ribbon。</li>
+<li>服务网关：Zuul、Gateway。</li>
+<li>服务熔断：Hystrix。</li>
+</ul>
+<h3 id="服务间的调用问题"><a href="#服务间的调用问题" class="headerlink" title="服务间的调用问题"></a>服务间的调用问题</h3><h4 id="服务调用的本质"><a href="#服务调用的本质" class="headerlink" title="服务调用的本质"></a>服务调用的本质</h4><ul>
+<li>服务调用本质是将方法调用转换为HTTP请求。</li>
+</ul>
+<h4 id="服务调用的目标"><a href="#服务调用的目标" class="headerlink" title="服务调用的目标"></a>服务调用的目标</h4><ul>
+<li>服务调用的目标是通过一次HTTP请求获取响应。</li>
+</ul>
+<h4 id="服务调用基于的协议"><a href="#服务调用基于的协议" class="headerlink" title="服务调用基于的协议"></a>服务调用基于的协议</h4><ul>
+<li>服务调用基于HTTP协议。</li>
+</ul>
+<h4 id="实现最简单的服务调用"><a href="#实现最简单的服务调用" class="headerlink" title="实现最简单的服务调用"></a>实现最简单的服务调用</h4><ul>
+<li>使用RestTemplate来发送HTTP请求。</li>
+</ul>
+<h3 id="服务的动态发现问题"><a href="#服务的动态发现问题" class="headerlink" title="服务的动态发现问题"></a>服务的动态发现问题</h3><h4 id="如何让服务消费者动态发现服务提供者的信息"><a href="#如何让服务消费者动态发现服务提供者的信息" class="headerlink" title="如何让服务消费者动态发现服务提供者的信息"></a>如何让服务消费者动态发现服务提供者的信息</h4><ul>
+<li>使用服务注册中心来实现服务的注册与自动发现。</li>
+</ul>
+<h4 id="服务注册中心"><a href="#服务注册中心" class="headerlink" title="服务注册中心"></a>服务注册中心</h4><ul>
+<li>服务注册中心是用于管理服务实例的中心化组件。</li>
+</ul>
+<h5 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h5><ul>
+<li>Eureka是一种服务注册中心，包括Eureka Server和Eureka Client两部分。</li>
+</ul>
+<h6 id="Eureka-Server"><a href="#Eureka-Server" class="headerlink" title="Eureka Server"></a>Eureka Server</h6><ul>
+<li>Eureka Server用于实现服务注册中心的功能。</li>
+</ul>
+<h6 id="Eureka-Client"><a href="#Eureka-Client" class="headerlink" title="Eureka Client"></a>Eureka Client</h6><ul>
+<li>Eureka Client用于实现服务提供者和服务消费者的注册和发现。</li>
+</ul>
+<h5 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h5><ul>
+<li>Nacos是另一种服务注册中心，包括Nacos Server和Nacos Client两部分。</li>
+</ul>
+<h6 id="Nacos-Server"><a href="#Nacos-Server" class="headerlink" title="Nacos Server"></a>Nacos Server</h6><ul>
+<li>Nacos Server用于实现服务注册中心的功能。</li>
+</ul>
+<h6 id="Nacos-Client"><a href="#Nacos-Client" class="headerlink" title="Nacos Client"></a>Nacos Client</h6><ul>
+<li>Nacos Client用于实现服务提供者和服务消费者的注册和发现。</li>
+</ul>
+<h4 id="服务注册中心的实现"><a href="#服务注册中心的实现" class="headerlink" title="服务注册中心的实现"></a>服务注册中心的实现</h4><ul>
+<li>Eureka Server和Nacos Server都是服务注册中心的实现。</li>
+</ul>
+<h3 id="服务调用的负载均衡问题"><a href="#服务调用的负载均衡问题" class="headerlink" title="服务调用的负载均衡问题"></a>服务调用的负载均衡问题</h3><h4 id="服务消费者如何选择一个服务提供者实例发起调用"><a href="#服务消费者如何选择一个服务提供者实例发起调用" class="headerlink" title="服务消费者如何选择一个服务提供者实例发起调用"></a>服务消费者如何选择一个服务提供者实例发起调用</h4><ul>
+<li>使用负载均衡器来选择一个服务提供者实例。</li>
+</ul>
+<h4 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h4><ul>
+<li>Ribbon是一个负载均衡器，用于在多个服务提供者实例中选择一个进行调用。</li>
+</ul>
+<h5 id="Ribbon的基本使用"><a href="#Ribbon的基本使用" class="headerlink" title="Ribbon的基本使用"></a>Ribbon的基本使用</h5><ul>
+<li>使用Ribbon的<code>@LoadBalance</code>注解来标识RestTemplate，以实现负载均衡。</li>
+</ul>
+<h5 id="Ribbon支持的负载均衡策略"><a href="#Ribbon支持的负载均衡策略" class="headerlink" title="Ribbon支持的负载均衡策略"></a>Ribbon支持的负载均衡策略</h5><ul>
+<li>Ribbon支持多种负载均衡策略，如随机策略、轮询策略、重试策略等。</li>
+</ul>
+<h5 id="Ribbon指定调用服务时的负载均衡策略"><a href="#Ribbon指定调用服务时的负载均衡策略" class="headerlink" title="Ribbon指定调用服务时的负载均衡策略"></a>Ribbon指定调用服务时的负载均衡策略</h5><ul>
+<li>可以通过配置文件或配置类来指定调用服务时使用的负载均衡策略。</li>
+</ul>
+<h5 id="自定义负载均衡策略"><a href="#自定义负载均衡策略" class="headerlink" title="自定义负载均衡策略"></a>自定义负载均衡策略</h5><ul>
+<li>可以自定义负载均衡策略，并通过配置类注册。</li>
+</ul>
+<h3 id="面向接口的服务调用问题"><a href="#面向接口的服务调用问题" class="headerlink" title="面向接口的服务调用问题"></a>面向接口的服务调用问题</h3><h4 id="能否以接口方法调用的形式完成服务调用"><a href="#能否以接口方法调用的形式完成服务调用" class="headerlink" title="能否以接口方法调用的形式完成服务调用"></a>能否以接口方法调用的形式完成服务调用</h4><ul>
+<li>是的，可以使用OpenFeign实现面向接口的服务调用。</li>
+</ul>
+<h4 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h4><ul>
+<li>OpenFeign是一种面向接口的服务调用工具，它可以将接口方法调用转化为HTTP请求。</li>
+</ul>
+<h5 id="实现面向接口服务调用的底层原理"><a href="#实现面向接口服务调用的底层原理" class="headerlink" title="实现面向接口服务调用的底层原理"></a>实现面向接口服务调用的底层原理</h5><ul>
+<li>OpenFeign底层通过动态代理将接口方法转化为HTTP请求。</li>
+</ul>
+<h5 id="使用OpenFeign"><a href="#使用OpenFeign" class="headerlink" title="使用OpenFeign"></a>使用OpenFeign</h5><ul>
+<li><p>可以定义接口方法，参数和返回值为JDK中的数据类型，然后使用OpenFeign来调用服务。</p>
+</li>
+<li><p>如果参数或返回值为自定义数据类型，也可以使用OpenFeign来调用服务。</p>
+</li>
+</ul>
+<h5 id="打印OpenFeign请求日志"><a href="#打印OpenFeign请求日志" class="headerlink" title="打印OpenFeign请求日志"></a>打印OpenFeign请求日志</h5><ul>
+<li>可以配置OpenFeign来打印请求日志，便于调试和监控。</li>
+</ul>
+<h5 id="设置服务调用的超时时间"><a href="#设置服务调用的超时时间" class="headerlink" title="设置服务调用的超时时间"></a>设置服务调用的超时时间</h5><ul>
+<li>可以配置OpenFeign来设置服务调用的超时时间，以防止调用超时。</li>
+</ul>
+<h3 id="服务的配置管理问题"><a href="#服务的配置管理问题" class="headerlink" title="服务的配置管理问题"></a>服务的配置管理问题</h3><h4 id="如何简单、高效地完成对多个服务实例配置的管理"><a href="#如何简单、高效地完成对多个服务实例配置的管理" class="headerlink" title="如何简单、高效地完成对多个服务实例配置的管理"></a>如何简单、高效地完成对多个服务实例配置的管理</h4><ul>
+<li>使用配置中心来统一管理多个服务实例的配置。</li>
+</ul>
+<h4 id="配置中心"><a href="#配置中心" class="headerlink" title="配置中心"></a>配置中心</h4><ul>
+<li>配置中心是用于集中管理配置信息的组件。</li>
+</ul>
+<h5 id="Nacos配置中心的概念"><a href="#Nacos配置中心的概念" class="headerlink" title="Nacos配置中心的概念"></a>Nacos配置中心的概念</h5><ul>
+<li>Nacos配置中心包括profile配置和shared配置。</li>
+</ul>
+<h5 id="Profile配置"><a href="#Profile配置" class="headerlink" title="Profile配置"></a>Profile配置</h5><ul>
+<li><p>Profile配置允许不同的服务实例根据其profile属性获取不同的配置。</p>
+</li>
+<li><p>配置集的计算公式定义了不同profile属性的配置。</p>
+</li>
+</ul>
+<h5 id="Shared配置"><a href="#Shared配置" class="headerlink" title="Shared配置"></a>Shared配置</h5><ul>
+<li><p>Shared配置允许多个服务实例共享同一份配置。</p>
+</li>
+<li><p>可以定义多个shared配置，并让多个服务实例引用相同的shared配置。</p>
+</li>
+</ul>
+<h5 id="配置的访问方式"><a href="#配置的访问方式" class="headerlink" title="配置的访问方式"></a>配置的访问方式</h5><ul>
+<li>配置可以通过访问配置中心获取，通常配置中心的地址放在<code>bootstrap.yml</code>配置文件中。</li>
+</ul>
+<h5 id="配置的隔离"><a href="#配置的隔离" class="headerlink" title="配置的隔离"></a>配置的隔离</h5><ul>
+<li>可以通过配置集、配置分组、命名空间等方式实现配置的隔离。</li>
+</ul>
+<h5 id="配置的动态刷新"><a href="#配置的动态刷新" class="headerlink" title="配置的动态刷新"></a>配置的动态刷新</h5><ul>
+<li>可以实现配置的动态刷新，使配置变更后不需要重启服务即可生效。</li>
+</ul>
+<h5 id="Profile配置、Shared配置和本地配置的优先级"><a href="#Profile配置、Shared配置和本地配置的优先级" class="headerlink" title="Profile配置、Shared配置和本地配置的优先级"></a>Profile配置、Shared配置和本地配置的优先级</h5><ul>
+<li>配置的优先级由profile配置、shared配置和本地配置共同决定。</li>
+</ul>
+<h5 id="数据源的切换"><a href="#数据源的切换" class="headerlink" title="数据源的切换"></a>数据源的切换</h5><ul>
+<li>Nacos配置可以存储在不同的数据源中，例如MySQL，可以切换数据源来存储配置。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+	
+	 
+	
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/27/Java_%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 星辰可染呀">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/27/Java_%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/redis/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-27 15:13:11" itemprop="dateCreated datePublished" datetime="2023-09-27T15:13:11+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-04 21:45:04" itemprop="dateModified" datetime="2023-10-04T21:45:04+08:00">2023-10-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="开发技术"><a href="#开发技术" class="headerlink" title="开发技术"></a>开发技术</h1><h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h3 id="引入背景"><a href="#引入背景" class="headerlink" title="引入背景"></a>引入背景</h3><p>web1.0(静态页面，没有互动)</p>
+<p>web2.0(内容互动，数据爆炸)</p>
+<p>传统关系型数据库</p>
+<ul>
+<li>数据的高并发——》实时获取——》上万读写 &#x2F;s，io承受不住，难以承受高并发</li>
+<li>SNS(社交网站)</li>
+<li>特性无用武之地<ul>
+<li>不严格要求数据库的事务，对读一致性要求低</li>
+<li>忌讳多个大表的关联查询，往往只做单表查询（自己组装数据）</li>
+</ul>
+</li>
+</ul>
+<h3 id="Redis是一个NoSql数据库"><a href="#Redis是一个NoSql数据库" class="headerlink" title="Redis是一个NoSql数据库"></a>Redis是一个NoSql数据库</h3><ul>
+<li><p>纯内存数据库（访问快）</p>
+</li>
+<li><p>key-value键值对存储数据</p>
+<blockquote>
+<ul>
+<li>设置键值对：<code>set key value</code></li>
+<li>获取键对应的值：<code>get key</code></li>
+</ul>
+</blockquote>
+</li>
+<li><p>持久化（保存日志）——》目的：恢复数据</p>
+</li>
+<li><p>支持网络：（客户端通过网络连接到服务端）CS架构</p>
+<ul>
+<li><p>redis-server（启动）</p>
+</li>
+<li><p>redis-cli(我们用cli访问)</p>
+<ul>
+<li>默认本地的6379端口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="常规配置："><a href="#常规配置：" class="headerlink" title="常规配置："></a>常规配置：</h3><blockquote>
+<p>demonize no</p>
+<p>windows不支持后台启动</p>
+<p>可以在docker容器中运行，让docker容器后台运行</p>
+<p>过期时间</p>
+<ul>
+<li>timeout 0    0——》不断开</li>
+</ul>
+<p>端口号</p>
+<ul>
+<li>port 6379</li>
+</ul>
+<p>默认只接收本机的连接请求</p>
+<p>bind 0.0.0.0         所有都可以</p>
+<p>loglevel日志级别</p>
+<ul>
+<li>默认notice（生产）</li>
+</ul>
+<p>database（数据库数量）</p>
+<ul>
+<li>指定之后一直在，只能切换</li>
+</ul>
+<p>requirepass +密码（密码）</p>
+<ul>
+<li>auth +密码</li>
+<li>每次操作前需要输入密码</li>
+</ul>
+</blockquote>
+<h3 id="持久化配置"><a href="#持久化配置" class="headerlink" title="持久化配置"></a>持久化配置</h3><p>内存中数据保存的磁盘文件中</p>
+<h4 id="RDB-快照技术"><a href="#RDB-快照技术" class="headerlink" title="RDB(快照技术)"></a>RDB(快照技术)</h4><p>快照：内存技术，保存内存当时的状态</p>
+<ul>
+<li>快照速度很快</li>
+<li>快照保存数据的状态，占用磁盘空间比较小</li>
+<li>快照会保存完整的数据</li>
+</ul>
+<p>配置</p>
+<blockquote>
+<ul>
+<li><p>dir .&#x2F;  					#快照保存的位置(默认当前路径)</p>
+</li>
+<li><p>dbfilename xxx.rdb   		#名字</p>
+</li>
+</ul>
+<p>快照触发策略（默认的三个时机，相互独立）<br>save &lt;seconds变化的时间间隔&gt; &lt;changes键值对个数的变化&gt;</p>
+<ul>
+<li>save 900 1                 </li>
+<li>save 600 10 </li>
+<li>save 300 10000</li>
+<li>正常终止Redis会触发RDB</li>
+</ul>
+<blockquote>
+<ol start="2">
+<li>RDB保存的数据占用较小的磁盘空间</li>
+<li>RDB可能丢数据，上一次持久化之后所有写入的数据</li>
+<li>数据速度快，还原也快</li>
+</ol>
+</blockquote>
+</blockquote>
+<h4 id="AOF持久"><a href="#AOF持久" class="headerlink" title="AOF持久"></a>AOF持久</h4><p>Append only file (不存数据，只存命令)</p>
+<blockquote>
+<p>AOF持久化是将对数据的操作命令追加到日志文件中，具有以下特点：</p>
+<ul>
+<li>不会一直膨胀，会定期进行精简（监听）。</li>
+<li>可以记录数据的修改操作。</li>
+</ul>
+</blockquote>
+<p>AOF的配置包括：</p>
+<blockquote>
+<ul>
+<li><code>appendonly</code>：是否启用AOF持久化，默认为关闭。</li>
+<li><code>appendfilename</code>：AOF文件的名字，默认为<code>appendonly.aof</code>。</li>
+<li><code>appendfsync</code>：数据同步策略保存策略可以设置为：</li>
+<li><code>appendfsync everysec</code>：每秒同步一次。</li>
+<li><code>appendfsync always</code>：每次写操作都同步。</li>
+<li><code>appendfsync no</code>：依赖于操作系统策略。</li>
+</ul>
+<p>AOF可以保证不丢失数据，但生成的文件会越来越大，恢复数据时需要执行文件中的所有命令，速度较慢。</p>
+</blockquote>
+<h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><p>当同时启用RDB和AOF时，Redis在恢复数据时会优先使用AOF生成的文件。</p>
+<h2 id="数据库结构"><a href="#数据库结构" class="headerlink" title="数据库结构"></a>数据库结构</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 进入数据库，默认编号为0的数据库（第一个）</span></span><br><span class="line">select index    <span class="comment">//切换数据库</span></span><br><span class="line">auth password	<span class="comment">//数据库，认证密码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//注：生产环境禁用(千万不要在实际开发中用keys *)</span></span><br><span class="line">keys pattern	<span class="comment">//查看key pattern:正则表达式</span></span><br><span class="line">	keys *			<span class="comment">//查看所有的key</span></span><br><span class="line">	keys fir*		<span class="comment">//查看所有fir开头的key</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 清理数据库（慎用），（nil表示空）</span></span><br><span class="line">flushdb         <span class="comment">//只清空当前数据库</span></span><br><span class="line">flushall        <span class="comment">//清空所有数据库的数据    </span></span><br></pre></td></tr></table></figure>
+
+<p>#注：生产环境禁用keys  *</p>
+<p>原因：Redis执行命令的线程是单线程<br>一个命令天生就是一个原子操作<br>生产环境数据很多（key多，一旦执行，可能，别的操作需要等查完（10分钟？半小时？）</p>
+<h3 id="常用五种数据结构"><a href="#常用五种数据结构" class="headerlink" title="常用五种数据结构"></a>常用五种数据结构</h3><p>Redis支持多种数据结构，包括：</p>
+<ol>
+<li>String：存储键值对，支持增减操作。</li>
+<li>List：有序、可重复的数据结构。</li>
+<li>Set：无序、不可重复的数据结构。</li>
+<li>Hash：键值对集合。</li>
+<li>Zset（有序集合）：用于排行榜等应用。</li>
+</ol>
+<h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><p>相当于java中的   String+数值类型</p>
+<blockquote>
+<p><code>set</code>、<code>get</code>、<code>incr</code>、<code>decr</code> 、<code>mset</code>、 <code> mget</code></p>
+<p>批量添加多个键值对mset<br>批量获取多个键值对 mget</p>
+<p>incr  ——》 ++<br>decr ——》 –</p>
+</blockquote>
+<blockquote>
+<p>使用场景：</p>
+<ul>
+<li>利用incr,可以统计网站的访问量</li>
+<li>用incr,desc——》实时在线人数。</li>
+</ul>
+</blockquote>
+<h4 id="list（有序（位置有序），可重复）"><a href="#list（有序（位置有序），可重复）" class="headerlink" title="list（有序（位置有序），可重复）"></a>list（有序（位置有序），可重复）</h4><p>list的本质是一个双向链表</p>
+<blockquote>
+<p>lrange key start stop</p>
+<p>stop 可以是负数，就是倒数第几个元素</p>
+<p>lrange key 0 -1               获取所有数据</p>
+<p><code>lpush</code>、<code>rpush</code>、<code>lpop</code>和<code>rpop</code></p>
+</blockquote>
+<blockquote>
+<p>应用场景：</p>
+<p>本质双向链表，栈</p>
+<ul>
+<li>消息队列</li>
+<li>最新动态（消息）排行榜，（eg：B栈的动态）</li>
+</ul>
+</blockquote>
+<h4 id="set（无序，不可重复）"><a href="#set（无序，不可重复）" class="headerlink" title="set（无序，不可重复）"></a>set（无序，不可重复）</h4><blockquote>
+<p><code>sadd</code>、<code>srem</code>、<code>sismember</code>和<code>smembers</code>等</p>
+</blockquote>
+<p>应用场景</p>
+<ul>
+<li>求共同好友（求交集）</li>
+<li>好友推荐（两个人共有好友超过十个，两人也有可能认识，就推荐）</li>
+</ul>
+<h4 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h4><blockquote>
+<p><code>hset</code>、<code>hget</code>、<code>hdel</code>和<code>hgetall</code></p>
+</blockquote>
+<p>应用场景</p>
+<ul>
+<li>存储商城中的购物车数据</li>
+</ul>
+<h4 id="Sorted-Set（ZSet）"><a href="#Sorted-Set（ZSet）" class="headerlink" title="Sorted Set（ZSet）"></a>Sorted Set（ZSet）</h4><blockquote>
+<p>常用命令包括<code>zadd</code>、<code>zrem</code>、<code>zrange</code>和<code>zrevrange</code>等。</p>
+</blockquote>
+<h3 id="内存淘汰策略"><a href="#内存淘汰策略" class="headerlink" title="内存淘汰策略"></a>内存淘汰策略</h3><p>Redis使用不同的策略来淘汰数据以释放内存。常见的策略包括：</p>
+<ul>
+<li><code>no-eviction</code>：禁止淘汰数据，如果内存不足则写入操作报错。</li>
+<li><code>volatile-lru</code>：最近最少使用的数据被淘汰。</li>
+<li><code>lfu</code>：一段时间内使用最少的数据被淘汰。</li>
+<li><code>random</code>：随机淘汰数据。</li>
+<li><code>ttl</code>：淘汰将要过期的数据。</li>
+</ul>
+<p>在实际工作中，选择合适的淘汰策略通常取决于效率和数据合理性的平衡。常用的策略是<code>allkeys-random</code>。</p>
+<blockquote>
+<ul>
+<li>如果需要确保不丢失任何数据，可以选择<code>no-eviction</code>策略，但需要小心内存溢出。</li>
+<li>如果希望更好地利用内存并且可以容忍一些数据被淘汰，可以选择<code>volatile-lru</code>或<code>lfu</code>策略。</li>
+<li>如果希望淘汰数据更具随机性，可以选择<code>random</code>策略。</li>
+</ul>
+<p>最终的选择应该根据你的应用场景来进行权衡和调整。</p>
+</blockquote>
+<h3 id="存储什么数据"><a href="#存储什么数据" class="headerlink" title="存储什么数据"></a>存储什么数据</h3><p>Redis适用于存储不敏感数据以及访问量较大且经常访问的数据。</p>
+<h3 id="Java客户端"><a href="#Java客户端" class="headerlink" title="Java客户端"></a>Java客户端</h3><p>使用Java客户端连接Redis非常方便，可以选择Jedis或Redission库。首先，引入相应的依赖，然后创建客户端对象来执行Redis操作。</p>
+
+      
+    </div>
+
+    
+    
+    
+	
+	 
+	
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/20/%E6%8A%80%E6%9C%AF/04_Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 星辰可染呀">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/20/%E6%8A%80%E6%9C%AF/04_Redis/" class="post-title-link" itemprop="url">Redis</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-20 22:34:29" itemprop="dateCreated datePublished" datetime="2023-09-20T22:34:29+08:00">2023-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-09 08:59:49" itemprop="dateModified" datetime="2023-10-09T08:59:49+08:00">2023-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +1513,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">每日一题</span></a>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
         </span>
     </span>
 
@@ -408,10 +1527,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>未来的路就在脚下，不要悲伤不要害怕，充满信心期盼着明天。</p>
+          <p>NoSql数据库、持久化（RDB快照、AOF）、常用五种数据结构、内存淘汰策略</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/08/25/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0825_TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC/">
+              <a class="btn" href="/2023/09/20/%E6%8A%80%E6%9C%AF/04_Redis/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -445,7 +1564,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/24/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0824_InoDB%E5%92%8CMyISAM%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/15/%E6%8A%80%E6%9C%AF/02_Nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -463,7 +1582,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/24/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0824_InoDB%E5%92%8CMyISAM%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">InoDB和MyISAM的区别</a>
+          <a href="/2023/09/15/%E6%8A%80%E6%9C%AF/02_Nginx/" class="post-title-link" itemprop="url">Nginx</a>
         </h2>
 
         <div class="post-meta-container">
@@ -474,14 +1593,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-08-24 08:42:19" itemprop="dateCreated datePublished" datetime="2023-08-24T08:42:19+08:00">2023-08-24</time>
+      <time title="创建时间：2023-09-15 22:34:29" itemprop="dateCreated datePublished" datetime="2023-09-15T22:34:29+08:00">2023-09-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-26 15:44:50" itemprop="dateModified" datetime="2023-08-26T15:44:50+08:00">2023-08-26</time>
+      <time title="修改时间：2023-10-09 09:20:32" itemprop="dateModified" datetime="2023-10-09T09:20:32+08:00">2023-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -489,7 +1608,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">每日一题</span></a>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
         </span>
     </span>
 
@@ -503,580 +1622,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>新的风暴已经出现，怎么能够停滞不前。      8月24日！！！！！！！</p>
+          <p>反向代理服务器、web服务器（高性能的静态Web资源服务器）</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/08/24/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0824_InoDB%E5%92%8CMyISAM%E7%9A%84%E5%8C%BA%E5%88%AB/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	
-	 
-	
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/20/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="染星辰">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星辰可染呀">
-      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 星辰可染呀">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/20/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="post-title-link" itemprop="url">索引、数据库的存储结构、存储引擎</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-20 21:43:56" itemprop="dateCreated datePublished" datetime="2023-08-20T21:43:56+08:00">2023-08-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-21 08:23:37" itemprop="dateModified" datetime="2023-08-21T08:23:37+08:00">2023-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" itemprop="url" rel="index"><span itemprop="name">Java_第二阶段</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>索引的数据结构、数据库的组成结构、存储引擎、主键\非主键索引、回表、覆盖索引、explain看查询的过程（**待补充**）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/20/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E7%B4%A2%E5%BC%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E3%80%81%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	
-	 
-	
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="染星辰">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星辰可染呀">
-      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 星辰可染呀">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/" class="post-title-link" itemprop="url">池化思想</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-19 08:34:29" itemprop="dateCreated datePublished" datetime="2023-08-19T08:34:29+08:00">2023-08-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-23 13:21:54" itemprop="dateModified" datetime="2023-08-23T13:21:54+08:00">2023-08-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">每日一题</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>金鳞岂是池中物 一遇风云便化龙。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0818%E6%B1%A0%E5%8C%96%E6%80%9D%E6%83%B3/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	
-	 
-	
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="染星辰">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星辰可染呀">
-      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 星辰可染呀">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="post-title-link" itemprop="url">连接池</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-18 21:47:35" itemprop="dateCreated datePublished" datetime="2023-08-18T21:47:35+08:00">2023-08-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-21 14:53:48" itemprop="dateModified" datetime="2023-08-21T14:53:48+08:00">2023-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" itemprop="url" rel="index"><span itemprop="name">Java_第二阶段</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>连接池、池化思想 三方连接池 `DBCP`、`C3p0`、阿里的`Druid`、`springboot`的`HikariCP`</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/18/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	
-	 
-	
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/17/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0816%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="染星辰">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星辰可染呀">
-      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 星辰可染呀">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/17/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0816%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" class="post-title-link" itemprop="url">浏览器输入url发生了什么</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-17 08:19:37" itemprop="dateCreated datePublished" datetime="2023-08-17T08:19:37+08:00">2023-08-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-19 22:13:44" itemprop="dateModified" datetime="2023-08-19T22:13:44+08:00">2023-08-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">每日一题</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>天生我才必有用，千金散尽还复来。（三次挥手、四次握手待补充。）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/17/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0816%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	
-	 
-	
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/16/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0815%E8%B0%88%E4%B8%80%E4%B8%8B%E5%AF%B9%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="染星辰">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星辰可染呀">
-      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 星辰可染呀">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/16/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0815%E8%B0%88%E4%B8%80%E4%B8%8B%E5%AF%B9%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E8%A7%A3/" class="post-title-link" itemprop="url">谈一下对面向对象的理解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-16 08:10:28" itemprop="dateCreated datePublished" datetime="2023-08-16T08:10:28+08:00">2023-08-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-19 10:38:07" itemprop="dateModified" datetime="2023-08-19T10:38:07+08:00">2023-08-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">每日一题</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>人生得意需尽欢，莫使金樽空对月。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/16/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/0815%E8%B0%88%E4%B8%80%E4%B8%8B%E5%AF%B9%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E8%A7%A3/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	
-	 
-	
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/12/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/0812_%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E4%B9%8B%E5%81%B7%E5%B8%88%E5%AD%A6%E8%89%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="染星辰">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星辰可染呀">
-      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 星辰可染呀">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/12/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/0812_%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E4%B9%8B%E5%81%B7%E5%B8%88%E5%AD%A6%E8%89%BA/" class="post-title-link" itemprop="url">学习方法之偷师学艺</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-12 08:47:28" itemprop="dateCreated datePublished" datetime="2023-08-12T08:47:28+08:00">2023-08-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-08 13:36:26" itemprop="dateModified" datetime="2023-09-08T13:36:26+08:00">2023-09-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">学习方法</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>大佬的学习方法，学习思路，答题思路，学到就是我的了（未完待续）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/12/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/0812_%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E4%B9%8B%E5%81%B7%E5%B8%88%E5%AD%A6%E8%89%BA/">
+              <a class="btn" href="/2023/09/15/%E6%8A%80%E6%9C%AF/02_Nginx/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1103,7 +1652,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

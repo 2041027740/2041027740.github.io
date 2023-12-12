@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="微服务架构、微服务的实现、服务注册中心(Eureka Server和Nacos Server)、服务调用的负载均衡(Ribbon)、面向接的服务调用（OpenFeign）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringCloud">
+<meta property="og:url" content="http://example.com/2023/09/12/%E6%8A%80%E6%9C%AF/05_SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.html">
+<meta property="og:site_name" content="星辰可染呀">
+<meta property="og:description" content="微服务架构、微服务的实现、服务注册中心(Eureka Server和Nacos Server)、服务调用的负载均衡(Ribbon)、面向接的服务调用（OpenFeign）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-12T14:34:29.000Z">
+<meta property="article:modified_time" content="2023-10-09T00:59:29.664Z">
+<meta property="article:author" content="染星辰">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/09/12/%E6%8A%80%E6%9C%AF/05_SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/09/12/%E6%8A%80%E6%9C%AF/05_SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1/","path":"2023/09/12/技术/05_SpringCloud微服务/","title":"SpringCloud"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SpringCloud | 星辰可染呀</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">星辰可染呀</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">恰似人间惊鸿客，墨染星辰云水间</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringCloud"><span class="nav-number">1.</span> <span class="nav-text">SpringCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.</span> <span class="nav-text">架构理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">单体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">单体架构的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">单体架构的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84%E7%9A%84%E5%BC%8A%E7%AB%AF"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">单体架构的弊端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.2.</span> <span class="nav-text">微服务架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">什么是微服务架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">什么是微服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">微服务架构的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%9A%84%E5%BC%8A%E7%AB%AF"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">微服务架构的弊端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">微服务的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9C%89%E5%93%AA%E4%B8%A4%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%88%92%E5%88%86%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">微服务有哪两种常见的服务划分方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.2.</span> <span class="nav-text">实现微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">自己实现遇到的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%A7%A3%E5%86%B3%E4%BB%A5%E4%B8%8A%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">微服务框架解决以上问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-Cloud%E5%9F%BA%E4%BA%8ESpring-Boot%E6%8F%90%E5%87%BA"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">Spring Cloud基于Spring Boot提出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E9%97%B4%E7%9A%84%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.3.</span> <span class="nav-text">服务间的调用问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">服务调用的本质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">服务调用的目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E5%9F%BA%E4%BA%8E%E7%9A%84%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">服务调用基于的协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">实现最简单的服务调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8A%A8%E6%80%81%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.4.</span> <span class="nav-text">服务的动态发现问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A9%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85%E5%8A%A8%E6%80%81%E5%8F%91%E7%8E%B0%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">如何让服务消费者动态发现服务提供者的信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">服务注册中心</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Eureka"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text">Eureka</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Eureka-Server"><span class="nav-number">1.2.4.2.1.1.</span> <span class="nav-text">Eureka Server</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Eureka-Client"><span class="nav-number">1.2.4.2.1.2.</span> <span class="nav-text">Eureka Client</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nacos"><span class="nav-number">1.2.4.2.2.</span> <span class="nav-text">Nacos</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Nacos-Server"><span class="nav-number">1.2.4.2.2.1.</span> <span class="nav-text">Nacos Server</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Nacos-Client"><span class="nav-number">1.2.4.2.2.2.</span> <span class="nav-text">Nacos Client</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">服务注册中心的实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.5.</span> <span class="nav-text">服务调用的负载均衡问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85%E5%AE%9E%E4%BE%8B%E5%8F%91%E8%B5%B7%E8%B0%83%E7%94%A8"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">服务消费者如何选择一个服务提供者实例发起调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ribbon"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">Ribbon</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ribbon%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.5.2.1.</span> <span class="nav-text">Ribbon的基本使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ribbon%E6%94%AF%E6%8C%81%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="nav-number">1.2.5.2.2.</span> <span class="nav-text">Ribbon支持的负载均衡策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ribbon%E6%8C%87%E5%AE%9A%E8%B0%83%E7%94%A8%E6%9C%8D%E5%8A%A1%E6%97%B6%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="nav-number">1.2.5.2.3.</span> <span class="nav-text">Ribbon指定调用服务时的负载均衡策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="nav-number">1.2.5.2.4.</span> <span class="nav-text">自定义负载均衡策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.6.</span> <span class="nav-text">面向接口的服务调用问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%83%BD%E5%90%A6%E4%BB%A5%E6%8E%A5%E5%8F%A3%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%AE%8C%E6%88%90%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">能否以接口方法调用的形式完成服务调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenFeign"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">OpenFeign</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.6.2.1.</span> <span class="nav-text">实现面向接口服务调用的底层原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8OpenFeign"><span class="nav-number">1.2.6.2.2.</span> <span class="nav-text">使用OpenFeign</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%93%E5%8D%B0OpenFeign%E8%AF%B7%E6%B1%82%E6%97%A5%E5%BF%97"><span class="nav-number">1.2.6.2.3.</span> <span class="nav-text">打印OpenFeign请求日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E7%9A%84%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4"><span class="nav-number">1.2.6.2.4.</span> <span class="nav-text">设置服务调用的超时时间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.7.</span> <span class="nav-text">服务的配置管理问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E3%80%81%E9%AB%98%E6%95%88%E5%9C%B0%E5%AE%8C%E6%88%90%E5%AF%B9%E5%A4%9A%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%AE%9E%E4%BE%8B%E9%85%8D%E7%BD%AE%E7%9A%84%E7%AE%A1%E7%90%86"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">如何简单、高效地完成对多个服务实例配置的管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">配置中心</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Nacos%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.7.2.1.</span> <span class="nav-text">Nacos配置中心的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Profile%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.7.2.2.</span> <span class="nav-text">Profile配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Shared%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.7.2.3.</span> <span class="nav-text">Shared配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%9A%84%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.7.2.4.</span> <span class="nav-text">配置的访问方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%9A%84%E9%9A%94%E7%A6%BB"><span class="nav-number">1.2.7.2.5.</span> <span class="nav-text">配置的隔离</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0"><span class="nav-number">1.2.7.2.6.</span> <span class="nav-text">配置的动态刷新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Profile%E9%85%8D%E7%BD%AE%E3%80%81Shared%E9%85%8D%E7%BD%AE%E5%92%8C%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">1.2.7.2.7.</span> <span class="nav-text">Profile配置、Shared配置和本地配置的优先级</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E5%88%87%E6%8D%A2"><span class="nav-number">1.2.7.2.8.</span> <span class="nav-text">数据源的切换</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="染星辰"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">染星辰</p>
+  <div class="site-description" itemprop="description">一生温暖纯良，不舍爱与自由</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/2041027740" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2041027740" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/12/%E6%8A%80%E6%9C%AF/05_SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="染星辰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰可染呀">
+      <meta itemprop="description" content="一生温暖纯良，不舍爱与自由">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SpringCloud | 星辰可染呀">
+      <meta itemprop="description" content="微服务架构、微服务的实现、服务注册中心(Eureka Server和Nacos Server)、服务调用的负载均衡(Ribbon)、面向接的服务调用（OpenFeign）">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SpringCloud
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-12 22:34:29" itemprop="dateCreated datePublished" datetime="2023-09-12T22:34:29+08:00">2023-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-09 08:59:29" itemprop="dateModified" datetime="2023-10-09T08:59:29+08:00">2023-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">微服务架构、微服务的实现、服务注册中心(Eureka Server和Nacos Server)、服务调用的负载均衡(Ribbon)、面向接的服务调用（OpenFeign）</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h1><h2 id="架构理论"><a href="#架构理论" class="headerlink" title="架构理论"></a>架构理论</h2><h3 id="单体架构"><a href="#单体架构" class="headerlink" title="单体架构"></a>单体架构</h3><h4 id="单体架构的特征"><a href="#单体架构的特征" class="headerlink" title="单体架构的特征"></a>单体架构的特征</h4><ul>
+<li>单体架构是一种传统的应用程序架构，它将整个应用程序作为一个单一的、单独的单元来构建和部署。</li>
+</ul>
+<h4 id="单体架构的优势"><a href="#单体架构的优势" class="headerlink" title="单体架构的优势"></a>单体架构的优势</h4><ul>
+<li>应用的开发很简单。</li>
+<li>易于对应用程序进行大规模的更改。</li>
+<li>测试相对直观简单。</li>
+<li>部署简单明了。</li>
+<li>横向扩容不费吹灰之力。</li>
+</ul>
+<h4 id="单体架构的弊端"><a href="#单体架构的弊端" class="headerlink" title="单体架构的弊端"></a>单体架构的弊端</h4><ul>
+<li>代码复杂，严重耦合，难以维护。</li>
+<li>从代码提交到实际部署的周期很长。</li>
+<li>扩展性受限。</li>
+<li>开发慢，启动慢，严重影响开发效率。</li>
+<li>交付可靠的单体应用困难。</li>
+</ul>
+<h3 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h3><h4 id="什么是微服务架构"><a href="#什么是微服务架构" class="headerlink" title="什么是微服务架构"></a>什么是微服务架构</h4><ul>
+<li>微服务架构是一种应用程序架构风格，将应用程序拆分为一组小型、独立的服务，每个服务都有自己的数据存储、业务逻辑和用户界面，并可以独立部署和扩展。</li>
+</ul>
+<h4 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h4><ul>
+<li>每个微服务都是一个独立的应用程序单元，通常根据单一职责原则实现一组相关功能。</li>
+</ul>
+<h4 id="微服务架构的优势"><a href="#微服务架构的优势" class="headerlink" title="微服务架构的优势"></a>微服务架构的优势</h4><ul>
+<li>每个服务都相对较小，容易维护。</li>
+<li>快速的持续交付和持续部署。</li>
+<li>应用扩展灵活。</li>
+<li>更好的容错性。</li>
+</ul>
+<h4 id="微服务架构的弊端"><a href="#微服务架构的弊端" class="headerlink" title="微服务架构的弊端"></a>微服务架构的弊端</h4><ul>
+<li>分布式系统可能复杂难以管理。</li>
+<li>分布式部署追踪问题难。</li>
+<li>分布式事务比较难处理。</li>
+<li>服务数量增加，管理复杂性增加。</li>
+</ul>
+<h2 id="微服务的实现"><a href="#微服务的实现" class="headerlink" title="微服务的实现"></a>微服务的实现</h2><h3 id="微服务有哪两种常见的服务划分方式"><a href="#微服务有哪两种常见的服务划分方式" class="headerlink" title="微服务有哪两种常见的服务划分方式"></a>微服务有哪两种常见的服务划分方式</h3><ul>
+<li>横向划分：按照业务划分。</li>
+<li>纵向划分：按照层次划分（表现层、业务层、持久层）。</li>
+</ul>
+<h3 id="实现微服务"><a href="#实现微服务" class="headerlink" title="实现微服务"></a>实现微服务</h3><h4 id="自己实现遇到的问题"><a href="#自己实现遇到的问题" class="headerlink" title="自己实现遇到的问题"></a>自己实现遇到的问题</h4><ul>
+<li>服务间的调用问题，包括通信方式和协议。</li>
+<li>各个服务的管理问题。</li>
+</ul>
+<h4 id="微服务框架解决以上问题"><a href="#微服务框架解决以上问题" class="headerlink" title="微服务框架解决以上问题"></a>微服务框架解决以上问题</h4><ul>
+<li>Dubbo：用于服务之间的通信和调用。</li>
+<li>Spring Cloud：提供了一整套微服务架构的解决方案。</li>
+</ul>
+<h4 id="Spring-Cloud基于Spring-Boot提出"><a href="#Spring-Cloud基于Spring-Boot提出" class="headerlink" title="Spring Cloud基于Spring Boot提出"></a>Spring Cloud基于Spring Boot提出</h4><ul>
+<li>服务注册与自动发现：Eureka、Nacos。</li>
+<li>面向接口的服务调用：Feign。</li>
+<li>服务调用的负载均衡：Ribbon。</li>
+<li>服务网关：Zuul、Gateway。</li>
+<li>服务熔断：Hystrix。</li>
+</ul>
+<h3 id="服务间的调用问题"><a href="#服务间的调用问题" class="headerlink" title="服务间的调用问题"></a>服务间的调用问题</h3><h4 id="服务调用的本质"><a href="#服务调用的本质" class="headerlink" title="服务调用的本质"></a>服务调用的本质</h4><ul>
+<li>服务调用本质是将方法调用转换为HTTP请求。</li>
+</ul>
+<h4 id="服务调用的目标"><a href="#服务调用的目标" class="headerlink" title="服务调用的目标"></a>服务调用的目标</h4><ul>
+<li>服务调用的目标是通过一次HTTP请求获取响应。</li>
+</ul>
+<h4 id="服务调用基于的协议"><a href="#服务调用基于的协议" class="headerlink" title="服务调用基于的协议"></a>服务调用基于的协议</h4><ul>
+<li>服务调用基于HTTP协议。</li>
+</ul>
+<h4 id="实现最简单的服务调用"><a href="#实现最简单的服务调用" class="headerlink" title="实现最简单的服务调用"></a>实现最简单的服务调用</h4><ul>
+<li><p>使用RestTemplate来发送HTTP请求。</p>
+<p>通过一个RestTempate对象，发起POST,GET,DELETE,PUT,PATCH等不同种类的Http请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	当我们只想要获取一个GET请求的结果的时候，可以调用其getForObject方法，其中</span></span><br><span class="line"><span class="comment">	String url: 发起请求的url</span></span><br><span class="line"><span class="comment">	Class&lt;T&gt; responseType: 响应体返回值类型</span></span><br><span class="line"><span class="comment">	第三个参数: 表示GET请求携带的参数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; T <span class="title function_">getForObject</span><span class="params">(String url, Class&lt;T&gt; responseType, Map&lt;String,?&gt; uriVariables)</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; T <span class="title function_">getForObject</span><span class="params">(String url,Class&lt;T&gt; responseType, Object... uriVariables)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    如果我们不仅想要获取GET请求的响应体数据，还想获取响应头，以及响应码等信息，那么可以使用getForEntity方法，其中</span></span><br><span class="line"><span class="comment">	String url: GET请求的url</span></span><br><span class="line"><span class="comment">	Class&lt;T&gt; responseType： 响应体返回值类型</span></span><br><span class="line"><span class="comment">	第三个参数: 表示GET请求携带的参数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; ResponseEntity&lt;T&gt; <span class="title function_">getForEntity</span><span class="params">(String url, Class&lt;T&gt; responseType, Object... uriVariables)</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; ResponseEntity&lt;T&gt; <span class="title function_">getForEntity</span><span class="params">(String url, Class&lt;T&gt; responseType, Map&lt;String,?&gt; uriVariables)</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	当我们只想要获取一个POST请求的结果的时候，可以调用其postForObject方法，其中</span></span><br><span class="line"><span class="comment">	String url: 发起请求的url</span></span><br><span class="line"><span class="comment">	request：表示post请求的请求体数据，也可以不传这个参数</span></span><br><span class="line"><span class="comment">	Class&lt;T&gt; responseType: 响应体返回值类型</span></span><br><span class="line"><span class="comment">	第三个参数: 表示GET请求携带的参数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; T <span class="title function_">postForObject</span><span class="params">(String url, <span class="meta">@Nullable</span> Object request, Class&lt;T&gt; responseType, Map&lt;String,?&gt; uriVariables)</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; T <span class="title function_">postForObject</span><span class="params">(URI url, <span class="meta">@Nullable</span> Object request, Class&lt;T&gt; responseType)</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    如果我们不仅想要获取GET请求的响应体数据，还想获取响应头，以及响应码等信息，那么可以使用getForEntity方法，其中</span></span><br><span class="line"><span class="comment">	String url: POST请求的url</span></span><br><span class="line"><span class="comment">	Object request： 表示post请求的请求体数据，也可以不传这个参数</span></span><br><span class="line"><span class="comment">	Class&lt;T&gt; responseType： 响应体返回值类型</span></span><br><span class="line"><span class="comment">	第三个参数: 表示GET请求携带的参数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; ResponseEntity&lt;T&gt; <span class="title function_">postForEntity</span><span class="params">(String url, <span class="meta">@Nullable</span> Object request, Class&lt;T&gt; responseType, Object... uriVariables)</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; ResponseEntity&lt;T&gt; <span class="title function_">postForEntity</span><span class="params">(String url, <span class="meta">@Nullable</span> Object request, Class&lt;T&gt; responseType, Map&lt;String,?&gt; uriVariables)</span></span><br></pre></td></tr></table></figure>
+
+<p>eg：发送GET请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 准备好请求的url，携带名为name的请求参数，占位符的名称为name </span></span><br><span class="line"> <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://localhost:9001/user/address/&#123;userId&#125;&quot;</span>;</span><br><span class="line">     <span class="comment">// map中参数值的key一定要和url中参数的占位符同名</span></span><br><span class="line">     HashMap&lt;String, Object&gt; param = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">     param.put(<span class="string">&quot;userId&quot;</span>, userId);</span><br><span class="line">      <span class="comment">//map参数方式</span></span><br><span class="line">     <span class="type">String</span> <span class="variable">rest</span> <span class="operator">=</span> restTemplate.getForObject(url, String.class, param);</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//准备好请求的url，携带名为name的请求参数，占位符的名称就不重要了，因为通过可变参数可以通过参数位置确定请求参数对应参数值</span></span><br><span class="line"><span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://localhost:9001/user/address/&#123;userId&#125;&quot;</span>;</span><br><span class="line"><span class="comment">// 用可变参数的方式来传递请求参数, 这里只有一个参数值name</span></span><br><span class="line"><span class="type">String</span> <span class="variable">rest</span> <span class="operator">=</span> restTemplate.getForObject(url,String.class, userId);</span><br></pre></td></tr></table></figure>
+
+<p>先准备好一个用于发起Http请求的RestTemplate对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClientConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@LoadBalanced</span></span><br><span class="line">    <span class="keyword">public</span> RestTemplate <span class="title function_">template</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;order&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderController</span> &#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> OrderService orderService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;&#123;orderId&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Order <span class="title function_">queryOrderByUserId</span><span class="params">(<span class="meta">@PathVariable(&quot;orderId&quot;)</span> Long orderId)</span> &#123;</span><br><span class="line">        <span class="comment">// 根据id查询订单并返回</span></span><br><span class="line">        <span class="keyword">return</span> orderService.queryOrderById(orderId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderMapper orderMapper;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Order <span class="title function_">queryOrderById</span><span class="params">(Long orderId)</span> &#123;</span><br><span class="line">        <span class="comment">// 1.查询订单</span></span><br><span class="line">        <span class="type">Order</span> <span class="variable">order</span> <span class="operator">=</span> orderMapper.findById(orderId);</span><br><span class="line">        <span class="comment">// 2.利用RestTemplate发起http请求，查询用户</span></span><br><span class="line">        <span class="comment">// 2.1.url地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://localhost:9001/user/address/&#123;userId&#125;&quot;</span>;</span><br><span class="line">        <span class="comment">// 2.2.发送http请求，实现远程调用</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">userAddress</span> <span class="operator">=</span> restTemplate.getForObject(url, String.class,order.getUserId());</span><br><span class="line">        <span class="comment">// 3.封装user到Order</span></span><br><span class="line">        order.setUserAdress(userAddress);</span><br><span class="line">        <span class="comment">// 4.返回</span></span><br><span class="line">        <span class="keyword">return</span> order;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="服务的动态发现问题"><a href="#服务的动态发现问题" class="headerlink" title="服务的动态发现问题"></a>服务的动态发现问题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//url写死了，无法动态匹配  </span></span><br><span class="line"><span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://localhost:9001/user/address/&#123;userId&#125;&quot;</span>;</span><br><span class="line">        <span class="comment">// 实现远程调用</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">userAddress</span> <span class="operator">=</span> restTemplate.getForObject(url, String.class, order.getUserId());</span><br></pre></td></tr></table></figure>
+
+<h4 id="如何让服务消费者动态发现服务提供者的信息"><a href="#如何让服务消费者动态发现服务提供者的信息" class="headerlink" title="如何让服务消费者动态发现服务提供者的信息"></a>如何让服务消费者动态发现服务提供者的信息</h4><ul>
+<li>使用服务注册中心来实现服务的注册与自动发现。</li>
+</ul>
+<h4 id="服务注册中心"><a href="#服务注册中心" class="headerlink" title="服务注册中心"></a>服务注册中心</h4><ul>
+<li>服务注册中心是用于管理服务实例的中心化组件。</li>
+</ul>
+<h5 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h5><ul>
+<li>Eureka是一种服务注册中心，包括Eureka Server和Eureka Client两部分。</li>
+</ul>
+<h6 id="Eureka-Server"><a href="#Eureka-Server" class="headerlink" title="Eureka Server"></a>Eureka Server</h6><ul>
+<li>Eureka Server用于实现服务注册中心的功能。</li>
+</ul>
+<h6 id="Eureka-Client"><a href="#Eureka-Client" class="headerlink" title="Eureka Client"></a>Eureka Client</h6><ul>
+<li>Eureka Client用于实现服务提供者和服务消费者的注册和发现。</li>
+</ul>
+<h5 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h5><ul>
+<li>Nacos是另一种服务注册中心，包括Nacos Server和Nacos Client两部分。</li>
+</ul>
+<h6 id="Nacos-Server"><a href="#Nacos-Server" class="headerlink" title="Nacos Server"></a>Nacos Server</h6><ul>
+<li>Nacos Server用于实现服务注册中心的功能。</li>
+</ul>
+<h6 id="Nacos-Client"><a href="#Nacos-Client" class="headerlink" title="Nacos Client"></a>Nacos Client</h6><ul>
+<li>Nacos Client用于实现服务提供者和服务消费者的注册和发现。</li>
+</ul>
+<h4 id="服务注册中心的实现"><a href="#服务注册中心的实现" class="headerlink" title="服务注册中心的实现"></a>服务注册中心的实现</h4><ul>
+<li>Eureka Server和Nacos Server都是服务注册中心的实现。</li>
+</ul>
+<h3 id="服务调用的负载均衡问题"><a href="#服务调用的负载均衡问题" class="headerlink" title="服务调用的负载均衡问题"></a>服务调用的负载均衡问题</h3><h4 id="服务消费者如何选择一个服务提供者实例发起调用"><a href="#服务消费者如何选择一个服务提供者实例发起调用" class="headerlink" title="服务消费者如何选择一个服务提供者实例发起调用"></a>服务消费者如何选择一个服务提供者实例发起调用</h4><ul>
+<li>使用负载均衡器来选择一个服务提供者实例。</li>
+</ul>
+<h4 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h4><ul>
+<li>Ribbon是一个负载均衡器，用于在多个服务提供者实例中选择一个进行调用。</li>
+</ul>
+<h5 id="Ribbon的基本使用"><a href="#Ribbon的基本使用" class="headerlink" title="Ribbon的基本使用"></a>Ribbon的基本使用</h5><ul>
+<li>使用Ribbon的<code>@LoadBalance</code>注解来标识RestTemplate，以实现负载均衡。</li>
+</ul>
+<h5 id="Ribbon支持的负载均衡策略"><a href="#Ribbon支持的负载均衡策略" class="headerlink" title="Ribbon支持的负载均衡策略"></a>Ribbon支持的负载均衡策略</h5><ul>
+<li>Ribbon支持多种负载均衡策略，如随机策略、轮询策略、重试策略等。</li>
+</ul>
+<h5 id="Ribbon指定调用服务时的负载均衡策略"><a href="#Ribbon指定调用服务时的负载均衡策略" class="headerlink" title="Ribbon指定调用服务时的负载均衡策略"></a>Ribbon指定调用服务时的负载均衡策略</h5><ul>
+<li>可以通过配置文件或配置类来指定调用服务时使用的负载均衡策略。</li>
+</ul>
+<h5 id="自定义负载均衡策略"><a href="#自定义负载均衡策略" class="headerlink" title="自定义负载均衡策略"></a>自定义负载均衡策略</h5><ul>
+<li>可以自定义负载均衡策略，并通过配置类注册。</li>
+</ul>
+<h3 id="面向接口的服务调用问题"><a href="#面向接口的服务调用问题" class="headerlink" title="面向接口的服务调用问题"></a>面向接口的服务调用问题</h3><h4 id="能否以接口方法调用的形式完成服务调用"><a href="#能否以接口方法调用的形式完成服务调用" class="headerlink" title="能否以接口方法调用的形式完成服务调用"></a>能否以接口方法调用的形式完成服务调用</h4><ul>
+<li>是的，可以使用OpenFeign实现面向接口的服务调用。</li>
+</ul>
+<h4 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h4><ul>
+<li>OpenFeign是一种面向接口的服务调用工具，它可以将接口方法调用转化为HTTP请求。</li>
+</ul>
+<h5 id="实现面向接口服务调用的底层原理"><a href="#实现面向接口服务调用的底层原理" class="headerlink" title="实现面向接口服务调用的底层原理"></a>实现面向接口服务调用的底层原理</h5><ul>
+<li>OpenFeign底层通过动态代理将接口方法转化为HTTP请求。</li>
+</ul>
+<h5 id="使用OpenFeign"><a href="#使用OpenFeign" class="headerlink" title="使用OpenFeign"></a>使用OpenFeign</h5><ul>
+<li><p>可以定义接口方法，参数和返回值为JDK中的数据类型，然后使用OpenFeign来调用服务。</p>
+</li>
+<li><p>如果参数或返回值为自定义数据类型，也可以使用OpenFeign来调用服务。</p>
+</li>
+</ul>
+<h5 id="打印OpenFeign请求日志"><a href="#打印OpenFeign请求日志" class="headerlink" title="打印OpenFeign请求日志"></a>打印OpenFeign请求日志</h5><ul>
+<li>可以配置OpenFeign来打印请求日志，便于调试和监控。</li>
+</ul>
+<h5 id="设置服务调用的超时时间"><a href="#设置服务调用的超时时间" class="headerlink" title="设置服务调用的超时时间"></a>设置服务调用的超时时间</h5><ul>
+<li>可以配置OpenFeign来设置服务调用的超时时间，以防止调用超时。</li>
+</ul>
+<h3 id="服务的配置管理问题"><a href="#服务的配置管理问题" class="headerlink" title="服务的配置管理问题"></a>服务的配置管理问题</h3><h4 id="如何简单、高效地完成对多个服务实例配置的管理"><a href="#如何简单、高效地完成对多个服务实例配置的管理" class="headerlink" title="如何简单、高效地完成对多个服务实例配置的管理"></a>如何简单、高效地完成对多个服务实例配置的管理</h4><ul>
+<li>使用配置中心来统一管理多个服务实例的配置。</li>
+</ul>
+<h4 id="配置中心"><a href="#配置中心" class="headerlink" title="配置中心"></a>配置中心</h4><ul>
+<li>配置中心是用于集中管理配置信息的组件。</li>
+</ul>
+<h5 id="Nacos配置中心的概念"><a href="#Nacos配置中心的概念" class="headerlink" title="Nacos配置中心的概念"></a>Nacos配置中心的概念</h5><ul>
+<li>Nacos配置中心包括profile配置和shared配置。</li>
+</ul>
+<h5 id="Profile配置"><a href="#Profile配置" class="headerlink" title="Profile配置"></a>Profile配置</h5><ul>
+<li><p>Profile配置允许不同的服务实例根据其profile属性获取不同的配置。</p>
+</li>
+<li><p>配置集的计算公式定义了不同profile属性的配置。</p>
+</li>
+</ul>
+<h5 id="Shared配置"><a href="#Shared配置" class="headerlink" title="Shared配置"></a>Shared配置</h5><ul>
+<li><p>Shared配置允许多个服务实例共享同一份配置。</p>
+</li>
+<li><p>可以定义多个shared配置，并让多个服务实例引用相同的shared配置。</p>
+</li>
+</ul>
+<h5 id="配置的访问方式"><a href="#配置的访问方式" class="headerlink" title="配置的访问方式"></a>配置的访问方式</h5><ul>
+<li>配置可以通过访问配置中心获取，通常配置中心的地址放在<code>bootstrap.yml</code>配置文件中。</li>
+</ul>
+<h5 id="配置的隔离"><a href="#配置的隔离" class="headerlink" title="配置的隔离"></a>配置的隔离</h5><ul>
+<li>可以通过配置集、配置分组、命名空间等方式实现配置的隔离。</li>
+</ul>
+<h5 id="配置的动态刷新"><a href="#配置的动态刷新" class="headerlink" title="配置的动态刷新"></a>配置的动态刷新</h5><ul>
+<li>可以实现配置的动态刷新，使配置变更后不需要重启服务即可生效。</li>
+</ul>
+<h5 id="Profile配置、Shared配置和本地配置的优先级"><a href="#Profile配置、Shared配置和本地配置的优先级" class="headerlink" title="Profile配置、Shared配置和本地配置的优先级"></a>Profile配置、Shared配置和本地配置的优先级</h5><ul>
+<li>配置的优先级由profile配置、shared配置和本地配置共同决定。</li>
+</ul>
+<h5 id="数据源的切换"><a href="#数据源的切换" class="headerlink" title="数据源的切换"></a>数据源的切换</h5><ul>
+<li>Nacos配置可以存储在不同的数据源中，例如MySQL，可以切换数据源来存储配置。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+	
+	 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+   </div>
+ 
+	
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>染星辰
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/09/12/%E6%8A%80%E6%9C%AF/05_SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="SpringCloud">http://example.com/2023/09/12/技术/05_SpringCloud微服务/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/10/Java_%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="prev" title="单例模式">
+                  <i class="fa fa-angle-left"></i> 单例模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/12/Java_%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/0912_%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%AF%A6%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/" rel="next" title="线程池">
+                  线程池 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81ODg4OS8zNTM1MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">染星辰</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div> -->
+
+
+
+
+
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
